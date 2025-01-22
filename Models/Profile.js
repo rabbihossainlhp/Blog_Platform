@@ -1,13 +1,14 @@
 //Dependencies...
 const {Schema,model} = require("mongoose");
+const User = require("./User");
+const Post = require("./Post");
 
 
 //create a schema for profile.
-
 const ProfileSchema = new Schema({
     user:{
         type:Schema.Types.ObjectId,
-        ref:"User",
+        ref:User,
         required:true
     },
     title:{
@@ -33,11 +34,11 @@ const ProfileSchema = new Schema({
     },
     posts:[{
         type:Schema.Types.ObjectId,
-        ref:"Post"
+        ref:Post
     }],
     bookmarks:[{
         type:Schema.Types.ObjectId,
-        ref:"Post"
+        ref:Post
     }]
 },{timestamps:true});
 

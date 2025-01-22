@@ -1,5 +1,7 @@
 //dependencies...
 const {Schema,model} = required("mongoose");
+const User = require("./User");
+const Comment = require("./Comment");
 
 
 //create a schema for post
@@ -16,7 +18,7 @@ const PostSchema =  new Schema({
     },
     author:{
         type:Schema.Types.ObjectId,
-        ref:"User"
+        ref:User
     },
     tags:[{
         type:String,
@@ -24,11 +26,17 @@ const PostSchema =  new Schema({
     }],
     thumbnail:String,
     readTime:String,
-    likes:[Schema.Types.ObjectId],
-    dislikes:[Schema.Types.ObjectId],
+    likes:[{
+        type:Schema.Types.ObjectId,
+        ref:User
+    }],
+    dislikes:[{
+        type:Schema.Types.ObjectId,
+        ref:User
+    }],
     comments:[{
         type:Schema.Types.ObjectId,
-        ref:"Comment"
+        ref: Comment
     }]
 },{timestamps:true});
 
