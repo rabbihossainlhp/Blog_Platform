@@ -7,7 +7,7 @@ const app = express();
 
 //setup view-engine..
 app.set("view engine","ejs");
-app.set("views","views");
+app.set("views","Views");
 
 
 //array of middlware
@@ -24,17 +24,17 @@ app.use(middlware);
 
 //handle the basic routes..
 app.get("/",(req,res)=>{
-    res.send("WElcome to HOme page of our fist blog app")
+    res.render("Pages/auth/signup");
 });
 
 
 
 //Port number
-const Port = process.env.Port;
+const Port = process.env.Port || 5050;
 
 
 
 //listening the server.....here
 app.listen(Port,()=>{
-    console.log("Server is runnning on port"+Port);
+    console.log("Server is runnning on port "+Port);
 });
