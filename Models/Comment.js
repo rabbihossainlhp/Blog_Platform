@@ -1,5 +1,5 @@
 //dependencies...
-const {model,Schema} = required("mongoose");
+const {model,Schema} = require("mongoose");
 const Post = require("./Post");
 const User = require("./User");
 
@@ -9,13 +9,13 @@ const User = require("./User");
 const CommentSchema = new Schema({
     post:{
         type:Schema.Types.ObjectId,
-        ref:Post,
+        ref:'Post',
         required:true
     },
     user:{
         type:Schema.Types.ObjectId,
         required:true,
-        ref:User
+        ref:'User'
     },
     body:{
         type:String,
@@ -30,7 +30,7 @@ const CommentSchema = new Schema({
             },
             user:{
                 type:Schema.Types.ObjectId,
-                ref:User,
+                ref:'User',
                 required:true 
             },
             createdAt:{

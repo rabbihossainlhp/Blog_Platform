@@ -8,7 +8,7 @@ const Post = require("./Post");
 const ProfileSchema = new Schema({
     user:{
         type:Schema.Types.ObjectId,
-        ref:User,
+        ref:'User',
         required:true
     },
     name:{
@@ -40,11 +40,11 @@ const ProfileSchema = new Schema({
     },
     posts:[{
         type:Schema.Types.ObjectId,
-        ref:Post
+        ref:'Post'
     }],
     bookmarks:[{
         type:Schema.Types.ObjectId,
-        ref:Post
+        ref:'Post'
     }]
 },{timestamps:true});
 

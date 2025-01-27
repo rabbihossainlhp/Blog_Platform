@@ -2,12 +2,19 @@
 const express = require('express');
 const morgan = require("morgan");
 
+//Import Routes..
+const authRoute = require("./Routes/authRoutes");
+
 // create an express app
 const app = express();
 
 //setup view-engine..
 app.set("view engine","ejs");
 app.set("views","Views");
+
+
+
+
 
 
 //array of middlware
@@ -21,10 +28,12 @@ const middlware = [
 app.use(middlware);
 
 
+//Handle the authentic route
+app.use("/auth",authRoute);
 
 //handle the basic routes..
 app.get("/",(req,res)=>{
-    res.render("Pages/auth/signup");
+    res.send("Welcom to root");
 });
 
 
