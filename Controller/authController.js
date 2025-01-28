@@ -20,11 +20,12 @@ exports.signupPostController = async(req,res,next)=>{
     try{
         let createdUser = await User.save();
         console.log(createdUser);
-    }catch(er){
-        console.log("SOmething went wrong to create user",er);
-    }
-    res.render("Pages/auth/signup");
+        res.render("Pages/auth/signup");
 
+    }catch(er){
+        console.log("Something went wrong to create user",er);
+    }
+    next();
 
 }
 

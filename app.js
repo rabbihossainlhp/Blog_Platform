@@ -1,6 +1,7 @@
 // dependencies...
 const express = require('express');
 const morgan = require("morgan");
+const mongoose = require("mongoose");
 
 //Import Routes..
 const authRoute = require("./Routes/authRoutes");
@@ -42,8 +43,17 @@ app.get("/",(req,res)=>{
 const Port = process.env.Port || 5050;
 
 
+//necessary variables to connect to the database...
+const db_password = encodeURIComponent("123ASDasd@&");
 
-//listening the server.....here
-app.listen(Port,()=>{
-    console.log("Server is runnning on port "+Port);
-});
+
+//Connect to the database...   
+mongoose.connect(`mongodb+srv://hayat:${db_password}@cluster0.ardgf.mongodb.net/Blog_Info`,{useNewUrlParser:true})
+    .then(()=>{   
+            console.log("Connected to the database")
+            //listening the server.....here
+            app.listen(Port,()=>{
+                console.log("Server is runnning on port "+Port);
+                });         
+    })
+    .catch(err=>console.log("Something is wrong when trying connect with DB"+err));
