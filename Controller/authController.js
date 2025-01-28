@@ -1,5 +1,6 @@
 //Handle the authenticate route's controll...
 //dependencies..
+const bcrypt = require("bcrypt");
 const user = require("../Models/User");
 
 //signup_route_controll
@@ -8,16 +9,19 @@ exports.signupGetController = (req,res,next)=>{
 }
 
 exports.signupPostController = async(req,res,next)=>{
-    let {username,email,password,confirmpassword} = req.body;
-
-    let User = new user({
-        username,
-        email,
-        password,
-        confirmpassword
-    });
 
     try{
+        let {username,email,password} = req.body;
+        
+        //hash the password
+        let hashPass = await bcrypt.hash(password,15);
+
+        let User = new user({
+            username,
+            email,
+            password:hashPass,
+        });
+
         let createdUser = await User.save();
         console.log(createdUser);
         res.render("Pages/auth/signup");
