@@ -44,25 +44,13 @@ nav ul li a.active {
     background-color: #4CAF50;
 }
 
-
-.search-option{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 25%;
-    right: 10px;
-    gap: 5px;
-}
-
-.search-option input{
-    height: 25px;
-    border: none;
-    padding: 5px 12px;
-}
-.search-option button{
+.Login-option a{
     height: 25px;
     background-color: chocolate;
     border: none;
     padding:  5px 12px;
     cursor: pointer;
+    color:white;
+    font-weight: bold;
+    text-decoration: none;
 } 
