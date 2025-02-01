@@ -63,7 +63,7 @@ exports.loginPostController = async (req,res,next)=>{
             return res.status(400).json({error:"Invalid Credentials"});
         }
         
-        console.log("User logged in successfully"+User);
+        console.log("User logged in successfully::::"+User);
         res.render("Pages/auth/login",{currentPage:"Home"});
     }catch(er){
         console.log("Something went wrong to find user",er);
