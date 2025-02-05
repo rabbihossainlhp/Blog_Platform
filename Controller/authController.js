@@ -48,7 +48,6 @@ exports.loginGetController = (req,res,next)=>{
 
 
 
-
 exports.loginPostController = async (req,res,next)=>{
     let {email,password} = req.body;
     

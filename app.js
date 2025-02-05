@@ -3,17 +3,20 @@ const express = require('express');
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 
+
 //Import Routes..
 const authRoute = require("./Routes/authRoutes");
 
-// create an express app
+//Import Route/Controller for playground's pages..
+const vallidator = require("./Playground/vallidator");
+
+
+// create an express app_-_-_-_-_-_-_-_-_-_-_-_-_-_-__
 const app = express();
 
 //setup view-engine..
 app.set("view engine","ejs");
 app.set("views","Views");
-
-
 
 
 
@@ -38,6 +41,8 @@ app.get("/",(req,res)=>{
 });
 
 
+//setup route for playgournd ....
+app.use("/playground",vallidator);
 
 //Port number
 const Port = process.env.Port || 5050;
