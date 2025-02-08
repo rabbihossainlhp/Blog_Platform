@@ -2,19 +2,28 @@
 //dependencies..
 const bcrypt = require("bcrypt");
 const user = require("../Models/User");
+const {validationResult} = require("express-validator");
+const errorFormatter = require("../Utils/validationErrFormatter");
+
 
 //signup_route_controll
 exports.signupGetController = (req,res,next)=>{
-    res.render("Pages/auth/signup",{currentPage:"Signup"});
+    res.render("Pages/auth/signup",{currentPage:"Signup",errors:{},value:{}});
     next();
 }
 
 
 exports.signupPostController = async(req,res,next)=>{
+    //distructuring the data 
+    let {username,email,password} = req.body;
+    
 
-    try{
-        let {username,email,password} = req.body;
-        
+    let errors = validationResult(req).formatWith(errorFormatter);
+    if(!errors.isEmpty()){
+        return res.render("Pages/auth/signup",{currentPage:"Signup",errors:errors.mapped(),value:{username,email,password}});
+    }
+
+    try{        
         //hash the password
         let hashPass = await bcrypt.hash(password,15);
 

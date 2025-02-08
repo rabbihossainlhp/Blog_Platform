@@ -7,8 +7,6 @@ const mongoose = require("mongoose");
 //Import Routes..
 const authRoute = require("./Routes/authRoutes");
 
-//Import Route/Controller for playground's pages..
-const vallidator = require("./Playground/vallidator");
 
 
 // create an express app_-_-_-_-_-_-_-_-_-_-_-_-_-_-__
@@ -41,8 +39,6 @@ app.get("/",(req,res)=>{
 });
 
 
-//setup route for playgournd ....
-app.use("/playground",vallidator);
 
 //Port number
 const Port = process.env.Port || 5050;

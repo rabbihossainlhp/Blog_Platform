@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="/Style/signup.css">
 </head>
 <body>
@@ -14,17 +15,17 @@
         <form action="/auth/signup" method="POST">
             <div class="pair-group">
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" class="form-controll">
+                <input type="text" name="username" value="<%= value.username? value.username :'' %>" id="username" class="form-controll">
             </div>
 
             <div class="pair-group">
                 <label for="email">Enter Email</label>
-                <input type="email" name="email" id="email" class="form-controll">
+                <input type="email" name="email" value="<%= value.email? value.email :'' %>" id="email" class="form-controll">
             </div>
 
             <div class="pair-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-controll">
+                <input type="password" name="password" value="<%= value.password? value.password :'' %>" id="password" class="form-controll">
             </div>
 
             <div class="pair-group">
@@ -36,7 +37,14 @@
     </div>
     
 
-    
-
-
     <%- include('../../Partials/footer.ejs')%>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        <% if(errors && Object.keys(errors).length > 0) { %>
+            <% for (let key in errors) { %>
+                toastr.error('<%= errors[key] %>');
+            <% } %>
+        <% } %>
+    </script>
