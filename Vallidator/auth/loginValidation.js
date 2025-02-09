@@ -7,7 +7,8 @@ const bcrypt = require("bcrypt");
 const loginValidation = 
     [
         body("email")
-            .isEmail().withMessage("please provide a valid email")
+            .isEmail()
+            .not().isEmpty().withMessage("please provide a valid email")
             .normalizeEmail()
             .custom(async email=>{
                 let user = await User.findOne({email});
