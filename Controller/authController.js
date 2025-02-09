@@ -17,7 +17,6 @@ exports.signupPostController = async(req,res,next)=>{
     //distructuring the data 
     let {username,email,password} = req.body;
     
-
     let errors = validationResult(req).formatWith(errorFormatter);
     if(!errors.isEmpty()){
         return res.render("Pages/auth/signup",{currentPage:"Signup",errors:errors.mapped(),value:{username,email,password}});
@@ -51,7 +50,7 @@ exports.signupPostController = async(req,res,next)=>{
 
 //login-route_controll
 exports.loginGetController = (req,res,next)=>{
-    res.render("Pages/auth/login",{currentPage:"Login"});
+    res.render("Pages/auth/login",{currentPage:"Login",errors:{},value:{}});
     next();
 }
 
@@ -59,6 +58,11 @@ exports.loginGetController = (req,res,next)=>{
 
 exports.loginPostController = async (req,res,next)=>{
     let {email,password} = req.body;
+
+    let errors = validationResult(req).formatWith(errorFormatter);
+    if(!errors.isEmpty()){
+        return res.render("Pages/auth/login",{currentPage:"Login",errors:errors.mapped(),value:{email,password}});
+    }
     
     try{
         let User = await user.findOne({email});
