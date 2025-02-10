@@ -50,6 +50,7 @@ exports.signupPostController = async(req,res,next)=>{
 
 //login-route_controll
 exports.loginGetController = (req,res,next)=>{
+    console.log(req.session.isLoggedIn, req.session.user)
     res.render("Pages/auth/login",{currentPage:"Login",errors:{},value:{}});
     next();
 }
@@ -75,8 +76,11 @@ exports.loginPostController = async (req,res,next)=>{
             return res.status(400).json({error:"Invalid Credentials"});
         }
         
+        req.session.isLoggedIn = true;
+        req.session.user = User;
+
         console.log("User logged in successfully::::"+User);
-        res.render("Pages/auth/login",{currentPage:"Home"});
+        res.render("Pages/auth/login",{currentPage:"Home",errors:{},value:{}});
     }catch(er){
         console.log("Something went wrong to find user",er);
         next();
