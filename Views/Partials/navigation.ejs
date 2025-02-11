@@ -12,14 +12,20 @@
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
         </ul>
-
-        <div class="Login-option">
-            <% if(currentPage === 'Login'){%>
-                <a href="/auth/signup">Signup</a>
-            <%}else if (currentPage === 'Signup'){%>
-                <a href="/auth/login">Login</a>
-            <%}else{%>
-                <a href="/auth/login">Login</a>
-            <%} %>
-        </div>
+        <% if(isLoggedIn){ %>
+            <div class="Login-option">
+                <a href="/auth/logout">Logout</a>
+            </div>
+        <% } else{ %>
+            <div class="Login-option">
+                <% if(currentPage === 'Login'){%>
+                    <a href="/auth/signup">Signup</a>
+                <%}else if (currentPage === 'Signup'){%>
+                    <a href="/auth/login">Login</a>
+                <%}else{%>
+                    <a href="/auth/login">Login</a>
+                <%} %>
+            </div>  
+        <% } %>
+        
     </nav>  

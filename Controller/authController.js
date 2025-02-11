@@ -78,9 +78,14 @@ exports.loginPostController = async (req,res,next)=>{
         
         req.session.isLoggedIn = true;
         req.session.user = User;
-
+        req.session.save(err=>{
+            if(err){
+                console.log("Something went wrong to save session",err);
+                next(err);
+            }
+            res.redirect("/dashboard");
+        });
         console.log("User logged in successfully::::"+User);
-        res.render("Pages/auth/login",{currentPage:"Home",errors:{},value:{}});
     }catch(er){
         console.log("Something went wrong to find user",er);
         next();
@@ -92,5 +97,12 @@ exports.loginPostController = async (req,res,next)=>{
 
 //logout-route_controll
 exports.logoutController = (req,res,next)=>{
-
+    req.session.destroy(err=>{
+        if(err){
+            console.log("Something went wrong to logout",err);
+            return next(err);
+        }
+        res.redirect("/auth/login");
+        res.render("Pages/auth/login",{currentPage:"Signup",errors:{},value:{}});
+        });
 }

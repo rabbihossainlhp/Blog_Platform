@@ -19,3 +19,20 @@ exports.bindUserWithRequest = () => {
         }
     }
 }
+
+
+//isAuthenticated middleware
+exports.isAuthenticated = (req,res,next)=>{
+    if(!req.session.isLoggedIn){
+        return res.redirect("/auth/login");
+    }
+    next();
+}
+
+
+exports.unAuthenticated = (req,res,next)=>{
+    if(req.session.isLoggedIn){
+        return res.redirect("/dashboard");
+    }
+    next();
+}
