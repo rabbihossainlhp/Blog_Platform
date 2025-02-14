@@ -103,6 +103,6 @@ exports.logoutController = (req,res,next)=>{
             return next(err);
         }
         res.redirect("/auth/login");
-        res.render("Pages/auth/login",{currentPage:"Signup",errors:{},value:{}});
+        res.render("Pages/auth/login",{currentPage:"Login",errors:{},value:{}});
         });
 }

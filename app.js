@@ -2,6 +2,7 @@
 const express = require('express');
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 //+++++third party middlware(express-session)+++++
 const session = require("express-session");
@@ -10,11 +11,11 @@ const MongoStore = require("connect-mongodb-session")(session);
 
 
 //necessary variables to connect to the database...
-const db_password = encodeURIComponent("123ASDasd@&");
+const db_uri = encodeURIComponent("123ASDasd@&");
 
 
 //URI of database..
-const MongoUri = `mongodb+srv://hayat:${db_password}@cluster0.ardgf.mongodb.net/Blog_Info`; 
+const MongoUri = process.env.Db_admin;
 
 //little configure of MongoStore 
 const store = new MongoStore({
@@ -50,7 +51,7 @@ const middlware = [
     express.urlencoded({extended:true}),
     express.json(),
     session({
-        secret: process.env.SECRET_KEY || "KEY",
+        secret: process.env.Secret_Key || "KEY",
         resave:false,
         saveUninitialized:false,    
         cookie:{
@@ -78,13 +79,13 @@ app.get("/",(req,res)=>{
 
 
 //Port number
-const Port = process.env.Port || 5050;
+const Port = process.env.Port;
 
 
 
 
 //Connect to the database...   
-mongoose.connect(MongoUri,{useNewUrlParser:true})
+mongoose.connect(MongoUri,{useNewUrlParser:true,useUnifiedTopology:true})
     .then(()=>{   
             console.log("Connected to the database")
             //listening the server.....here
