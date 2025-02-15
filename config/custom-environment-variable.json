@@ -1,0 +1,5 @@
+{
+    "db_uri":"${Db_admin}",
+    "server_port":"${Port}",
+    "secret_key":"${Secret_Key}"
+}

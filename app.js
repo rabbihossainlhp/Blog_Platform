@@ -1,35 +1,18 @@
 // dependencies...
 const express = require('express');
-const morgan = require("morgan");
 const mongoose = require("mongoose");
 require("dotenv").config();
-
-//+++++third party middlware(express-session)+++++
-const session = require("express-session");
-const MongoStore = require("connect-mongodb-session")(session);
-
-
-
-//necessary variables to connect to the database...
-const db_uri = encodeURIComponent("123ASDasd@&");
-
+// const config = require("config");
 
 //URI of database..
 const MongoUri = process.env.Db_admin;
 
-//little configure of MongoStore 
-const store = new MongoStore({
-    uri:MongoUri,
-    collection:"sessions",
-    expires:60*60*2*1000
-}); 
-
-
-
 
 //Import Routes..
-const authRoute = require("./Routes/authRoutes");
-const dashboardRoute = require("./Routes/dashboardRoute");
+const setRoute = require("./Routes/Routes");
+//array of middlware from another directory...
+const setMiddleware = require("./Middlewares/Middlwares");
+
 
 
 
@@ -40,48 +23,14 @@ const app = express();
 app.set("view engine","ejs");
 app.set("views","Views");
 
-//import auth middleware..
-const {bindUserWithRequest} = require("./Middlewares/authMiddleware");
-const setLocals = require("./Middlewares/setLocals");
-
-//array of middlware
-const middlware = [
-    morgan("dev"),
-    express.static("Public"),
-    express.urlencoded({extended:true}),
-    express.json(),
-    session({
-        secret: process.env.Secret_Key || "KEY",
-        resave:false,
-        saveUninitialized:false,    
-        cookie:{
-            maxAge:60*60*2*1000
-        },
-        store:store
-    }),
-    bindUserWithRequest(),
-    setLocals()
-]
-
 //use the middlware...
-app.use(middlware);
-
-
-//Handle the authentic route and others
-app.use("/auth",authRoute);
-app.use("/dashboard",dashboardRoute);
-
-//handle the basic routes..
-app.get("/",(req,res)=>{
-    res.send("Welcom to root");
-});
-
+setMiddleware(app);
+//using  route from the separed directory {route}
+setRoute(app);
 
 
 //Port number
 const Port = process.env.Port;
-
-
 
 
 //Connect to the database...   
