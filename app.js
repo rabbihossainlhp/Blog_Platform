@@ -28,6 +28,21 @@ setMiddleware(app);
 //using  route from the separed directory {route}
 setRoute(app);
 
+app.use((req,res,next)=>{
+    let error = new Error("404 not found page");
+    error.status = 404;
+    next(error)
+})
+app.use((error,req,res,next)=>{
+    if(error.status === 404){
+        return res.render("Pages/error/404");
+    }
+    else{
+        res.render("Pages/error/500");
+    }
+})
+
+
 
 //Port number
 const Port = process.env.Port;

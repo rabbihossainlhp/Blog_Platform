@@ -66,6 +66,7 @@ exports.loginPostController = async (req,res,next)=>{
     }
     
     try{
+
         let User = await user.findOne({email});
         if(!User){
             return res.status(400).json({error:"Invalid Credentials"});
