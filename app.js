@@ -28,6 +28,8 @@ setMiddleware(app);
 //using  route from the separed directory {route}
 setRoute(app);
 
+
+
 app.use((req,res,next)=>{
     let error = new Error("404 not found page");
     error.status = 404;

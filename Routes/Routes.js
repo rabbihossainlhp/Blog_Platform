@@ -1,6 +1,7 @@
 //dependencies...
 const authRoutes = require("./authRoutes");
 const dashboardRoute = require("./dashboardRoute");
+const playground = require("../Playground/play");
 
 const routes = [
     {
@@ -18,6 +19,10 @@ const routes = [
                 message:"Welcome to Root"
             })
         }
+    },
+    {
+        path:"/playground",
+        handler:playground
     }
 ]
 
