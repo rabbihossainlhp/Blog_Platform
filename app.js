@@ -36,6 +36,7 @@ app.use((req,res,next)=>{
     next(error)
 })
 app.use((error,req,res,next)=>{
+    console.log("error is app js",error);
     if(error.status === 404){
         return res.render("Pages/error/404");
     }
@@ -56,7 +57,7 @@ mongoose.connect(MongoUri,{useNewUrlParser:true,useUnifiedTopology:true})
             console.log("Connected to the database")
             //listening the server.....here
             app.listen(Port,()=>{
-                console.log("Server is runnning on port "+Port);
+                console.log(`Server is runnning on port  http://localhost:${Port}`);
                 });         
     })
     .catch(err=>console.log("Something is wrong when trying connect with DB"+err));
