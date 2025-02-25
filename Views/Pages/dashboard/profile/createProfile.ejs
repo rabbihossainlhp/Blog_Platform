@@ -9,9 +9,24 @@
 <body>
     
     <%- include('../../../Partials/header.ejs') %>
-    <!-- write more about login pgs -->
+    <!-- write more about create profile page -->
+    <div class="container">
+        <div class="sub-container-1"></div>
 
-        <h1>Create a brand new profile </h1>
-        
+        <div class="sub-container-2">
+            <div class="containerBox">
+                <h2>Create your profile</h2>
+                
+                <div class="profilePics">
+                    <img src="<%= user.profilePics %>" alt="profile_picture" id="profilePics">
+
+                    <form action="/Uploads/profilePics" id="profilePicsForm">
+                        <input type="file" name="profilePics" id="profilePics" accept="image/*">
+                        <input type="button" value="Remove" id="removeProfilePics" style="display: <%= user.profilePics.includes('default.png')? 'none':'block' %>;">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <%- include('../../../Partials/footer.ejs') %>
