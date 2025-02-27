@@ -26,7 +26,7 @@ const UserSchema = new Schema({
     },
     profilePics:{
         type:String,
-        default:"/Uploads/my-file-1740418341623--.jpg"
+        default:"/Upload/image-copy.png"
     }
 },{timestamps:true});
 
