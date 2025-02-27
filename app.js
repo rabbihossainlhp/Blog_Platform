@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require("mongoose");
 require("dotenv").config();
+const path = require("path");
 // const config = require("config");
 
 //URI of database..
@@ -25,6 +26,7 @@ app.set("views","Views");
 
 //use the middlware...
 setMiddleware(app);
+app.use('/Public', express.static(path.join(__dirname, 'Public'))); 
 //using  route from the separed directory {route}
 setRoute(app);
 

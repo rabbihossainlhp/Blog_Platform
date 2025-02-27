@@ -2,7 +2,7 @@
 const authRoutes = require("./authRoutes");
 const dashboardRoute = require("./dashboardRoute");
 const playground = require("../Playground/play");
-
+const uploadRoutes = require("./uploadRoutes");
 const routes = [
     {
         path:"/auth",
@@ -23,7 +23,12 @@ const routes = [
     {
         path:"/playground",
         handler:playground
+    },
+    {
+        path:"/uploads",
+        handler:uploadRoutes
     }
+
 ]
 
 module.exports = app =>{
