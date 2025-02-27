@@ -18,7 +18,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    top: -10%;
+    top: -4%;
 }
 
 .containerBox {
@@ -161,6 +161,8 @@
 
     .sub-container-2{
         height: 100%;
+        top: 10%;
+        margin-bottom: 10%;
     }
     .infoForm, .profilePics {
         width: 100%;
@@ -177,5 +179,10 @@
 
     .link-group {
         height: auto;
+    }
+
+    .footer{
+        position: relative;
+        bottom: -63px;
     }
 }
