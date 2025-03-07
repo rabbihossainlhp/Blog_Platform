@@ -21,4 +21,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!profilePics.src.includes('image-copy.png')) {
         removeProfilePics.style.display = 'block';
     }
+
+
+
+
+
+
+
+
+
+
+
+    
 });

@@ -41,6 +41,7 @@
 }
 
 
+
 .profilePics {
     width: 30%;
     height: 100%;
@@ -148,6 +149,22 @@
     border-radius: 5px;
     outline: none;
 }   
+
+.createProfileBtn{
+    position: absolute;
+    background-color: rgb(96, 207, 96);
+    padding: 7px 8px ;
+    font-weight: bold;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+    width: 55%;
+}
+
+
 /* 
 .crop-buttons {
     display: flex;
