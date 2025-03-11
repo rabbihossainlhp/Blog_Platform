@@ -1,6 +1,7 @@
 //some dependencies....
 const Profile = require("../Models/Profile");
-
+const errorFormatter = require('../Utils/validationErrFormatter');
+const {validationResult} = require('express-validator');
 //controller of dashboard
 
 exports.dashboardGetController = async  (req,res,next)=>{
@@ -20,7 +21,7 @@ exports.createProfileGetController = async(req,res,next)=>{
     try{
         let profile = await Profile.findOne({user:req.user._id});
         if(profile){
-            return res.redirect("/dashboard/edit-profile");
+            return res.redirect("/dashboard/edit-profile",{user:req.user,errors:errors.mapped()});
         }
         res.render("Pages/dashboard/profile/createProfile",{currentPage:"Create Profile"});
     }catch(e){
@@ -31,6 +32,12 @@ exports.createProfileGetController = async(req,res,next)=>{
 
 
 exports.createProfilePostController = async(req,res,next)=>{
+
+    let errors = validationResult(req).formatWith(errorFormatter);
+    if(!errors.isEmpty()){
+        return res.render('Pages/dashboard/dashboard')
+    }
+    
     next();
 }
 

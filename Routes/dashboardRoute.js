@@ -9,13 +9,14 @@ const {
     editProfilePostController
 } = require("../Controller/dashboardController");
 
+const profileValidation = require('../Vallidator/dashboard/dashboardValidator');
 
 router.get("/",isAuthenticated,dashboardGetController);
 
 
 
 router.get("/create-profile", isAuthenticated, createProfileGetController);
-// router.post("/create-profile", isAuthenticated, createProfilePostController);
+router.post("/create-profile", profileValidation, isAuthenticated,  createProfilePostController);
 
 
 // router.get("/edit-profile", isAuthenticated, editProfileGetController);

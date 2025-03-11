@@ -20,7 +20,7 @@ module.exports = [
     
     body('title')
         .not().isEmpty().withMessage("Title Cant' be Empty")
-        .isLength({max:100}).withMessage("Title should contain 100 or less Charecter")
+        .isLength({min:10,max:100}).withMessage("Title should contain 10-100 or less Charecter")
     ,
 
     body('bio')
