@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create new profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">   
     <link rel="stylesheet" href="/Style/login.css"> 
     <link rel="stylesheet" href="/Style/createPage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" integrity="sha512-2eMmukTZtvwlfQoG8ztapwAH5fXaQBzaMqdljLopRSA0i6YKM8kBAOrSSykxu9NN9HrtD45lIqfONLII2AFL/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
 </head>
 <body>
     
@@ -26,10 +25,6 @@
                     <form action="/Uploads/profilePics" id="profilePicsForm">
                         <input type="file" name="profilePics" id="profilePicsinput" accept="image/*">
                         <input type="button" value="Remove" id="removeProfilePics" style="display: <%= user.profilePics.includes('default.png') ? 'none' : 'block' %>;">
-                        <!-- <div class="crop-buttons" style="display: none;" id="cropButtons">
-                            <input type="button" value="Cancel" id="cancelCrop">
-                            <input type="button" value="Done" id="doneCrop">
-                        </div> -->
                     </form>
                 </div>
                 <div class="infoForm"> 
@@ -106,10 +101,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.js" integrity="sha512-vUJTqeDCu0MKkOhuI83/MEX5HSNPW+Lw46BA775bAWIp1Zwgz3qggia/t2EnSGB9GoS2Ln6npDmbJTdNhHy1Yw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
     <script src="/Public/Scripts/createProfile.js"></script>
     <script>
-        <% if (typeof errors !== 'undefined' && Object.keys(errors).length > 0) { %>
-            <% for (let key in errors) { %>
-                toastr.error('<%= errors[key] %>');
-            <% } %>
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <% errors.forEach(function(error) { %>
+                toastr.error('<%= error.msg %>');
+            <% }); %>
         <% } %>
     </script>   
 </body>

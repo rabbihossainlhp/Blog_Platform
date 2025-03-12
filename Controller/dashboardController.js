@@ -31,13 +31,15 @@ exports.createProfileGetController = async(req,res,next)=>{
 
 
 
-exports.createProfilePostController = async(req,res,next)=>{
-
-    let errors = validationResult(req).formatWith(errorFormatter);
-    if(!errors.isEmpty()){
-        return res.render('Pages/dashboard/dashboard')
-    }
-    
+exports.createProfilePostController = async(req,res,next)=>{    
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.render('Pages/dashboard/profile/createProfile', {
+            user: req.user,
+            errors: errors.array(),
+            currentPage: "Create Profile"
+        }); 
+    }   
     next();
 }
 
