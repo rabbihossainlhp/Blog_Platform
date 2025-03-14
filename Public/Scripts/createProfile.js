@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var profilePicsInput = document.getElementById('profilePicsinput');
     var profilePics = document.getElementById('profilePics');
     var removeProfilePics = document.getElementById('removeProfilePics');
+    let submitBtn = document.querySelector('.createProfileBtn');
 
     profilePicsInput.addEventListener('change', function(event) {
         var reader = new FileReader();
@@ -23,7 +24,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-
+    //hadle profilePcis send 
+    submitBtn.addEventListener('click',()=>{
+        fetch('http://localhost:5050/dashboard/create-profile',{
+            method:POST,
+            user:{
+                profilePicsInput
+            }
+        })
+    })
 
 
 

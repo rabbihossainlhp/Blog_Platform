@@ -1,5 +1,6 @@
 //some dependencies....
 const Profile = require("../Models/Profile");
+const User = require("../Models/User");
 const errorFormatter = require('../Utils/validationErrFormatter');
 const {validationResult} = require('express-validator');
 //controller of dashboard
@@ -21,7 +22,7 @@ exports.createProfileGetController = async(req,res,next)=>{
     try{
         let profile = await Profile.findOne({user:req.user._id});
         if(profile){
-            return res.redirect("/dashboard/edit-profile",{user:req.user,errors:errors.mapped()});
+            return res.redirect("/dashboard/edit-profile");
         }
         res.render("Pages/dashboard/profile/createProfile",{currentPage:"Create Profile"});
     }catch(e){
@@ -31,7 +32,7 @@ exports.createProfileGetController = async(req,res,next)=>{
 
 
 
-exports.createProfilePostController = async(req,res,next)=>{    
+exports.createProfilePostController = async (req,res,next)=>{    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.render('Pages/dashboard/profile/createProfile', {
@@ -40,7 +41,47 @@ exports.createProfilePostController = async(req,res,next)=>{
             currentPage: "Create Profile"
         }); 
     }   
-    next();
+    
+    let {
+        name,
+        title,
+        bio,
+        website,
+        twitter,
+        facebook,
+        instagram,
+        linkedin,
+        github,
+        
+    } = req.body;
+
+    try{
+        
+        let newProfile = new Profile({
+            user:req.user._id,
+            name,
+            title,
+            bio,
+            socialLinks:{
+                website : website || " ",
+                twitter : twitter || " ",
+                facebook : facebook || " ",
+                instagram : instagram || " ",
+                linkedin : linkedin || " ",
+                github : github || " ",       
+            },  
+            profilePic:req.user.profilePic,
+
+        })
+        
+        await newProfile.save();
+        res.redirect('/dashboard');
+
+    }catch(e){
+        next(e);
+    }
+    
+
 }
 
 
