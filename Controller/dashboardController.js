@@ -62,6 +62,7 @@ exports.createProfilePostController = async (req,res,next)=>{
             name,
             title,
             bio,
+            profilePic:req.user.profilePics || 'default.png',
             socialLinks:{
                 website : website || " ",
                 twitter : twitter || " ",
@@ -70,8 +71,7 @@ exports.createProfilePostController = async (req,res,next)=>{
                 linkedin : linkedin || " ",
                 github : github || " ",       
             },  
-            profilePic:req.user.profilePic,
-
+            
         })
         
         await newProfile.save();

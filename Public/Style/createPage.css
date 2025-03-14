@@ -97,7 +97,19 @@
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+    order: 3;
 }
+
+#addBtn{
+    background-color: rgb(47, 255, 64);
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;   
+    order: 2; 
+}
+    
 
 #removeProfilePics[type="button"]:hover {
     background-color: darkred;

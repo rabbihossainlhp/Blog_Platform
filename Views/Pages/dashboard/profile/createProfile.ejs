@@ -24,7 +24,10 @@
 
                     <form action="/Uploads/profilePics" id="profilePicsForm">
                         <input type="file" name="profilePics" id="profilePicsinput" accept="image/*">
-                        <input type="button" value="Remove" id="removeProfilePics" style="display: <%= user.profilePics.includes('default.png') ? 'none' : 'block' %>;">
+                        <div class="btn">
+                            <input type="button" value="Add"  id="addBtn" >
+                            <input type="button" value="Remove" id="removeProfilePics" style="display: <%= user.profilePics.includes('image-copy.png') ? 'none' : 'block' %>;">
+                        </div>
                     </form>
                 </div>
                 <div class="infoForm"> 
