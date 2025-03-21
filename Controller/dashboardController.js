@@ -90,6 +90,7 @@ exports.createProfilePostController = async (req,res,next)=>{
 
 
 exports.editProfileGetController = async(req,res,next)=>{
+    return res.render("Pages/dashboard/profile/editProfile",{currentPage:"Edit Profile"});
     next();
 }
 

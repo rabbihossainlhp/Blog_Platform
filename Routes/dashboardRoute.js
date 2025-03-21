@@ -19,7 +19,7 @@ router.get("/create-profile", isAuthenticated, createProfileGetController);
 router.post("/create-profile", profileValidation, isAuthenticated,  createProfilePostController);
 
 
-// router.get("/edit-profile", isAuthenticated, editProfileGetController);
+router.get("/edit-profile", isAuthenticated, editProfileGetController);
 // router.post("/edit-profile", isAuthenticated, editProfilePostController);
 
 
