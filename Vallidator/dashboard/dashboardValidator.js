@@ -4,7 +4,7 @@ const validator = require('validator')
 
 const socialValidator = (value)=>{
     if(value){
-        if(!validator.isURL(value)){
+        if(value.trim() !== "" && !validator.isURL(value)){
             throw new Error("Please provide vallid social links");
         }
     }

@@ -90,11 +90,69 @@ exports.createProfilePostController = async (req,res,next)=>{
 
 
 exports.editProfileGetController = async(req,res,next)=>{
-    return res.render("Pages/dashboard/profile/editProfile",{currentPage:"Edit Profile"});
-    next();
+    try{
+        let profile = await Profile.findOne({user:req.user._id});
+        if(!profile){
+            return res.redirect("/dashboard/create-profile");
+        }
+        res.render('Pages/dashboard/profile/editProfile',{
+            user:req.user,
+            profile:profile, 
+        })
+
+    }catch(e){
+        next(e);
+    }
 }
 
 
 exports.editProfilePostController = async(req,res,next)=>{
-    next();
+    let errors = validationResult(req);
+    let profile = await Profile.findOne({user:req.user._id});
+
+    if(!errors.isEmpty()){
+        return res.render('Pages/dashboard/profile/editProfile',{
+            user:req.user,
+            profile:profile,
+            errors: errors.array(),
+            currentPage:'Edit Profile'
+        });
+    }
+
+    let{
+        name,
+        title,
+        bio,
+        website,
+        twitter,
+        facebook,
+        instagram,
+        linkedin,
+        github,
+    } = req.body;
+
+    try{
+        await Profile.findOneAndUpdate(
+            {user:req.user._id},
+            {$set:{
+                name,
+                title,
+                bio,
+                profilePic:req.user.profilePics || "default.png",
+                socialLinks:{
+                    website:website || "",
+                    twitter:twitter || "",
+                    facebook:facebook || "",
+                    instagram:instagram || "",
+                    linkedin:linkedin || "",
+                    gitub:github || ""
+                    }
+                }
+            },
+            {new:true}
+        );
+        res.redirect('/dashboard');
+    }catch(e){
+        next(e);
+    }
 }

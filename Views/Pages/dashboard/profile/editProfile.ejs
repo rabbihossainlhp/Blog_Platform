@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create new profile</title>
+    <title>Edit-profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">   
     <link rel="stylesheet" href="/Style/login.css"> 
     <link rel="stylesheet" href="/Style/createPage.css">
@@ -35,7 +35,7 @@
                     <form action="/dashboard/edit-profile" method="POST">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" value=<%= profile.name %> id="name" placeholder="enter your name" required>
+                            <input type="text" name="name" value="<%= profile.name %>" id="name" placeholder="enter your name" required>
                         </div>
 
                         <div class="form-group">
@@ -45,12 +45,12 @@
 
                         <div class="form-group">
                             <label for="title">Enter a short title</label>
-                            <input type="text" name="title" value=<%= profile.title %> id="title" placeholder="enter a short title" required>
+                            <input type="text" name="title" value="<%= profile.title %>" id="title" placeholder="enter a short title" required>
                         </div>
 
                         <div class="form-group">
                             <label for="bio">Enter a short bio about you</label>
-                            <input type="text" name="bio" value=<%= profile.bio %> id="bio" placeholder="enter your short bio" required>
+                            <input type="text" name="bio" value="<%= profile.bio %>" id="bio" placeholder="enter your short bio" required>
                         </div>
 
                         <div class="form-group link-group">
@@ -59,32 +59,32 @@
                             <div class="totalIndividual">
                                 <div class="individual-link">
                                     <i class="fab fa-facebook"></i>
-                                    <input type="text" name="facebook" value=<%= profile.socialLinks.facebook %> id="facebook" placeholder="Facebook link" >
+                                    <input type="text" name="facebook" value="<%= profile.socialLinks.facebook %>" id="facebook" placeholder="Facebook link" >
                                 </div>
     
                                 <div class="individual-link">
                                     <i class="fab fa-twitter"></i>
-                                    <input type="text" name="twitter" value=<%= profile.socialLinks.twitter %> id="twitter" placeholder="Twitter (X) link" >
+                                    <input type="text" name="twitter" value="<%= profile.socialLinks.twitter %>" id="twitter" placeholder="Twitter (X) link" >
                                 </div>
     
                                 <div class="individual-link">
                                     <i class="fab fa-github"></i>
-                                    <input type="text" name="github" value=<%= profile.socialLinks.github %> id="github" placeholder="Github link" >
+                                    <input type="text" name="github" value="<%= profile.socialLinks.github %>" id="github" placeholder="Github link" >
                                 </div>
     
                                 <div class="individual-link">
                                     <i class="fab fa-linkedin"></i>
-                                    <input type="text" name="linkedin" value=<%= profile.socialLinks.linkedin %> id="linkedin" placeholder="LinkedIn link" >
+                                    <input type="text" name="linkedin" value="<%= profile.socialLinks.linkedin %>" id="linkedin" placeholder="LinkedIn link" >
                                 </div>
                                 
                                 <div class="individual-link">
                                     <i class="fab fa-instagram"></i>
-                                    <input type="text" name="instagram" value=<%= profile.socialLinks.instagram %> id="instagram" placeholder="Instagram link" >
+                                    <input type="text" name="instagram" value="<%= profile.socialLinks.instagram %>" id="instagram" placeholder="Instagram link" >
                                 </div>
     
                                 <div class="individual-link">
                                     <i class="fab fa-globe"></i>
-                                    <input type="text" name="website" value=<%= profile.socialLinks.website %> id="globe" placeholder="Website link" >
+                                    <input type="text" name="website" value="<%= profile.socialLinks.website %> "id="globe" placeholder="Website link" >
                                 </div>  
                             </div> 
                             <div class="btn">
@@ -102,7 +102,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.js" integrity="sha512-vUJTqeDCu0MKkOhuI83/MEX5HSNPW+Lw46BA775bAWIp1Zwgz3qggia/t2EnSGB9GoS2Ln6npDmbJTdNhHy1Yw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
-    <script src="/Public/Scripts/createProfile.js"></script>
+    <script src="/Public/Scripts/editProfile.js"></script>
     <script>
         <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
             <% errors.forEach(function(error) { %>
