@@ -1,11 +1,15 @@
 const User = require("../Models/User");
 const Profile = require("../Models/Profile");
+const fs = require("fs");
+const path = require("path");
+
 
 exports.uploadProfilePics = async (req, res, next) => {
     if (req.file) {
         console.log(req.file,"REQ.FILE")
         let profile = await Profile.findOne({ user: req.user._id });
         let profilePics = `Uploads/${req.file.filename}`;
+        let oldProfilePic = req.user.profilePics;
         // console.log("MODIFYED PIC", profilePics)
         try {
             if (profile) {
@@ -20,6 +24,17 @@ exports.uploadProfilePics = async (req, res, next) => {
                 { $set: { profilePics: profilePics }},
                 {new:true}
             );
+
+            if(oldProfilePic && oldProfilePic !== "Uploads/image-copy.png"){
+                let oldProfilePicPath = (path.join(__dirname,`../Public`, oldProfilePic));
+                if(fs.existsSync(oldProfilePicPath)){
+                    fs.unlink(oldProfilePicPath, err =>{
+                        if (err){
+                            console.log("ERROR IN DELETING OLD PIC", err);
+                        }
+                    })
+                }
+            }
             
             res.status(200).json({
                 profilePics

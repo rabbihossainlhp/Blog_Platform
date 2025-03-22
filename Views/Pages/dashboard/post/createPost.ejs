@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit-profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">   
+    <link rel="stylesheet" href="/Style/login.css"> 
+    <link rel="stylesheet" href="/Style/createPost.css">
+</head>
+<body>
+    
+    <%- include('../../../Partials/header.ejs') %>
+    <!-- write more about create profile page -->
+
+    <div class="container">
+        <div class="sub-container-2">
+            <div class="containerBox">
+                <h2>Create Your Post</h2>
+        
+                <form action="/post/create" id="createPostForm" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="title">Post Tile</label>
+                        <input type="text" name="title" id="title" placeholder="Enter Title" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tags">Subtitle</label>
+                        <input type="text" name="tags" id="tags" placeholder="add tags (e.g tag1, tag2, tag3)" required>
+                    </div>
+        
+                    <div class="form-group" >
+                        <label for="image">Image</label>
+                        <input type="file" name="image" id="image" accept="image/*"  required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" placeholder="Enter Description" required></textarea>
+                    </div>
+        
+                    <button type="submit" class="btn submit">Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+        
+    <%- include('../../../Partials/footer.ejs') %>
+
+</body>
+</html> 
