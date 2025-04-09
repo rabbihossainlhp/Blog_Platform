@@ -1,4 +1,5 @@
-const { validationResult } = require("express-validator")
+const { validationResult } = require("express-validator");
+const readingTime = require("reading-time");
 const Post = require("../Models/Post");
 const Profile = require("../Models/Profile");
 
@@ -29,6 +30,8 @@ exports.createPostPosttController = async (req, res, next) => {
         tags = tags.split(",")
     }
 
+    
+    let readTime = readingTime(description).text;
 
     let post = new Post({
         title,
@@ -36,6 +39,7 @@ exports.createPostPosttController = async (req, res, next) => {
         tags,
         author:req.user._id,
         thumbnail: '',
+        readTime,
         likes:[],
         dislikes:[],
         comments:[]
