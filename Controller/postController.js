@@ -59,3 +59,67 @@ exports.createPostPosttController = async (req, res, next) => {
     }
 
 }
+
+
+exports.editPostGetController = async (req, res, next) => {
+    let postId = req.params.id;
+    let errors = validationResult(req);
+    try{
+        let post = await Post.findOne({_id:postId, author:req.user._id});
+
+        if(!post){
+            return res.redirect("/dashboard");
+        }
+
+        res.render("Pages/dashboard/post/editPost",{
+            user:req.user,
+            profile:req.profile,
+            post,
+            errors:errors || []
+        })
+
+    }catch(e){
+        next(e)
+    }
+}
+
+
+exports.editPostPostController = async (req,res,next) =>{
+    let errors = validationResult(req);
+    let {description,title,tags} = req.body;
+    let postId = req.params.id;
+    let readTime = readingTime(description).text;
+    try{
+        let post = await Post.findOne({_id:postId, author:req.user._id});
+        if(!post){
+            return res.redirect("/dashboard");
+        }
+        let updatedPost = await Post.findOneAndUpdate(
+            {_id:postId,user:req.user._id},
+            {$set:{
+                title,
+                body:description,
+                tags,
+                thumbnail: req.file ? `Uploads/${req.file.filename}` : post.thumbnail,
+                readTime,
+            }},
+            {new:true}
+        )
+
+        if(!updatedPost){
+            return res.redirect("/dashboard");
+        }
+        await Profile.findOneAndUpdate({user:req.user._id},{$set:{posts:updatedPost._id}},{new:true})
+        
+        return res.render("Pages/dashboard/post/editPost",{
+            user:req.user,
+            profile:req.profile,
+            post:updatedPost,
+            errors:errors || []
+        })
+        
+
+    }catch(e){
+        next(e)
+    }
+}

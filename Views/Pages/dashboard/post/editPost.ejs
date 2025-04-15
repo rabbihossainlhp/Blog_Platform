@@ -18,7 +18,7 @@
             <div class="containerBox">
                 <h2>Edit Your  Post</h2>
         
-                <form action="/post/edit" id="createPostForm" method="POST" enctype="multipart/form-data">
+                <form action="/post/edit/<%= post._id %>" id="createPostForm" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Post Title</label>
                         <input type="text" name="title" id="title" placeholder="Enter Title" value="<% post.title %>" required>
@@ -26,17 +26,17 @@
                     
                     <div class="form-group">
                         <label for="tags">Tags</label>
-                        <input type="text" name="tags" id="tags" placeholder="add tags (e.g tag1, tag2, tag3)" <%= post.tags.length > 0 ? post.tags.join(", ") : " " %> required>
+                        <input type="text" name="tags" id="tags" placeholder="add tags (e.g tag1, tag2, tag3)" value="<%= post.tags.length > 0 ? post.tags.join(", ") : " " %>" required>
                     </div>
         
                     <div class="form-group" >
                         <label for="image">Image</label>
-                        <input type="file" name="image" id="image" accept="image/*"  required>
+                        <input type="file" name="image" id="image" accept="image/*"  >
                     </div>
 
                     <div class="form-group">
                         <label > Post's Image </label>
-                        <img src="<%= post.thumbnail %>" alt="post image">
+                        <img src="/Public/<%= post.thumbnail %>" alt="post image">
                     </div>
 
                     <div class="form-group">
@@ -44,13 +44,13 @@
                         <textarea name="description" id="description" placeholder="Enter Description" required></textarea>
                     </div>
         
-                    <button type="submit" class="btn submit">Post</button>
+                    <button type="submit" class="btn submit">Update Post</button>
                 </form>
             </div>
         </div>
     </div>
         
-    <%- include('../../../Partials/footer.ejs') %>
+    <!-- <%- include('../../../Partials/footer.ejs') %> -->
 
 </body>
 </html>     
