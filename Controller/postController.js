@@ -89,13 +89,22 @@ exports.editPostPostController = async (req,res,next) =>{
     let {description,title,tags} = req.body;
     let postId = req.params.id;
     let readTime = readingTime(description).text;
+    
     try{
+        if (tags){
+            tags = tags.split(",");
+        }else{
+            tags = [];
+        }
+
         let post = await Post.findOne({_id:postId, author:req.user._id});
         if(!post){
             return res.redirect("/dashboard");
         }
+
+        
         let updatedPost = await Post.findOneAndUpdate(
-            {_id:postId,user:req.user._id},
+            {_id:postId,author:req.user._id},
             {$set:{
                 title,
                 body:description,
@@ -109,7 +118,7 @@ exports.editPostPostController = async (req,res,next) =>{
         if(!updatedPost){
             return res.redirect("/dashboard");
         }
-        await Profile.findOneAndUpdate({user:req.user._id},{$set:{posts:updatedPost._id}},{new:true})
+        await Profile.findOneAndUpdate({user:req.user._id},{$addToSet:{posts:updatedPost._id}},{new:true})
         
         return res.render("Pages/dashboard/post/editPost",{
             user:req.user,

@@ -4,6 +4,7 @@ const dashboardRoute = require("./dashboardRoute");
 const playground = require("../Playground/play");
 const uploadRoutes = require("./uploadRoutes");
 const postRoute = require('./postRoute');
+const { isAuthenticated } = require("../Middlewares/authMiddleware")
 
 const routes = [
     {
@@ -17,6 +18,9 @@ const routes = [
     {
         path:"/",
         handler:(req,res)=>{
+            if(req.session.isLoggedIn){
+                return res.redirect("/dashboard");
+            }
             res.json({
                 message:"Welcome to Root"
             })
