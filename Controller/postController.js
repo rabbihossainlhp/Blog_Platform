@@ -132,3 +132,10 @@ exports.editPostPostController = async (req,res,next) =>{
         next(e)
     }
 }
+
+
+
+
+
+
+//delete post controller start from here...
