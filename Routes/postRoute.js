@@ -3,7 +3,8 @@ const {
     createPostGetController, 
     createPostPosttController,
     editPostGetController,
-    editPostPostController
+    editPostPostController,
+    getDeletePostController
 } = require('../Controller/postController.js');
 const {isAuthenticated} = require("../Middlewares/authMiddleware");
 const  upload = require("../Middlewares/uploadMiddlware");
@@ -14,5 +15,7 @@ router.post('/create', isAuthenticated, upload.single("image"),  createPostPostt
 
 router.get('/edit/:id', isAuthenticated, editPostGetController);
 router.post('/edit/:id', isAuthenticated, upload.single("image"), editPostPostController);
+
+router.get('/delete/:id', isAuthenticated,getDeletePostController);
 
 module.exports = router;    

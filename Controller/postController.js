@@ -139,3 +139,25 @@ exports.editPostPostController = async (req,res,next) =>{
 
 
 //delete post controller start from here...
+exports.getDeletePostController = async (req, res, next) =>{
+    let postId = req.params.id;
+
+    try{
+        let post = Post.findOne({author:req.user._id, _id:postId});
+        if(!post){
+            let error = new Error("404 Post not found");
+            error.status = 404;
+            throw error;
+        }
+
+        await Post.findOneAndDelete({_id:postId});
+        await Profile.findOneAndUpdate({user:req.user._id},{$pull:{posts:postId}},{new:true});
+        return res.redirect("/posts");
+
+
+
+
+    }catch(e){
+        next(e)
+    }
+}
