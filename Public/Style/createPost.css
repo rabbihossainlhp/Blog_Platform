@@ -85,11 +85,29 @@ textarea {
     color: white;
     border: none;
     padding: 12px;
-    width: 100%;
+    width: 40%;
     border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s ease;
+}
+.two_btn{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.two_btn a{
+    text-decoration: none;
+    background: #ff002b;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 40%;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;  
 }
 
 .btn.submit:hover {
