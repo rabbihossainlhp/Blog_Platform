@@ -5,22 +5,22 @@ body {
     background-color: #f9f9f9;
 }
 
-.container {
+.post-container {
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 80px auto 20px;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.post-container h1 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
 }
 
-.posts-grid {
+.post-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
@@ -61,11 +61,11 @@ h1 {
     margin-bottom: 10px;
 }
 
-.tags {
+.post-tags {
     margin-bottom: 10px;
 }
 
-.tag {
+.post-tag {
     display: inline-block;
     background: #007bff;
     color: #fff;
@@ -75,7 +75,7 @@ h1 {
     margin-right: 5px;
 }
 
-.btn {
+.post-btn {
     display: inline-block;
     text-decoration: none;
     padding: 8px 12px;
@@ -85,20 +85,20 @@ h1 {
     transition: background 0.3s ease;
 }
 
-.edit-btn {
+.post-edit-btn {
     background: #28a745;
     color: #fff;
 }
 
-.edit-btn:hover {
+.post-edit-btn:hover {
     background: #218838;
 }
 
-.delete-btn {
+.post-delete-btn {
     background: #dc3545;
     color: #fff;
 }
 
-.delete-btn:hover {
+.post-delete-btn:hover {
     background: #c82333;
-}   
+}

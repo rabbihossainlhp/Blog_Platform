@@ -9,25 +9,25 @@
 <body>
     <%- include('../../../Partials/header.ejs') %>
 
-    <div class="container">
+    <div class="post-container">
         <h1>All Posts</h1>
-        <div class="posts-grid">
+        <div class="post-grid">
             <% if (posts && posts.length > 0) { %>
                 <% posts.forEach(post => { %>
                     <div class="post-card">
-                        <img src="/<%= post.thumbnail || 'Public/Uploads/default-image.png' %>" alt="Post Thumbnail">
+                        <img src="/Public/<%= post.thumbnail || 'Public/Uploads/default-image.png' %>" alt="Post Thumbnail">
                         <div class="post-content">
                             <h2><%= post.title %></h2>
                             <p><%= post.body.substring(0, 100) %>...</p>
-                            <div class="tags">
+                            <div class="post-tags">
                                 <% if (post.tags && post.tags.length > 0) { %>
                                     <% post.tags.forEach(tag => { %>
-                                        <span class="tag"><%= tag %></span>
+                                        <span class="post-tag"><%= tag %></span>
                                     <% }) %>
                                 <% } %>
                             </div>
-                            <a href="/post/edit/<%= post._id %>" class="btn edit-btn">Edit</a>
-                            <a href="/post/delete/<%= post._id %>" class="btn delete-btn">Delete</a>
+                            <a href="/post/edit/<%= post._id %>" class="post-btn post-edit-btn">Edit</a>
+                            <a href="/post/delete/<%= post._id %>" class="post-btn post-delete-btn">Delete</a>
                         </div>
                     </div>
                 <% }) %>
@@ -37,6 +37,5 @@
         </div>
     </div>
 
-    <%- include('../../../Partials/footer.ejs') %>
 </body>
 </html>

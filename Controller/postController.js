@@ -152,11 +152,32 @@ exports.getDeletePostController = async (req, res, next) =>{
 
         await Post.findOneAndDelete({_id:postId});
         await Profile.findOneAndUpdate({user:req.user._id},{$pull:{posts:postId}},{new:true});
-        return res.redirect("/posts");
+        return res.redirect("/post");
 
 
 
 
+    }catch(e){
+        next(e)
+    }
+}
+
+
+
+
+
+
+
+
+exports.getAllPostsController = async (req, res, next) => {
+    try{
+        let posts = await Post.find({author:req.user._id})
+        
+        res.render("Pages/dashboard/post/posts",{
+            user:req.user,
+            profile:req.profile,
+            posts
+        })
     }catch(e){
         next(e)
     }
