@@ -16,7 +16,7 @@ nav {
     align-items: center;
     flex-wrap: wrap; 
     padding: 0 20px; 
-    z-index: 1000; 
+    z-index: 1500; 
     height: auto; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
@@ -58,7 +58,7 @@ nav ul li a.active {
 
 .Login-option a {
     height: auto;
-    background-color: chocolate;
+    background-color: #4CAF50;
     border: none;
     padding: 8px 16px;
     cursor: pointer;

@@ -21,9 +21,7 @@ const routes = [
             if(req.session.isLoggedIn){
                 return res.redirect("/dashboard");
             }
-            res.json({
-                message:"Welcome to Root"
-            })
+            res.render('Pages/home');
         }
     },
     {
