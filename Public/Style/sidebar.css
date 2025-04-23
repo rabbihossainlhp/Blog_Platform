@@ -42,6 +42,19 @@
     font-weight: bold;
 }
 
+.settingsIcon{
+    width: 40px;
+    height: 40px;
+    background-color:red;
+    position: absolute;
+    top: 7%;
+    z-index: 1500;
+}
+
+.settingsIcon i{
+    color:blue;
+}
+
 /* Responsive Sidebar */
 @media (max-width: 768px) {
     #sidebar {

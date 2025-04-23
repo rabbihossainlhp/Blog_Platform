@@ -1,29 +1,40 @@
 <head>
     <link rel="stylesheet" href="/Style/sidebar.css">
 </head>
-<div id="sidebar">
-    <li class="item-group">
-        <a href="/dashboard">Dashboard</a>
-    </li>
-    <li class="item-group">
-        <a href="/post">My Post</a>
-    </li>
-    <li class="item-group">
-        <a href="/post/create">New Post</a>
-    </li>
-    <li class="item-group">
-        <a href="/dashboard/bookmarks">Bookmarks</a>
-    </li>
-    <li class="item-group">
-        <a href="/dashboard/commnets">Comments</a>
-    </li>
-    <li class="item-group">
-        <a href="/dashboard/edit-profile">Edit Profile</a>
-    </li>
-    <li class="item-group">
-        <a href="/dashboard/change-password">Chenge Password</a>
-    </li>
-    <li class="item-group">
-        <a href="/auth/logout">Logout</a>
-    </li>
+<div class="mainSidebarContent">
+    <div class="settingsIcon">
+        <i lucide-data="menu"></i>
+    </div>
+    <div id="sidebar">
+        <li class="item-group">
+            <a href="/dashboard">Dashboard</a>
+        </li>
+        <li class="item-group">
+            <a href="/post">My Post</a>
+        </li>
+        <li class="item-group">
+            <a href="/post/create">New Post</a>
+        </li>
+        <li class="item-group">
+            <a href="/dashboard/bookmarks">Bookmarks</a>
+        </li>
+        <li class="item-group">
+            <a href="/dashboard/commnets">Comments</a>
+        </li>
+        <li class="item-group">
+            <a href="/dashboard/edit-profile">Edit Profile</a>
+        </li>
+        <li class="item-group">
+            <a href="/dashboard/change-password">Chenge Password</a>
+        </li>
+        <li class="item-group">
+            <a href="/auth/logout">Logout</a>
+        </li>
+    </div>  
 </div>
+
+
+<script src="https://unpkg.com/lucide@latest"></script> 
+<script>
+    lucide.createIcons();
+</script>
