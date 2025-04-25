@@ -4,28 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Style/navigationStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
 </head>
 <body>
     <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-        <% if(isLoggedIn){ %>
-            <div class="Login-option">
-                <a href="/auth/logout">Logout</a>
+        <div class="logo">
+            <h1>.Exp-Blog</h1>
+        </div>
+
+        <div class="other-section">
+            <div class="ul-with-btn">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                <% if(isLoggedIn){ %>
+                    <div class="Login-option">
+                        <a href="/auth/logout">Logout</a>
+                    </div>
+                <% } else{ %>
+                    <div class="Login-option">
+                        <% if(currentPage === 'Login'){%>
+                            <a href="/auth/signup">Signup</a>
+                        <%}else if (currentPage === 'Signup'){%>
+                            <a href="/auth/login">Login</a>
+                        <%}else{%>
+                            <a href="/auth/login">Login</a>
+                        <%} %>
+                    </div>  
+                <% } %> 
             </div>
-        <% } else{ %>
-            <div class="Login-option">
-                <% if(currentPage === 'Login'){%>
-                    <a href="/auth/signup">Signup</a>
-                <%}else if (currentPage === 'Signup'){%>
-                    <a href="/auth/login">Login</a>
-                <%}else{%>
-                    <a href="/auth/login">Login</a>
-                <%} %>
-            </div>  
-        <% } %>
-        
+            
+            <div class="hamburger-menu">
+                <i class="fa-solid fa-bars"></i>    
+            </div>
+        </div>
     </nav>  
+
+<script>
+    const hamburger = document.querySelector('.hamburger-menu');
+    const nav_sidebar = document.querySelector('.ul-with-btn');
+    const hamburgerIcon = document.querySelector('.fa-bars');
+
+    hamburger.onclick = ()=>{
+        nav_sidebar.classList.toggle('toggle-nav');
+        if(hamburgerIcon.classList.contains('fa-bars')){
+            hamburgerIcon.classList.remove('fa-bars');
+            hamburgerIcon.classList.add('fa-xmark');
+        }else{
+            hamburgerIcon.classList.remove('fa-xmark');
+            hamburgerIcon.classList.add('fa-bars');
+        }
+    }
+
+</script>

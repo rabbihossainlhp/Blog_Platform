@@ -1,9 +1,10 @@
 <head>
     <link rel="stylesheet" href="/Style/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <div class="mainSidebarContent">
     <div class="settingsIcon">
-        <i lucide-data="menu"></i>
+        <i class="fa-solid fa-gear"></i>    
     </div>
     <div id="sidebar">
         <li class="item-group">
@@ -33,8 +34,23 @@
     </div>  
 </div>
 
-
-<script src="https://unpkg.com/lucide@latest"></script> 
 <script>
-    lucide.createIcons();
+    document.addEventListener('DOMContentLoaded',()=>{
+        let settingsIcon = document.querySelector('.settingsIcon');
+        let sidebar = document.querySelector('#sidebar');
+        let settingsIcon_Gear = document.querySelector('.settingsIcon i');
+
+        settingsIcon.onclick = ()=>{
+            sidebar.classList.toggle('toggled');
+            if(settingsIcon_Gear.classList.contains('fa-gear')){
+                settingsIcon_Gear.classList.remove('fa-gear');
+                settingsIcon_Gear.classList.add('fa-xmark');
+            }else{
+                settingsIcon_Gear.classList.remove('fa-xmark');
+                settingsIcon_Gear.classList.add('fa-gear');
+            }
+            
+        }
+    })
+
 </script>
