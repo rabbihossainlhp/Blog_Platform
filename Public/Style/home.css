@@ -1,0 +1,165 @@
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero .btn-primary {
+            background-color: white;
+            color: #4CAF50;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .hero .btn-primary:hover {
+            background-color: #2E7D32;
+            color: white;
+        }
+
+        /* Featured Posts Section */
+        .featured-posts {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .featured-posts h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .posts-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .post-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .post-card h3 {
+            font-size: 1.5rem;
+            margin: 1rem;
+        }
+
+        .post-card p {
+            font-size: 1rem;
+            margin: 0 1rem 1rem;
+        }
+
+        .post-card .btn-secondary {
+            display: inline-block;
+            margin: 0 1rem 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .post-card .btn-secondary:hover {
+            background-color: #2E7D32;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #f4f4f9;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .about .btn-primary:hover {
+            background-color: #2E7D32;
+        }
+
+        /* Footer Section Isolation */
+        footer ul.footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        footer ul.footer-links li {
+            margin: 0;
+        }
+
+        footer ul.footer-links li a {
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        footer ul.footer-links li a:hover {
+            color: #4CAF50;
+        }

@@ -89,8 +89,9 @@ nav ul li a.active {
 
 .logo{
     height: 100%;
-    text-align: center;
-    align-content: center;
+    display: flex;
+    justify-self: center;
+    align-items: center;
     width: 20%;
 }
 .logo h1{
@@ -186,4 +187,23 @@ body > .container {
         right: 0;
         text-align: center;
     } */
+}
+
+
+@media(max-width:355px){
+    .hamburger-menu{
+        right:15%;
+    }
+}
+
+@media(max-width:537px){
+    .hamburger-menu{
+        right:11%;
+    }
+}
+
+@media(max-width:692px){
+    .hamburger-menu{
+        right:7%;
+    }
 }

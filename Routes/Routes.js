@@ -21,7 +21,7 @@ const routes = [
             if(req.session.isLoggedIn){
                 return res.redirect("/dashboard");
             }
-            res.render('Pages/home');
+            res.render('Pages/home',{currentPage:"Home",errors:{},value:{}});
         }
     },
     {

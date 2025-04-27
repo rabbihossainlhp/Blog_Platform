@@ -3,153 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Blog</title>
-    <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-
-        h1, h2, h3 {
-            margin: 0;
-        }
-
-        p {
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        /* Header Section */
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-        }
-
-        header p {
-            font-size: 1.2rem;
-        }
-
-        /* Main Section */
-        main {
-            padding: 2rem;
-        }
-
-        .intro {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .intro h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .intro p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        /* Features Section */
-        .features {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        .feature {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1rem;
-            width: 300px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature p {
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-
-        /* Footer Section */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .features {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .feature {
-                width: 90%;
-            }
-        }
-    </style>
+    <title>Exp-Blog | Home</title>
+    <link rel="stylesheet" href="/Style/home.css">    
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Blog</h1>
-        <p>Your daily dose of knowledge and inspiration</p>
+    <!-- Include Navigation -->
+    <%- include('../Partials/navigation.ejs') %>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>স্বাগতম Exp-Blog এ</h1>
+            <p>প্রযুক্তি, প্রোগ্রামিং এবং আরও অনেক কিছু থেকে অনুপ্রেরণা এবং ধারণা আবিষ্কার করুন।</p>
+            <a href="auth/signup" class="btn-primary">Get Started</a>
+        </div>
     </header>
+
+    <!-- Main Section -->
     <main>
-        <section class="intro">
-            <h2>About This Blog</h2>
-            <p>
-                This blog is a platform where I share my thoughts, ideas, and experiences on various topics.
-                From technology and programming to lifestyle and personal growth, you'll find a variety of content
-                to keep you informed and inspired.
-            </p>
+        <!-- Featured Posts Section -->
+        <section class="featured-posts">
+            <h2>বৈশিষ্ট্যযুক্ত পোস্ট</h2>
+            <div class="posts-grid">
+                <div class="post-card">
+                    <h3>জাভাস্ক্রিপ্ট ক্লোজারস বোঝা</h3>
+                    <p>জাভাস্ক্রিপ্টে ক্লোজারসের জাদু শিখুন এবং কীভাবে এটি আপনার কোডকে আরও শক্তিশালী করতে পারে।</p>
+                    <a href="#" class="btn-secondary">আরও পড়ুন</a>
+                </div>
+                <div class="post-card">
+                    <h3>ব্যক্তিগত উন্নতির জন্য ১০টি টিপস</h3>
+                    <p>আপনার মানসিকতা, উৎপাদনশীলতা এবং সামগ্রিক মঙ্গল উন্নত করার জন্য কার্যকর টিপস আবিষ্কার করুন।</p>
+                    <a href="#" class="btn-secondary">আরও পড়ুন</a>
+                </div>
+                <div class="post-card">
+                    <h3>এআই এর ভবিষ্যত অন্বেষণ</h3>
+                    <p>কৃত্রিম বুদ্ধিমত্তা এবং মেশিন লার্নিংয়ের সর্বশেষ প্রবণতা এবং অগ্রগতি সম্পর্কে জানুন।</p>
+                    <a href="#" class="btn-secondary">আরও পড়ুন</a>
+                </div>
+            </div>
         </section>
-        <section class="features">
-            <div class="feature">
-                <h3>Tech Insights</h3>
-                <p>Stay updated with the latest trends and insights in the world of technology and programming.</p>
-            </div>
-            <div class="feature">
-                <h3>Personal Growth</h3>
-                <p>Explore tips and strategies to improve your productivity, mindset, and overall well-being.</p>
-            </div>
-            <div class="feature">
-                <h3>Community</h3>
-                <p>Join a community of like-minded individuals who are passionate about learning and growth.</p>
-            </div>
+
+        <!-- About Section -->
+        <section class="about">
+            <h2>Exp-Blog সম্পর্কে</h2>
+            <p>
+                Exp-Blog এমন একটি প্ল্যাটফর্ম যেখানে আমরা জ্ঞান, ধারণা এবং অভিজ্ঞতা শেয়ার করি। 
+                প্রযুক্তি এবং প্রোগ্রামিং থেকে ব্যক্তিগত উন্নয়ন এবং জীবনধারা পর্যন্ত, আমরা আমাদের পাঠকদের অনুপ্রাণিত এবং শিক্ষিত করার জন্য বিস্তৃত বিষয় কভার করি।
+            </p>
+            <a href="#" class="btn-primary">আরও জানুন</a>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2023 My Blog. All rights reserved.</p>
-    </footer>
+
+    <!-- Include Footer -->
+    <!-- <%- include('../Partials/footer.ejs') %> -->
 </body>
 </html>
