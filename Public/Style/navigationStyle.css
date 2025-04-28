@@ -200,6 +200,9 @@ body > .container {
     .hamburger-menu{
         right:11%;
     }
+    .logo h1{
+        font-size: 20px;
+    }
 }
 
 @media(max-width:692px){

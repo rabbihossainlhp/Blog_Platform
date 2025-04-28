@@ -4,16 +4,10 @@
     align-items: center;
     height: 100vh;
 }
-/* 
-.sub-container-1 {
-    width: 50%;
-    height: 100%;
-    background-color: #f1f1f1;
-}
-*/
+
 .sub-container-2 {
     width: 90%;
-    height: 70%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,29 +20,27 @@
     justify-content: space-between;
     align-items: center;
     width: 80%;
-    height: 100%;
+    height: auto;
     padding: 20px;
     border: 1px solid #f1f1f1;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    flex-wrap: wrap;
 }
 
-
-.infoForm{
+.infoForm {
     width: 63%;
-    height: 100%;
+    height: auto;
 }
-
-
 
 .profilePics {
     width: 30%;
-    height: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
 #profilePics {
@@ -60,7 +52,6 @@
 }
 
 #profilePicsForm {
-    height: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,47 +81,9 @@
     margin-top: 5px;
 }
 
-#removeProfilePics[type="button"] {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    order: 3;
-}
-
-#addBtn{
-    background-color: rgb(47, 255, 64);
-    color: black;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;   
-    order: 2; 
-}
-    
-
-#removeProfilePics[type="button"]:hover {
-    background-color: darkred;
-}
-
-.form-group input[type="submit"] {
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-} 
-
-
-
-.link-group{
+.link-group {
     margin-top: 10px;
-    height: 180px;
 }
-
 
 .totalIndividual {
     display: flex;
@@ -140,97 +93,71 @@
     width: 100%;
 }
 
-
 .individual-link {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     margin-top: 5px;
+    width: 48%;
 }
 
 .individual-link i {
     font-size: 1.2rem;
     margin-right: 10px;
 }
-.individual-link input{
-    width: 115px;
+
+.individual-link input {
+    width: 100%;
     padding: 10px;
     border: 1px solid #f1f1f1;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     outline: none;
-}   
+}
 
-.createProfileBtn{
-    position: absolute;
+.createProfileBtn {
     background-color: rgb(96, 207, 96);
-    padding: 7px 8px ;
+    padding: 10px 15px;
     font-weight: bold;
     border-radius: 9px;
     border: none;
     cursor: pointer;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 10px;
-    width: 55%;
+    width: 100%;
+    margin-top: 20px;
 }
 
-
-/* 
-.crop-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-.crop-buttons input {
-    padding: 5px 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-}
-.crop-buttons input:hover {
-    background-color: #0056b3;
-}    */
-
-
-@media (max-width: 1012px) {
-    body{
-        overflow: auto;
-    }
+/* Responsive Styles */
+@media (max-width: 768px) {
     .containerBox {
         flex-direction: column;
         width: 100%;
-        height: fit-content;
         padding: 10px;
     }
 
-    .sub-container-2{
-        height: 100%;
-        top: 10%;
-        margin-bottom: 10%;
-    }
     .infoForm, .profilePics {
         width: 100%;
-        height: auto;
     }
 
-    .profilePics {
-        margin-top: 20px;
-    }
-
-    .form-group input, .individual-link input {
+    .individual-link {
         width: 100%;
     }
+}
 
-    .link-group {
-        height: auto;
-    }
-
-    .footer{
-        position: relative;
-        bottom: -63px;
+@media (max-width: 750px) {
+    .containerBox {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+        margin-top: 75%;
     }
 }
+
+@media (max-width: 390px) {
+    .containerBox {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+        margin-top: 103%;
+    }
+}
+
