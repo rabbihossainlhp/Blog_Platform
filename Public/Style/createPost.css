@@ -23,6 +23,7 @@ html,body {
     min-height: 80vh;
     width: 100%;
     overflow: hidden;
+    position:relative;
 }
 
 .containerBox {
@@ -33,6 +34,7 @@ html,body {
     text-align: center;
     width: 100vh;
     transition: 0.3s ease-in-out;
+    
 }
 
 /* .sub-container-1{
@@ -42,6 +44,14 @@ html,body {
     flex:1;
     padding:20px;
 } */
+
+
+.sub-container-1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 
 .containerBox:hover {
     transform: translateY(-3px);
