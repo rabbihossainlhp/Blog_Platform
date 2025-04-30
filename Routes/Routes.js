@@ -4,7 +4,9 @@ const dashboardRoute = require("./dashboardRoute");
 const playground = require("../Playground/play");
 const uploadRoutes = require("./uploadRoutes");
 const postRoute = require('./postRoute');
-const { isAuthenticated } = require("../Middlewares/authMiddleware")
+const { isAuthenticated } = require("../Middlewares/authMiddleware");
+const apiRoutes = require('../api/Routes/apiRoutes');
+
 
 const routes = [
     {
@@ -23,6 +25,10 @@ const routes = [
             }
             res.render('Pages/home',{currentPage:"Home",errors:{},value:{}});
         }
+    },
+    {
+        path:'/api',
+        handler:apiRoutes
     },
     {
         path:"/playground",

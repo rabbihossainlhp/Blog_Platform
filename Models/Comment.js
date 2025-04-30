@@ -22,7 +22,7 @@ const CommentSchema = new Schema({
         required:true,
         trim:true
     },
-    reqlies:[
+    replies:[
         {
             body:{
                 type:String,
