@@ -1,0 +1,76 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.explorarContainer {
+    max-width: 1200px;
+    margin: 20px auto;
+    margin-top: 6%;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Filter Links Section */
+.row section:first-child {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.row section:first-child a {
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.row section:first-child a:hover {
+    background-color: #45a049;
+}
+
+/* Content Section */
+.row section:last-child {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .explorarContainer {
+        padding: 15px;
+    }
+
+    .row section:first-child a {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .row section:last-child {
+        font-size: 1rem;
+    }
+}   
+
+@media(max-width: 600px) {
+    .explorarContainer {
+        margin-top: 20%;
+    }
+
+}

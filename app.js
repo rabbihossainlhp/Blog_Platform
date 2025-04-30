@@ -40,10 +40,10 @@ app.use((req,res,next)=>{
 app.use((error,req,res,next)=>{
     console.log("error is app js",error);
     if(error.status === 404){
-        return res.render("Pages/error/404");
+        return res.render("Pages/error/404",{currentPage:"400"});
     }
     else{
-        res.render("Pages/error/500");
+        res.render("Pages/error/500",{currentPage:"500"});
     }
 })
 
