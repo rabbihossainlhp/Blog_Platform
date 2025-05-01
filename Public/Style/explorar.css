@@ -57,6 +57,73 @@ body {
     color: #666;
 }
 
+.explorarCard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.explorarCardDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 250px;
+    width: 300px;
+    text-align: center;
+}
+
+.explorarCardDiv:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.explorarCardDiv img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.explorarCardDiv a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.explorarCardDiv a:hover {
+    color: #007bff;
+}
+
+.explorarCardDiv h5 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+.explorarCardDiv p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.timeShowing {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 10px;
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .explorarContainer {
@@ -71,11 +138,36 @@ body {
     .row section:last-child {
         font-size: 1rem;
     }
+
+    .explorarCardDiv {
+        max-width: 100%;
+    }
+
+    .explorarCardDiv img {
+        height: 150px;
+    }
+
+    
 }   
 
 @media(max-width: 600px) {
     .explorarContainer {
         margin-top: 20%;
+    }
+    .explorarCardDiv {
+        padding: 10px;
+    }
+
+    .explorarCardDiv h5 {
+        font-size: 1rem;
+    }
+
+    .explorarCardDiv p {
+        font-size: 0.8rem;
+    }
+
+    .timeShowing {
+        font-size: 0.7rem;
     }
 
 }

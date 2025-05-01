@@ -1,6 +1,7 @@
 <%- include('../../Partials/header.ejs') %>
 
 <head>
+    <title>Exp-Blog~Explorar</title>
     <link rel="stylesheet" href="Style/explorar.css">
 </head>
 <div class="explorarContainer">
@@ -15,8 +16,33 @@
             <a href="/explorar/filter=All"  class="<%= filter === 'all' ? 'active' : '' %>" >All</a>
         </section>
 
-        <section>
-            <p>There is no Post</p>
+        <section class="explorarCard">
+            <% if (posts.length === 0) {%>
+                    <p>>No posts available</p>
+            <%} else{%> 
+                    
+                <% for(post of posts) {%> 
+                    <div class="explorarCardDiv">
+                        <% if(post.thumbnail) {%> 
+                            <img src="/Public/<%= post.thumbnail %>" alt="post image">    
+                        <%} %>
+                        <a href="/explorar/<%= post._id %>">
+                            <h5><%= post.title %> </h5>
+                            <p><%= truncate(post.body) %> </p>
+                        </a>
+
+                        <div class="timeShowing">
+                            <small>
+                                <%= moment(post.createdAt) %>,
+                                Posted by <%= post.author.username %>,
+                                <%= post.readTime %>
+                            </small>
+                        </div>
+
+                    </div>    
+                <%} %>
+
+                <%} %>
         </section>
 
     </div>
