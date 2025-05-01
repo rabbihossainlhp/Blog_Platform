@@ -6,13 +6,13 @@
 <div class="explorarContainer">
     <div class="row">
         <section>
-            <a href="/explorar/filter=latest">Latest</a>
+            <a href="/explorar/filter=latest"  class="<%= filter === 'latest' ? 'active' : '' %>" >Latest</a>
 
-            <a href="/explorar/filter=week">Week</a>
+            <a href="/explorar/filter=week"  class="<%= filter === 'week' ? 'active' : '' %>" >Week</a>
 
-            <a href="/explorar/filter=month">Month</a>
+            <a href="/explorar/filter=month"  class="<%= filter === 'month' ? 'active' : '' %>" >Month</a>
 
-            <a href="/explorar/filter=All">All</a>
+            <a href="/explorar/filter=All"  class="<%= filter === 'all' ? 'active' : '' %>" >All</a>
         </section>
 
         <section>

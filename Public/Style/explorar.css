@@ -31,6 +31,11 @@ body {
     flex-wrap: wrap;
 }
 
+.row section:first-child a.active {
+    background-color: #007bff; /* Highlight color */
+    color: white;
+    border: 0.5px solid #0056b3;
+}   
 .row section:first-child a {
     text-decoration: none;
     color: white;
