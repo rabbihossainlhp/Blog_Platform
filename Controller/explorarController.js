@@ -37,6 +37,7 @@ const generateFilter = (filter) =>{
             order = -1;
             break;
         }
+        
 
     }
     return {
@@ -58,7 +59,7 @@ exports.explorarGetController = async (req,res,next)=>{
     try{
         let posts = await Post.find(filterObject)
             .populate('author','username')
-            .sort(order === 1 ? '-createdAt' :' createdAt');
+            .sort(order === 1 ? '-createdAt' :'createdAt');
     
 
         res.render('Pages/explorar/explorar',{
