@@ -127,6 +127,55 @@ body {
 }
 
 
+
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0; /* Add spacing above the pagination */
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-item a {
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination .page-item a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination .page-item.active a {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    cursor: default;
+}
+
+.pagination .page-item.disabled a {
+    color: #ccc;
+    background-color: #f9f9f9;
+    border-color: #ddd;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .explorarContainer {
