@@ -59,6 +59,8 @@ body {
 
 .explorarCard{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -76,7 +78,7 @@ body {
     margin: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 250px;
-    width: 300px;
+    width: 60%;
     text-align: center;
 }
 
@@ -87,7 +89,7 @@ body {
 
 .explorarCardDiv img {
     width: 100%;
-    height: 180px;
+    height: 120px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 10px;
