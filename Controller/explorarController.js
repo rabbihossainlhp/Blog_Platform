@@ -39,7 +39,6 @@ const generateFilter = (filter) =>{
             break;
         }
         
-
     }
     return {
         filterObject,
@@ -123,6 +122,5 @@ exports.getSinglePostController = async (req,res,next)=>{
     }catch(e){
         next(e);
     }
-
 
 }
