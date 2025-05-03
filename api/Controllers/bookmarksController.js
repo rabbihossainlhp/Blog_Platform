@@ -25,7 +25,7 @@ exports.getBookmarksController = async (req,res,next) =>{
             await Profile.findOneAndUpdate({user:userId},{$push:{bookmarks:postId}},{new:true});
             bookmark = true;
         }
-
+    
         
         res.status(200).json({
             successMessage:"You've Successfully added post on bookmarks",

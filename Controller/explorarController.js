@@ -1,6 +1,7 @@
 //dependencies...
 const moment = require('moment');
 const Post = require('../Models/Post.js');
+const Profile = require('../Models/Profile.js');
 
 
 //generate date...
@@ -70,6 +71,13 @@ exports.explorarGetController = async (req,res,next)=>{
         let totalPosts = await Post.countDocuments();
         let totalPage = Math.ceil(totalPosts / PostPerPage);
         
+        let bookmarks = [];
+        if(req.user){
+            let profile = await Profile.findOne({user:req.user._id});
+            if(profile){
+                bookmarks = profile.bookmarks;
+            }
+        }
         
 
         res.render('Pages/explorar/explorar',{
@@ -78,6 +86,7 @@ exports.explorarGetController = async (req,res,next)=>{
         totalPage,
         PostPerPage,
         posts,
+        bookmarks,
 
         })
     }catch(e){
