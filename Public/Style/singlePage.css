@@ -1,0 +1,74 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.singlePostContainer {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.postHeader h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.postMeta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.postThumbnail img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.postContent p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.postFooter {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 20px;
+}
+
+.postFooter .tag {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 5px;
+    font-size: 0.8rem;
+}
+
+.bookmarkSection {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.bookmarks-icon {
+    font-size: 1.2rem;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.bookmarks-icon:hover {
+    color: #0056b3;
+    transform: scale(1.1);
+}   
