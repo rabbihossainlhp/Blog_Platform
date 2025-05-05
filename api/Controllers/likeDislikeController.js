@@ -18,7 +18,7 @@ exports.likesController = async (req,res,next)=>{
         let post = await Post.findById(postId);
 
         if(post.dislikes.includes(userId)){
-            await Post.findOneAndUpdate({_id:postId},{$pull:{likes:userId}},{new:true});
+            await Post.findOneAndUpdate({_id:postId},{$pull:{dislikes:userId}},{new:true});
         }
 
         if(post.likes.includes(userId)){
@@ -63,7 +63,7 @@ exports.dislikesController = async (req,res,next)=>{
         let post = await Post.findById(postId);
 
         if(post.likes.includes(userId)){
-            await Post.findOneAndUpdate({_id:postId},{$pull:{dislikes:userId}},{new:true});
+            await Post.findOneAndUpdate({_id:postId},{$pull:{likes:userId}},{new:true});
         }
 
 
@@ -75,10 +75,11 @@ exports.dislikesController = async (req,res,next)=>{
             disliked = true;
         }
 
+        let updatedPost = await Post.findById(postId);
         res.status(200).json({
             disliked,
-            totalDisLike: post.dislikes.length,
-            totalLike: post.likes.length
+            totalDisLike: updatedPost.dislikes.length,
+            totalLike: updatedPost.likes.length
         })
 
     }catch(e){

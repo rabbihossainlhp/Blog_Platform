@@ -19,7 +19,7 @@ router.post('/commnets/:postId', isAuthenticated , commentController);
 router.post('/comments/reply/:commentId', isAuthenticated, replyPostController);
 
 //like routes
-router.get('/likes/:postId',isAuthenticated, likesController);
+router.post('/likes/:postId',isAuthenticated, likesController);
 router.get('/dislikes/:postId', isAuthenticated, dislikesController);
 
 //bookmark routes

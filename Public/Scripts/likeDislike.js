@@ -1,43 +1,59 @@
-window.onload = ()=>{
-    let likeButton = document.querySelector(".like-btn");
-    let dislikeButton = document.querySelector(".dislike-btn");
+document.addEventListener('DOMContentLoaded',()=>{
+    let likeButton = document.querySelectorAll(".like-btn");
+    let dislikeButton = document.querySelectorAll(".dislike-btn");
 
-    likeButton.onclick = (e) =>{
+    likeButton.forEach(singleLikeButton =>{ 
+        singleLikeButton.onclick = (e) =>{
         let headers = new Headers();
         headers.append('Accept','Application/JSON');
 
         let request = new Request(`/api/likes/${e.currentTarget.dataset.post}`,{
             method:"POST",
             headers,
-            mode:'cors',
         });
 
         fetch(request)
-            .then(res => res.json())
+            .then(res => res.json())    
             .then(data =>{
+
+                let buttonContent = e.currentTarget.querySelector("span");
+                let currentLlikes = parseInt(buttonContent.querySelector("p").innerText);
+                let isLike = buttonContent.querySelector("i").classList.contains("fa-solid");
+
+                if(isLike){
+                    buttonContent.innerHTML = `<span>
+                                                    <p>${currentLlikes - 1}</p>
+                                                    <i class="fa-regular fa-thumbs-up"></i> Like
+                                                </span>`
+                }else{
+                    buttonContent.innerHTML = `<span>
+                                                    <p>${currentLlikes + 1}</p>
+                                                    <i class="fa-solid fa-thumbs-up"></i> Liked
+                                                </span>`
+                }
+                
+
                 if(data.liked){
                     console.log(data)
-                    e.target.parentElement.innerHTML = `<span>
-                                                            <p>${data.totalLike}</p>
-                                                            <i class="fa-solid fa-thumbs-up"></i> Liked
-                                                        </span>`;
+                    buttonContent.innerHTML = `<span>
+                                                    <p>${data.totalLike}</p>
+                                                    <i class="fa-solid fa-thumbs-up"></i> Liked
+                                                </span>`
                 }
                 else{
-                    e.target.parentElement.innerHTML = `<span>
-                                                            <p>${data.totalLike}</p>
-                                                            <i class="fa-regular fa-thumbs-up"></i> Like
-                                                        </span>`;
+                    buttonContent.innerHTML = `<span>
+                                                    <p>${data.totalLike}</p>
+                                                    <i class="fa-regular fa-thumbs-up"></i> Like
+                                                </span>`
                 }
             })
-            .catch(e=>{
-                console.log(e);
-                
+            .catch(er=> {
+                console.log(er);
+
             })
+        }
 
-    }
+    })
 
 
-    dislikeButton.onclick = (e) =>{
-        console.log("disliked btn clicked",e);
-    }
-}
+})
