@@ -30,7 +30,8 @@ body {
 
 .postThumbnail img {
     width: 100%;
-    height: auto;
+    height: 400px;
+    object-fit: cover;
     border-radius: 8px;
     margin-bottom: 20px;
 }
@@ -39,6 +40,7 @@ body {
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 20px;
+    color: #000;
 }
 
 .postFooter {
@@ -60,10 +62,13 @@ body {
 .bookmarkSection {
     margin-top: 20px;
     text-align: right;
+    position: absolute;
+    right: 0;
+    bottom: 9%;
 }
 
 .bookmarks-icon {
-    font-size: 1.2rem;
+    font-size: 2.2rem;
     color: #007bff;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -73,3 +78,77 @@ body {
     color: #0056b3;
     transform: scale(1.1);
 }   
+
+/* Like/Dislike Section */
+.likeDislikeSection {
+    display: flex;
+    gap: 30px;
+    margin: 20px 0;
+    position: relative;
+}
+
+.likeDislikeSection button {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+.likeDislikeSection button:hover {
+    color: #0056b3;
+}
+
+/* Comment Section */
+.commentSection {
+    margin-top: 30px;
+}
+
+.commentSection h3 {
+    margin-bottom: 10px;
+}
+
+.commentSection form {
+    margin-bottom: 20px;
+}
+
+.commentSection textarea {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.commentSection button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.commentSection button:hover {
+    background-color: #0056b3;
+}
+
+.comment {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: none;
+}
+
+.reply {
+    margin-left: 20px;
+    padding: 5px;
+    border-left: 2px solid #ddd;
+}

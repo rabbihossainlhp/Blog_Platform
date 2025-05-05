@@ -4,14 +4,12 @@
     <title><%= post.title %></title>
     <link rel="stylesheet" href="/Style/singlePage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
-    
 </head>
 <body>
     <%- include('../../Partials/header.ejs') %>
 
     <div class="singlePostContainer">
         <div class="postHeader">
-            
             <p class="postMeta">
                 Posted by <strong><%= post.author.username %></strong> on <%= postDate %>
             </p>
@@ -38,18 +36,79 @@
         </div>
 
         <% if (user) { %>
-            <div class="bookmarkSection">
-                <span class="bookmarks-icon" data-post="<%= post._id %>">
-                    <% if (bookmarks.includes(post._id)) { %>
-                        <i class="fa-solid fa-bookmark"></i> Bookmarked
+            <!-- Like/Dislike Section -->
+            <div class="likeDislikeSection">
+                <button class="like-btn" data-post="<%= post._id %>">
+                    <% if (post.likes.includes(user._id)) { %>
+                        <span>
+                            <p><%= post.likes.length %></p>
+                            <i class="fa-solid fa-thumbs-up"></i> Liked
+                        </span>
                     <% } else { %>
-                        <i class="fa-regular fa-bookmark"></i> Add to Bookmarks
+                        <span>
+                            <p><%= post.likes.length %></p>
+                            <i class="fa-regular fa-thumbs-up"></i> Like
+                        </span>
                     <% } %>
-                </span>
+                </button>
+                <button class="dislike-btn" data-post="<%= post._id %>">
+                    <% if (post.dislikes.includes(user._id)) { %>
+                        <span>
+                            <p><%= post.dislikes.length %></p>
+                            <i class="fa-solid fa-thumbs-down"></i> Disliked
+                        </span>
+                        
+                    <% } else { %>
+                        <span>
+                            <p><%= post.dislikes.length %></p>
+                            <i class="fa-regular fa-thumbs-down"></i> Dislike
+                        </span>
+                    <% } %>
+                </button>
+                <div class="bookmarkSection">
+                    <span class="bookmarks-icon" data-post="<%= post._id %>">
+                        <% if (bookmarks.includes(post._id)) { %>
+                            <i class="fa-solid fa-bookmark"></i> 
+                        <% } else { %>
+                            <i class="fa-regular fa-bookmark"></i> 
+                        <% } %>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Comment Section -->
+            <div class="commentSection">
+                <h3>Comments</h3>
+                <form action="/explorar/<%= post._id %>/comment" method="POST">
+                    <textarea name="comment" placeholder="Add a comment..." required></textarea>
+                    <button type="submit">Post Comment</button>
+                </form>
+
+                <% post.comments.forEach(comment => { %>
+                    <div class="comment">
+                        <p><strong><%= comment.author.username %>:</strong> <%= comment.body %></p>
+                        <% if (user._id.toString() === comment.user._id.toString()) { %>
+                            <form action="/explorar/<%= post._id %>/comment/<%= comment._id %>/delete" method="POST">
+                                <button type="submit">Delete</button>
+                            </form>
+                        <% } %>
+                        <!-- Reply Section -->
+                        <form action="/explorar/<%= post._id %>/comment/<%= comment._id %>/reply" method="POST">
+                            <textarea name="reply" placeholder="Reply to this comment..." required></textarea>
+                            <button type="submit">Reply</button>
+                        </form>
+                        <% comment.replies.forEach(reply => { %>
+                            <div class="reply">
+                                <p><strong><%= reply.author.username %>:</strong> <%= reply.body %></p>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% }) %>
             </div>
         <% } %>
     </div>
 
     <script src="/Scripts/bookmarks.js"></script>
+    <script src="/Scripts/likeDislike.js"></script>
 </body>
-</html> 
+</html>

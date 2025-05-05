@@ -15,7 +15,7 @@ exports.likesController = async (req,res,next)=>{
 
     try{
         
-        let post = Post.findById(postId);
+        let post = await Post.findById(postId);
 
         if(post.dislikes.includes(userId)){
             await Post.findOneAndUpdate({_id:postId},{$pull:{likes:userId}},{new:true});

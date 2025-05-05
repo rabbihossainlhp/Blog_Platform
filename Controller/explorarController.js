@@ -98,7 +98,6 @@ exports.explorarGetController = async (req,res,next)=>{
 
 exports.getSinglePostController = async (req,res,next)=>{
     let postId = req.params.postId;
-    console.log(postId);
 
     try{
         let post = await Post.findById(postId).populate({
@@ -106,18 +105,27 @@ exports.getSinglePostController = async (req,res,next)=>{
             select:'username profilePics'
         });
         
+
+        let bookmarks = [];
+        if(req.user){
+            let profile = await Profile.findOne({user:req.user._id});
+            if(profile){
+                bookmarks = profile.bookmarks;
+            }
+        }
+
         if(!post){
             let error = new Error("404 Post not found");
             error.status = 404;
             throw error;
         }
-        console.log(post)
         let postDate = moment(post.createdAt).format('YYYY-MM-DD');
 
         res.render('Pages/explorar/singlePage',{
             post,
             postDate,
             currentPage:"singlePage",
+            bookmarks,
         })
     }catch(e){
         next(e);
