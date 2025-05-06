@@ -35,77 +35,73 @@
             <p>Estimated Read Time: <%= post.readTime %> minutes</p>
         </div>
 
-        <% if (user) { %>
-            <!-- Like/Dislike Section -->
-            <div class="likeDislikeSection">
-                <button class="like-btn" data-post="<%= post._id %>">
-                    <% if (post.likes.includes(user._id)) { %>
-                        <span>
-                            <p><%= post.likes.length %></p>
-                            <i class="fa-solid fa-thumbs-up"></i> Liked
-                        </span>
-                    <% } else { %>
-                        <span>
-                            <p><%= post.likes.length %></p>
-                            <i class="fa-regular fa-thumbs-up"></i> Like
-                        </span>
-                    <% } %>
+        <div class="like-dislike-bookmarks">
+            <% if (!user) { %>
+                <button id="like-btn" disabled>
+                    Like (<%= post.likes.length %>)
                 </button>
-                <button class="dislike-btn" data-post="<%= post._id %>">
-                    <% if (post.dislikes.includes(user._id)) { %>
-                        <span>
-                            <p><%= post.dislikes.length %></p>
-                            <i class="fa-solid fa-thumbs-down"></i> Disliked
-                        </span>
-                        
-                    <% } else { %>
-                        <span>
-                            <p><%= post.dislikes.length %></p>
-                            <i class="fa-regular fa-thumbs-down"></i> Dislike
-                        </span>
-                    <% } %>
+                <button id="dislike-btn" disabled>
+                    Dislike (<%= post.dislikes.length%>)
                 </button>
-                <div class="bookmarkSection">
-                    <span class="bookmarks-icon" data-post="<%= post._id %>">
-                        <% if (bookmarks.includes(post._id)) { %>
-                            <i class="fa-solid fa-bookmark"></i> 
-                        <% } else { %>
-                            <i class="fa-regular fa-bookmark"></i> 
-                        <% } %>
-                    </span>
+                <p class="login-suggestion">To Comment Please <a href="/auth/login">Login</a></p>
+            <% } else {%>
+                <div class="authentic-option">
+                    <button id="likebutton" data-post="<%= post._id%>">
+                        <i class="fa-solid fa-thumbs-up"></i>  <%= post.likes.includes(user._id) ? 'Liked': 'Like' %> (<%= post.likes.length %>)
+                    </button>  
+                    <button id="dislikebutton" data-post="<%= post._id%>">
+                        <i class="fa-solid fa-thumbs-down"></i>     <%= post.dislikes.includes(user._id) ? 'Disliked':'Dislike' %> (<%= post.dislikes.length%>)
+                    </button> 
+                    
+                    <div class="bookmarkSection">
+                        <span class="bookmarks-icon" data-post="<%= post._id %>">
+                            <% if (bookmarks.includes(post._id)) { %>
+                                <i class="fa-solid fa-bookmark"></i> 
+                            <% } else { %>
+                                <i class="fa-regular fa-bookmark"></i> 
+                            <% } %>
+                        </span>
+                    </div>  
                 </div>
-            </div>
-
-            <!-- Comment Section -->
-            <div class="commentSection">
-                <h3>Comments</h3>
-                <form action="/explorar/<%= post._id %>/comment" method="POST">
-                    <textarea name="comment" placeholder="Add a comment..." required></textarea>
-                    <button type="submit">Post Comment</button>
-                </form>
-
-                <% post.comments.forEach(comment => { %>
-                    <div class="comment">
-                        <p><strong><%= comment.author.username %>:</strong> <%= comment.body %></p>
-                        <% if (user._id.toString() === comment.user._id.toString()) { %>
-                            <form action="/explorar/<%= post._id %>/comment/<%= comment._id %>/delete" method="POST">
-                                <button type="submit">Delete</button>
-                            </form>
-                        <% } %>
-                        <!-- Reply Section -->
-                        <form action="/explorar/<%= post._id %>/comment/<%= comment._id %>/reply" method="POST">
-                            <textarea name="reply" placeholder="Reply to this comment..." required></textarea>
-                            <button type="submit">Reply</button>
-                        </form>
-                        <% comment.replies.forEach(reply => { %>
-                            <div class="reply">
-                                <p><strong><%= reply.author.username %>:</strong> <%= reply.body %></p>
+    
+                <div class="comment">
+                    <label for="comment"> Leave a comment</label>
+                    <input type="text" id="comment" placeholder="add  a comment" data-post="<%= post._id%>">
+                </div>
+                <div class="comment-hold">
+                    <% if(post.comments.length === 0){%>
+                        <p>No Comment Yet</p>
+                    <%} else {%>
+                        <% for(let comment of post.comments.reverse()) {%>
+                        <div class="media">
+                            <img src="/Public/<%= comment.user.profilePics%>" alt="">
+                            <div class="media-body">
+                                <p>
+                                    <%= comment.body %>
+                                </p>
+                                <div class="replies">
+                                    <% if(comment.replies.length>0) {%>
+                                        <% for (let reply of comment.replies) {%>
+                                            <div class="media-reply">
+                                                <img src="<%= reply.user.profilePics %>" alt="">
+                                                <div class="reply-body">
+                                                    <p><%= reply.body %></p>
+                                                </div>
+                                            </div>
+                                        <%} %>
+                                    <%} %>
+                                </div>
+                                <div class="reply-input">
+                                    <input type="text" placeholder="Press enter to Reply" data-comment="<%= comment._id %>" >
+                                </div>
                             </div>
-                        <% }) %>
-                    </div>
-                <% }) %>
-            </div>
-        <% } %>
+                        </div>
+                        <%} %>
+                    <%} %>
+                </div>
+            <%} %>  
+        </div>
+        
     </div>
 
     <script src="/Scripts/bookmarks.js"></script>

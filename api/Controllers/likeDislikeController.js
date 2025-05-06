@@ -33,6 +33,7 @@ exports.likesController = async (req,res,next)=>{
         let updatedPost = await Post.findById(postId);
         res.status(200).json({
             liked,
+            disliked:false,
             totalLike: updatedPost.likes.length,
             totalDisLike: updatedPost.dislikes.length
         })
@@ -78,6 +79,7 @@ exports.dislikesController = async (req,res,next)=>{
         let updatedPost = await Post.findById(postId);
         res.status(200).json({
             disliked,
+            liked:true,
             totalDisLike: updatedPost.dislikes.length,
             totalLike: updatedPost.likes.length
         })

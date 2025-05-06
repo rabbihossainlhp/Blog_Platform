@@ -59,16 +59,69 @@ body {
     font-size: 0.8rem;
 }
 
+/* Like/Dislike Section */
+.like-dislike-bookmarks {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.authentic-option{
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+button#likebutton,
+button#dislikebutton {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #007bff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+button#likebutton:hover,
+button#dislikebutton:hover {
+    color: #0056b3;
+}
+
+button#likebutton.liked,
+button#dislikebutton.disliked {
+    color: #28a745; /* Green for active state */
+}
+
+button#likebutton i,
+button#dislikebutton i {
+    font-size: 1.2rem;
+}
+
+button#likebutton span,
+button#dislikebutton span {
+    font-size: 0.9rem;
+}
+
+button#like-btn[disabled],
+button#dislike-btn[disabled] {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
 .bookmarkSection {
     margin-top: 20px;
     text-align: right;
     position: absolute;
     right: 0;
-    bottom: 9%;
+    bottom: 5%;
 }
 
 .bookmarks-icon {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     color: #007bff;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -77,79 +130,134 @@ body {
 .bookmarks-icon:hover {
     color: #0056b3;
     transform: scale(1.1);
-}   
-
-/* Like/Dislike Section */
-.likeDislikeSection {
-    display: flex;
-    gap: 30px;
-    margin: 20px 0;
-    position: relative;
 }
 
-.likeDislikeSection button {
-    background: none;
-    border: none;
-    color: #007bff;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: color 0.3s ease;
-}
-
-.likeDislikeSection button:hover {
-    color: #0056b3;
+.bookmarks-icon .fa-solid {
+    color: #28a745; /* Green for bookmarked */
 }
 
 /* Comment Section */
-.commentSection {
+.comment {
     margin-top: 30px;
 }
 
-.commentSection h3 {
+.comment label {
+    font-size: 1rem;
+    font-weight: bold;
     margin-bottom: 10px;
+    display: block;
 }
 
-.commentSection form {
-    margin-bottom: 20px;
-}
-
-.commentSection textarea {
+.comment input[type="text"] {
     width: 100%;
-    height: 80px;
-    margin-bottom: 10px;
     padding: 10px;
+    margin-top: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    resize: none;
+    font-size: 1rem;
 }
 
-.commentSection button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.comment-hold {
+    margin-top: 20px;
 }
 
-.commentSection button:hover {
-    background-color: #0056b3;
+.comment-hold p {
+    font-size: 1rem;
+    color: #666;
 }
 
-.comment {
+.media {
+    display: flex;
+    align-items: flex-start;
     margin-bottom: 20px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    resize: none;
+    background-color: #f9f9f9;
 }
 
-.reply {
-    margin-left: 20px;
-    padding: 5px;
+.media img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.media-body {
+    flex: 1;
+}
+
+.media-body p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.replies {
+    margin-top: 10px;
+    padding-left: 20px;
     border-left: 2px solid #ddd;
+}
+
+.media-reply {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.media-reply img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.reply-body p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.reply-input input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .singlePostContainer {
+        padding: 15px;
+    }
+
+    .postHeader h1 {
+        font-size: 1.5rem;
+    }
+
+    .postThumbnail img {
+        height: 300px;
+    }
+
+    .like-dislike-bookmarks {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    button#likebutton,
+    button#dislikebutton {
+        font-size: 0.9rem;
+    }
+
+    .media img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .media-reply img {
+        width: 30px;
+        height: 30px;
+    }
 }

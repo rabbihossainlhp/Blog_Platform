@@ -15,37 +15,21 @@ document.addEventListener('DOMContentLoaded',()=>{
         fetch(request)
             .then(res => res.json())    
             .then(data =>{
-
-                let buttonContent = e.currentTarget.querySelector("span");
-                let currentLlikes = parseInt(buttonContent.querySelector("p").innerText);
-                let isLike = buttonContent.querySelector("i").classList.contains("fa-solid");
-
-                if(isLike){
-                    buttonContent.innerHTML = `<span>
-                                                    <p>${currentLlikes - 1}</p>
-                                                    <i class="fa-regular fa-thumbs-up"></i> Like
-                                                </span>`
-                }else{
-                    buttonContent.innerHTML = `<span>
-                                                    <p>${currentLlikes + 1}</p>
-                                                    <i class="fa-solid fa-thumbs-up"></i> Liked
-                                                </span>`
-                }
                 
+                let likesContentElement = e.target.querySelector('span');
+                let likesCountElement = e.target.querySelector('p');
+                let iconElement = e.currentTarget;
+                console.log(likesCountElement,iconElement,likesCountElement);
 
-                if(data.liked){
-                    console.log(data)
-                    buttonContent.innerHTML = `<span>
-                                                    <p>${data.totalLike}</p>
-                                                    <i class="fa-solid fa-thumbs-up"></i> Liked
-                                                </span>`
+
+                if(data.liked && !data.disliked){
+                    likesCountElement.innerText = data.totalLike ;
+                    likesContentElement.innerText = 'Liked';
+                }else{
+                    
                 }
-                else{
-                    buttonContent.innerHTML = `<span>
-                                                    <p>${data.totalLike}</p>
-                                                    <i class="fa-regular fa-thumbs-up"></i> Like
-                                                </span>`
-                }
+
+                
             })
             .catch(er=> {
                 console.log(er);
@@ -53,6 +37,53 @@ document.addEventListener('DOMContentLoaded',()=>{
             })
         }
 
+    })
+
+
+
+    dislikeButton.forEach(singleDislikeButton =>{
+        singleDislikeButton.onclick = (e)=>{
+
+            let header = new Headers();
+            header.append('Accept','Application/JSON');
+
+            let request = new Request(`/api/dislikes/${e.currentTarget.dataset.post}`,{
+                method:"POST",
+                header,
+            })
+
+            
+            fetch(request)
+                .then(res => res.json())
+                .then(data => {
+
+                    
+                    
+                    dislikeCountElement.innerText = data.totalDisLike;
+
+                    if(data.disliked){
+                        iconElement.classList.remove('fa-regular');
+                        iconElement.classList.add('fa-solid');
+                        dislikeContent.innerText = "Disliked";
+                    }else{
+                        iconElement.classList.remove('fa-solid');
+                        iconElement.classList.add('fa-regular');
+                        dislikeContent.innerText = "Dislike";
+                    }
+
+                    if(data.disliked === false && dislikeBtn){
+                        likeIcon.classList.remove('fa-solid');
+                        likeIcon.classList.add('fa-regular');
+                        likeContent.innerText = "Like";
+                        likesCountElement.innerText = data.totalLike;
+                    }
+                })
+                .catch(er => {
+                    console.log(er);
+                })
+
+
+        }
     })
 
 
