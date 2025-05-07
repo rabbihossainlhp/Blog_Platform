@@ -47,12 +47,12 @@
             <% } else {%>
                 <div class="authentic-option">
                     <button id="likebutton" data-post="<%= post._id%>">
-                        <i class="fa-solid fa-thumbs-up"></i>  <%= post.likes.includes(user._id) ? 'Liked': 'Like' %> (<%= post.likes.length %>)
+                        <i id="likeIcon" class="<%= post.likes.includes(user._id) ? 'fa-solid fa-thumbs-up':'fa-regular fa-thumbs-up' %>"> </i> <span> <%= post.likes.includes(user._id) ? 'Liked': 'Like' %> (<%= post.likes.length %>) </span>
                     </button>  
                     <button id="dislikebutton" data-post="<%= post._id%>">
-                        <i class="fa-solid fa-thumbs-down"></i>     <%= post.dislikes.includes(user._id) ? 'Disliked':'Dislike' %> (<%= post.dislikes.length%>)
+                        <i id="dislikeIcon" class="<%= post.likes.includes(user._id) ? 'fa-solid fa-thumbs-up':'fa-regular fa-thumbs-up' %>"></i> <span> <%= post.dislikes.includes(user._id) ? 'Disliked':'Dislike' %> (<%= post.dislikes.length%>) </span>
                     </button> 
-                    
+                        
                     <div class="bookmarkSection">
                         <span class="bookmarks-icon" data-post="<%= post._id %>">
                             <% if (bookmarks.includes(post._id)) { %>

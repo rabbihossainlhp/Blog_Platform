@@ -1,90 +1,62 @@
 document.addEventListener('DOMContentLoaded',()=>{
-    let likeButton = document.querySelectorAll(".like-btn");
-    let dislikeButton = document.querySelectorAll(".dislike-btn");
-
-    likeButton.forEach(singleLikeButton =>{ 
-        singleLikeButton.onclick = (e) =>{
-        let headers = new Headers();
-        headers.append('Accept','Application/JSON');
-
-        let request = new Request(`/api/likes/${e.currentTarget.dataset.post}`,{
-            method:"POST",
-            headers,
-        });
-
-        fetch(request)
-            .then(res => res.json())    
-            .then(data =>{
-                
-                let likesContentElement = e.target.querySelector('span');
-                let likesCountElement = e.target.querySelector('p');
-                let iconElement = e.currentTarget;
-                console.log(likesCountElement,iconElement,likesCountElement);
+    let likeButton = document.querySelector("#likebutton");
+    let dislikeButton = document.querySelector("#dislikebutton");
+    let likeIcon = document.querySelector('#likeIcon');
+    let dislikeIcon = document.querySelector('#dislikeIcon');
 
 
-                if(data.liked && !data.disliked){
-                    likesCountElement.innerText = data.totalLike ;
-                    likesContentElement.innerText = 'Liked';
-                }else{
-                    
+    likeButton.addEventListener('click',(e)=>{
+        let postId = e.currentTarget.dataset.post;
+        
+        likeDislike_inOne('likes',postId)
+            .then(res => res.json())
+            .then(data => {
+                if (data.liked) {
+                    likeIcon.classList.remove('fa-regular');
+                    likeIcon.classList.add('fa-solid');
+                } else {
+                    likeIcon.classList.remove('fa-solid');
+                    likeIcon.classList.add('fa-regular');
                 }
 
-                
-            })
-            .catch(er=> {
-                console.log(er);
+                dislikeIcon.classList.remove('fa-solid');
+                dislikeIcon.classList.add('fa-regular');
 
-            })
-        }
-
-    })
-
-
-
-    dislikeButton.forEach(singleDislikeButton =>{
-        singleDislikeButton.onclick = (e)=>{
-
-            let header = new Headers();
-            header.append('Accept','Application/JSON');
-
-            let request = new Request(`/api/dislikes/${e.currentTarget.dataset.post}`,{
-                method:"POST",
-                header,
-            })
-
+                likeButton.querySelector('span').innerText = `${data.liked ? 'Liked' : 'Like'} (${data.totalLike})`;
+                dislikeButton.querySelector('span').innerText = `Dislike (${data.totalDisLike})`;
             
-            fetch(request)
-                .then(res => res.json())
-                .then(data => {
+            })
+            .catch(e=>{
+                console.log(e);
+            })
 
-                    
-                    
-                    dislikeCountElement.innerText = data.totalDisLike;
-
-                    if(data.disliked){
-                        iconElement.classList.remove('fa-regular');
-                        iconElement.classList.add('fa-solid');
-                        dislikeContent.innerText = "Disliked";
-                    }else{
-                        iconElement.classList.remove('fa-solid');
-                        iconElement.classList.add('fa-regular');
-                        dislikeContent.innerText = "Dislike";
-                    }
-
-                    if(data.disliked === false && dislikeBtn){
-                        likeIcon.classList.remove('fa-solid');
-                        likeIcon.classList.add('fa-regular');
-                        likeContent.innerText = "Like";
-                        likesCountElement.innerText = data.totalLike;
-                    }
-                })
-                .catch(er => {
-                    console.log(er);
-                })
-
-
-        }
     })
+
+
+
+
+
+
+
+
+
+
+
+    const likeDislike_inOne = (type,postId)=>{
+        let headers = new Headers();
+        headers.append('Accept','Application/JSON');
+        headers.append('Content-Type','Application/JSON');
+
+        let request = new Request(`/api/${type}/${postId}`,{
+            headers,
+            mode:'cors'
+        });
+
+        let fetchData = fetch(request);
+        return fetchData;
+    }
+
 
 
 })
+
