@@ -34,6 +34,33 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
 
+    dislikeButton.addEventListener('click',(e)=>{
+        let postId = e.currentTarget.dataset.post;
+
+        likeDislike_inOne('dislikes',postId)
+            .then(res=>res.json())
+            .then(data =>{
+                if(data.disliked){
+                    dislikeIcon.classList.remove('fa-regular');
+                    dislikeIcon.classList.add('fa-solid');
+                }else{
+                    dislikeIcon.classList.remove('fa-solid');
+                    dislikeIcon.classList.add('fa-regular');
+                }
+
+                likeIcon.classList.remove('fa-solid');
+                likeIcon.classList.add('fa-regular');
+
+                likeButton.querySelector('span').innerText = `Like (${data.totalLike})`;
+                dislikeButton.querySelector('span').innerText = `${data.disliked ? 'Disliked':'Dislike'} (${data.totalDisLike})`;   
+            })
+            .catch(e=>{
+                console.log(e);
+            })
+    })
+
+
+
 
 
 
