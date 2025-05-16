@@ -101,9 +101,13 @@ exports.getSinglePostController = async (req,res,next)=>{
 
     try{
         let post = await Post.findById(postId).populate({
-            path:'author',
-            select:'username profilePics'
-        });
+            path:'comments',
+            populate:{
+                path:'user',
+                select:'profilePics username'
+            }
+        })
+        .populate('author');
         
 
         let bookmarks = [];

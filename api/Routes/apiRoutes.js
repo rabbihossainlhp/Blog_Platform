@@ -15,7 +15,7 @@ const { getBookmarksController} = require('../Controllers/bookmarksController');
 
 
 //comment routs
-router.post('/commnets/:postId', isAuthenticated , commentController);
+router.post('/comments/:postId', isAuthenticated , commentController);
 router.post('/comments/reply/:commentId', isAuthenticated, replyPostController);
 
 //like routes

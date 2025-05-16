@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     })
 
 
-
     dislikeButton.addEventListener('click',(e)=>{
         let postId = e.currentTarget.dataset.post;
 
@@ -58,10 +57,6 @@ document.addEventListener('DOMContentLoaded',()=>{
                 console.log(e);
             })
     })
-
-
-
-
 
 
 
