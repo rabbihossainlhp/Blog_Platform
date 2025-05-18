@@ -225,6 +225,7 @@ button#dislike-btn[disabled] {
     word-break: break-word;
 }
 
+/* --- Enhanced Reply Section Styles --- */
 .replies {
     margin-top: 12px;
     padding-left: 24px;
@@ -277,7 +278,7 @@ button#dislike-btn[disabled] {
 .reply-input input[type="text"]:focus {
     border: 1.5px solid #007bff;
     outline: none;
-}
+}   
 
 
 

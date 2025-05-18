@@ -53,23 +53,33 @@ exports.replyPostController = async (req,res,next) =>{
         });
     }
 
-    let reply = [
-        {
+    let reply ={
             body,
             user:req.user._id,
         }
-    ]
 
     try{
 
         await Comment.findOneAndUpdate(
             {_id:commentId},
-            {$push:{replies:reply}}, 
-            {new:true})
+            {$push:{replies:reply}},
+            {new:true}
+        );
+
+        let updatedComment = await Comment.findById(commentId)
+                            .populate({
+                                path:'replies.user',
+                                select:'profilePics username'
+                            })
+
+        let lastReply = updatedComment.replies[updatedComment.replies.length -1]
 
         res.status(201).json({
-            ...reply,
-            profilePics:req.user.profilePics
+            reply:{
+                body:lastReply.body,
+                profilePics:lastReply.user && lastReply.user.profilePics ? lastReply.user.profilePics : '/default.png',
+                username:lastReply.user && lastReply.user.username ? lastReply.user.username : "Unknown User",
+            }
         })
 
     }catch(e){

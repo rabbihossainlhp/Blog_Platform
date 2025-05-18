@@ -102,10 +102,16 @@ exports.getSinglePostController = async (req,res,next)=>{
     try{
         let post = await Post.findById(postId).populate({
             path:'comments',
-            populate:{
-                path:'user',
-                select:'profilePics username'
-            }
+            populate:[
+                {
+                    path:'user',
+                    select:'profilePics username'
+                },
+                {
+                    path:'replies.user',
+                    select:'profilePics username'
+                }
+            ]
         })
         .populate('author');
         

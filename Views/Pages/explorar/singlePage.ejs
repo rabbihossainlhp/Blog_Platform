@@ -83,7 +83,7 @@
                                     <% if(comment.replies.length>0) {%>
                                         <% for (let reply of comment.replies) {%>
                                             <div class="media-reply">
-                                                <img src="<%= reply.user.profilePics %>" alt="">
+                                                <img src="/Public/<%= reply.user.profilePics %>" alt="">
                                                 <div class="reply-body">
                                                     <p><%= reply.body %></p>
                                                 </div>
