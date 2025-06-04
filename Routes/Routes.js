@@ -7,6 +7,7 @@ const postRoute = require('./postRoute');
 const { isAuthenticated } = require("../Middlewares/authMiddleware");
 const apiRoutes = require('../api/Routes/apiRoutes');
 const explorarRoute = require('./explorarRoute');
+const searchRoute = require('./searchRoutes')
 
 
 
@@ -35,6 +36,10 @@ const routes = [
     {
         path:'/explorar',
         handler:explorarRoute
+    },
+    {
+        path:"search",
+        handler:searchRoute
     },
     {
         path:"/playground",

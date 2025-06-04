@@ -69,7 +69,9 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 300px;
+    width: 75%;
+    max-height: 350px;
+    min-height: 292px;
     text-align: center;
     position: relative;
 }
@@ -81,7 +83,7 @@ body {
 
 .explorarCardDiv img {
     width: 100%;
-    height: 150px;
+    height: 60%;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 10px;

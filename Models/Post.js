@@ -42,6 +42,16 @@ const PostSchema =  new Schema({
 },{timestamps:true});
 
 
+PostSchema.index({
+    title: 'text',
+    tags: 'text',
+    body: 'text'
+},{weights:{
+    title: 5,
+    tags: 4,
+    body: 2
+}})
+
 
 //create a model for post schema
 const Post = model("Post",PostSchema);
