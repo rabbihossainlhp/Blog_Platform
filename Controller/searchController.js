@@ -12,7 +12,8 @@ exports.searchResultGetController = async (req,res,next)=>{
             $text:{
                 $search:term
             }
-        }).skip((itemPerPage * page)-itemPerPage)
+        }).populate('author')
+          .skip((itemPerPage * page)-itemPerPage)
           .limit(itemPerPage)
 
 
@@ -26,11 +27,14 @@ exports.searchResultGetController = async (req,res,next)=>{
 
 
         res.render("Pages/explorar/search", {
+            title: `Search results for ${term}`,
             totalPosts,
             totalPages,
             currentPage: page,
             searchTerm: term,
             posts,
+            user:req.user || null,
+            bookmarks: req.user ? req.user.bookmarks || [] : []
         })
     }catch(e){
         next(e);
