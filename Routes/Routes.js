@@ -8,6 +8,7 @@ const { isAuthenticated } = require("../Middlewares/authMiddleware");
 const apiRoutes = require('../api/Routes/apiRoutes');
 const explorarRoute = require('./explorarRoute');
 const searchRoutes = require('./searchRoutes')
+const authorRoute = require('./authorRoute')
 
 
 
@@ -40,6 +41,10 @@ const routes = [
     {
         path:"/search",
         handler:searchRoutes
+    },
+    {
+        path:'/author',
+        handler:authorRoute
     },
     {
         path:"/playground",

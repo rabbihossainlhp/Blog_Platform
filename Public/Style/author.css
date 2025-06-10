@@ -1,0 +1,117 @@
+/* --- Author Profile Styles --- */
+.author-profile-container {
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    background: #f8fafc;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    padding: 32px 24px 24px 24px;
+}
+
+.author-profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.author-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e3eafc;
+    margin-bottom: 18px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.author-profile-card h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 8px;
+}
+
+.author-bio {
+    font-size: 1.08rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 0;
+    max-width: 500px;
+}
+
+.author-posts-section {
+    margin-top: 18px;
+}
+
+.author-posts-section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 18px;
+}
+
+.author-posts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.author-posts-list li {
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.2s;
+}
+
+.author-posts-list li:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+
+.author-posts-list a {
+    color: #007bff;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 1.08rem;
+    transition: color 0.2s;
+}
+
+.author-posts-list a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.post-date {
+    font-size: 0.97rem;
+    color: #888;
+    margin-left: 18px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .author-profile-container {
+        padding: 12px 4px;
+    }
+    .author-profile-card h2 {
+        font-size: 1.3rem;
+    }
+    .author-avatar {
+        width: 70px;
+        height: 70px;
+    }
+    .author-posts-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 8px;
+    }
+    .post-date {
+        margin-left: 0;
+        margin-top: 6px;
+    }
+}   
