@@ -1,12 +1,6 @@
-<head>
-    <link rel="stylesheet" href="/Style/sidebar.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
 <div class="mainSidebarContent">
-    <div class="settingsIcon">
-        <i class="fa-solid fa-gear"></i>    
-    </div>
-    <div id="sidebar">
+    
+    <ul id="sidebar">
         <li class="item-group">
             <a href="/dashboard">Dashboard</a>
         </li>
@@ -26,14 +20,14 @@
             <a href="/dashboard/edit-profile">Edit Profile</a>
         </li>
         <li class="item-group">
-            <a href="/dashboard/change-password">Chenge Password</a>
+            <a href="/dashboard/change-password">Change Password</a>
         </li>
         <li class="item-group">
             <a href="/auth/logout">Logout</a>
         </li>
-    </div>  
+    </ul>  
 </div>
-
+<!-- 
 <script>
     document.addEventListener('DOMContentLoaded',()=>{
         let settingsIcon = document.querySelector('.settingsIcon');
@@ -49,8 +43,6 @@
                 settingsIcon_Gear.classList.remove('fa-xmark');
                 settingsIcon_Gear.classList.add('fa-gear');
             }
-            
         }
     })
-
-</script>
+</script> -->
