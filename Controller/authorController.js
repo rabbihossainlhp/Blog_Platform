@@ -14,6 +14,7 @@ exports.authorGetController  =  async (req,res,next)=>{
             author,
             posts,
             profile,
+            currentPage: 'author',
             
         })
     

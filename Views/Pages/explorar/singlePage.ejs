@@ -11,7 +11,7 @@
     <div class="singlePostContainer">
         <div class="postHeader">
             <p class="postMeta">
-                Posted by <strong><%= post.author.username %></strong> on <%= postDate %>
+                Posted by <strong><a href="/author/<%= post.author._id%>"><%= post.author.username %></a></strong> on <%= postDate %>
             </p>
             <h1><%= post.title %></h1>
         </div>

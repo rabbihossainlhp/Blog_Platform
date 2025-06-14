@@ -119,6 +119,10 @@ body {
     margin-top: 10px;
 }
 
+.timeShowing a {
+    display:  inline-block;
+}
+
 /* Bookmarks Icon */
 .bookmarks-icon {
     position: absolute;

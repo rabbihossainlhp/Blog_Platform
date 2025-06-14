@@ -35,7 +35,7 @@
                         <div class="timeShowing">
                             <small>
                                 <%= moment(post.createdAt) %>,
-                                Posted by <%= post.author.username %>,
+                                Posted by <a href="/author/<%= post.author._id%>"><%= post.author.username %>,</a>
                                 <%= post.readTime %>
                             </small>
                             <% if(user) {%>
