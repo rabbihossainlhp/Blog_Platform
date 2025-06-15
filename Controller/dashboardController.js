@@ -18,6 +18,8 @@ exports.dashboardGetController = async  (req,res,next)=>{
 };
 
 
+
+
 exports.createProfileGetController = async(req,res,next)=>{
     try{
         let profile = await Profile.findOne({user:req.user._id});
@@ -29,7 +31,6 @@ exports.createProfileGetController = async(req,res,next)=>{
         next(e);
     }
 }
-
 
 
 exports.createProfilePostController = async (req,res,next)=>{    
@@ -83,7 +84,6 @@ exports.createProfilePostController = async (req,res,next)=>{
     
 
 }
-
 
 
 
@@ -152,6 +152,31 @@ exports.editProfilePostController = async(req,res,next)=>{
             {new:true}
         );
         res.redirect('/dashboard');
+    }catch(e){
+        next(e);
+    }
+}
+
+
+exports.getBookmarksController = async (req,res,next)=>{
+
+    try{
+        let profile = await Profile.findOne({user:req.user._id})
+                    .populate({
+                        path:'bookmarks',
+                        model:'Post',
+                        select:'title thumbnail author ',
+                        populate:{
+                            path:'author',
+                            select:'username'
+                        }
+                    });
+
+        
+        res.render('Pages/dashboard/bookmarks',{
+            profile:profile,
+            currentPage:'Bookmarks',
+        })
     }catch(e){
         next(e);
     }

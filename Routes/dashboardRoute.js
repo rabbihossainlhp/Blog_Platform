@@ -6,14 +6,14 @@ const {
     createProfileGetController,
     createProfilePostController,
     editProfileGetController,
-    editProfilePostController
+    editProfilePostController,
+    getBookmarksController
 } = require("../Controller/dashboardController");
 
 const profileValidation = require('../Vallidator/dashboard/dashboardValidator');
 
-router.get("/",isAuthenticated,dashboardGetController);
 
-
+router.get("/bookmarks", isAuthenticated, getBookmarksController);
 
 router.get("/create-profile", isAuthenticated, createProfileGetController);
 router.post("/create-profile", profileValidation, isAuthenticated,  createProfilePostController);
@@ -23,6 +23,7 @@ router.get("/edit-profile", isAuthenticated, editProfileGetController);
 router.post("/edit-profile", profileValidation, isAuthenticated, editProfilePostController);
 
 
+router.get("/",isAuthenticated,dashboardGetController);
 
 
 //exporting...

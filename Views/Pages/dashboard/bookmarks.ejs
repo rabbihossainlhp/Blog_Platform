@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarks</title>
+    <link rel="stylesheet" href="/Style/dashboard.css">
+    <link rel="stylesheet" href="/Style/sidebar.css">
+    <link rel="stylesheet" href="/Style/posts.css">
+</head>
+<body>
+    <%- include('../../Partials/header.ejs') %>
+    <div class="dashboard-container">
+        <aside class="dashboard-sidebar">
+            <%- include('../../Partials/sidebar.ejs') %>
+        </aside>
+        <main class="dashboard-main-content">
+            <div class="post-container">
+                <h1>Your Bookmarks</h1>
+                <% if (profile && profile.bookmarks && profile.bookmarks.length > 0) { %>
+                    <div class="post-grid">
+                        <% profile.bookmarks.forEach(function(post) { %>
+                            <div class="post-card">
+                                <% if (post.thumbnail) { %>
+                                    <img src="/Public/<%= post.thumbnail %>" alt="Post Thumbnail">
+                                <% } %>
+                                <div class="post-content">
+                                    <h2>
+                                        <a href="/explorar/<%= post._id %>"><%= post.title %></a>
+                                    </h2>
+                                    <p>
+                                        <small>
+                                            By <%= post.author && post.author.username ? post.author.username : 'Unknown' %>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } else { %>
+                    <p>You have no bookmarks yet.</p>
+                <% } %>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
