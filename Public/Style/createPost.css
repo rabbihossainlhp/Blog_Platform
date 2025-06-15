@@ -1,4 +1,4 @@
-html,body {
+html, body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f7f9;
     margin: 0;
@@ -7,51 +7,37 @@ html,body {
     overflow-y: auto;
 }
 
-.form-group img{
+.form-group img {
     max-width: 100%;
     max-height: 200px;
     object-fit: cover;
-    border:1px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 5px;
     margin-top: 10px;
 }
 
 .container {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 80vh;
-    width: 100%;
-    overflow: hidden;
-    position:relative;
+    background: none;
+    /* Remove position: relative; */
+    /* No left margin or padding needed, dashboard layout handles sidebar */
 }
 
 .containerBox {
-    background: white;
-    padding: 25px;
+    background: #fff;
+    padding: 25px 32px;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     text-align: center;
-    width: 100vh;
+    max-width: 650px;
+    width: 100%;
+    margin: 40px 0;
     transition: 0.3s ease-in-out;
-    
 }
-
-/* .sub-container-1{
-    flex:0 0 250px;
-}
-.sub-container-2{
-    flex:1;
-    padding:20px;
-} */
-
-
-.sub-container-1 {
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
 
 .containerBox:hover {
     transform: translateY(-3px);
@@ -104,7 +90,6 @@ input[type="file"] {
 textarea {
     height: 120px;
     resize: none;
-    
 }
 
 .btn.submit {
@@ -118,13 +103,15 @@ textarea {
     cursor: pointer;
     transition: 0.3s ease;
 }
-.two_btn{
+
+.two_btn {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    gap: 16px;
 }
 
-.two_btn a{
+.two_btn a {
     text-decoration: none;
     background: #ff002b;
     color: white;
@@ -134,35 +121,38 @@ textarea {
     border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.3s ease;  
+    transition: 0.3s ease;
+    text-align: center;
 }
 
 .btn.submit:hover {
     background: #0056b3;
 }
 
-/* @media(max-width:768px){
-    .container{
+@media (max-width: 900px) {
+    .containerBox {
+        max-width: 98vw;
+        padding: 18px 6px;
+    }
+    .form-group {
         flex-direction: column;
         align-items: stretch;
     }
-    .sub-container-1{
-        flex:none;
+    label, input, textarea {
         width: 100%;
-        margin-bottom: 20px;
-    }
-    .sub-container-2{
-        flex:none;
-        width: 100%;
-    }
-} */
-
-@media (max-width: 480px) {
-    .containerBox {
-        width: 90%;
-        padding: 20px;
-    }
-    label {
         padding-left: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .containerBox {
+        margin: 20px 0;
+    }
+    .two_btn {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .btn.submit, .two_btn a {
+        width: 100%;
     }
 }
