@@ -6,7 +6,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="/Style/dashboard.css">
     <link rel="stylesheet" href="/Style/sidebar.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <%- include('../../Partials/header.ejs') %>
@@ -14,10 +14,83 @@
         <aside class="dashboard-sidebar">
             <%- include('../../Partials/sidebar.ejs') %>
         </aside>
-        <main class="dashboard-main-content">
-            <!-- Dashboard content goes here -->
+        <main class="dashboard-main-content attractive-dashboard">
+            <div class="dashboard-welcome-card">
+                <div class="welcome-icon">
+                    <img src="/Public/<%= user.profilePics%>" alt="">
+                </div>
+                <div>
+                    <h1>Welcome, <%= user.username %>!</h1>
+                    <p>Here’s a quick overview of your activity.</p>
+                </div>
+            </div>
+            <div class="dashboard-stats-row">
+                <div class="dashboard-stat-card">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <div>
+                        <h2><%= posts.length %></h2>
+                        <span>Posts</span>
+                    </div>
+                </div>
+                <div class="dashboard-stat-card">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <div>
+                        <h2><%= bookmarks.length %></h2>
+                        <span>Bookmarks</span>
+                    </div>
+                </div>
+                <div class="dashboard-stat-card">
+                    <i class="fa-solid fa-comments"></i>
+                    <div>
+                        <h2><%= commentsCount %></h2>
+                        <span>Comments</span>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-section attractive-section">
+                <h2><i class="fa-solid fa-clock-rotate-left"></i> Recent Posts</h2>
+                <% if (posts && posts.length > 0) { %>
+                    <div class="post-grid">
+                        <% posts.slice(0, 5).forEach(function(post) { %>
+                            <div class="post-card">
+                                <% if (post.thumbnail) { %>
+                                    <img src="/Public/<%= post.thumbnail %>" alt="Post Thumbnail">
+                                <% } %>
+                                <div class="post-content">
+                                    <h3>
+                                        <a href="/explorar/<%= post._id %>"><%= post.title %></a>
+                                    </h3>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } else { %>
+                    <p class="empty-msg">You have not created any posts yet.</p>
+                <% } %>
+            </div>
+            <div class="dashboard-section attractive-section">
+                <h2><i class="fa-solid fa-star"></i> Recent Bookmarks</h2>
+                <% if (bookmarks && bookmarks.length > 0) { %>
+                    <div class="post-grid">
+                        <% bookmarks.slice(0, 4).forEach(function(post) { %>
+                            <div class="post-card">
+                                <% if (post.thumbnail) { %>
+                                    <img src="/Public/<%= post.thumbnail %>" alt="Post Thumbnail">
+                                <% } %>
+                                <div class="post-content">
+                                    <h3>
+                                        <a href="/explorar/<%= post._id %>"><%= post.title %></a>
+                                    </h3>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } else { %>
+                    <p class="empty-msg">You have no bookmarks yet.</p>
+                <% } %>
+            </div>
         </main>
     </div>
     <!-- <%- include('../../Partials/footer.ejs') %> -->
-</body>     
+</body>
 </html>

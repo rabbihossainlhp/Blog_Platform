@@ -1,5 +1,4 @@
 //dependencies..
-const { render } = require('ejs');
 const Post = require('../Models/Post');
 
 exports.searchResultGetController = async (req,res,next)=>{
@@ -36,6 +35,7 @@ exports.searchResultGetController = async (req,res,next)=>{
             user:req.user || null,
             bookmarks: req.user ? req.user.bookmarks || [] : []
         })
+    
     }catch(e){
         next(e);
     }

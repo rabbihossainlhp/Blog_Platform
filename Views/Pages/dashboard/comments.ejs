@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments</title>
+    <link rel="stylesheet" href="/Style/dashboard.css">
+    <link rel="stylesheet" href="/Style/sidebar.css">
+    <link rel="stylesheet" href="/Style/posts.css">
+    <link rel="stylesheet" href="/Style/comments.css">
+    
+</head>
+<body>
+    <%- include('../../Partials/header.ejs') %>
+    <div class="dashboard-container">
+        <aside class="dashboard-sidebar">
+            <%- include('../../Partials/sidebar.ejs') %>
+        </aside>
+        <main class="dashboard-main-content">
+            <div class="dashboard-comments-container">
+                <h1>Your Posts' Comments</h1>
+                <% if (comments && comments.length > 0) { %>
+                    <% comments.forEach(function(comment) { %>
+                        <div class="comment-card">
+                            <img class="comment-user-pic" src="/Public/<%= comment.user && comment.user.profilePics ? comment.user.profilePics : 'default.png' %>" alt="User">
+                            <div class="comment-content-block">
+                                <div class="comment-header">
+                                    On post: <strong><%= comment.post ? comment.post.title : 'Unknown Post' %></strong>
+                                </div>
+                                <div class="comment-body">
+                                    <%= comment.body %>
+                                </div>
+                                <div class="comment-user">
+                                    By: <%= comment.user ? comment.user.username : 'Unknown User' %>
+                                </div>
+                                <% if (comment.replies && comment.replies.length > 0) { %>
+                                    <div class="comment-replies">
+                                        <strong>Replies:</strong>
+                                        <% comment.replies.forEach(function(reply) { %>
+                                            <div class="reply-card">
+                                                <img class="reply-user-pic" src="/Public/<%= reply.user && reply.user.profilePics ? reply.user.profilePics : 'default.png' %>" alt="User">
+                                                <div class="reply-content-block">
+                                                    <span class="reply-user">
+                                                        <%= reply.user ? reply.user.username : 'Unknown User' %>:
+                                                    </span>
+                                                    <span><%= reply.body %></span>
+                                                </div>
+                                            </div>
+                                        <% }) %>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p>You have no comments on your posts yet.</p>
+                <% } %>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

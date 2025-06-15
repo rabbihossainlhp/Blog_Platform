@@ -1,9 +1,9 @@
 .dashboard-container {
     display: flex;
-    background: #f5f7fa;
+    background: linear-gradient(135deg, #f8fafc 0%, #e3eafc 100%);
     min-height: 100vh;
     align-items: stretch;
-    width:100%
+    width: 100%;
 }
 
 .dashboard-sidebar {
@@ -22,18 +22,195 @@
     min-width: 0;
 }
 
+.attractive-dashboard {
+    background: none;
+    padding-bottom: 40px;
+    padding-top: 5%;
+}
+
+.dashboard-welcome-card {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 32px 28px;
+    margin-bottom: 32px;
+    gap: 24px;
+}
+
+.welcome-icon {
+    font-size: 3rem;
+    color: #007bff;
+    background: #e3eafc;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.welcome-icon img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dashboard-welcome-card h1 {
+    margin: 0 0 8px 0;
+    font-size: 2rem;
+    color: #222;
+}
+
+.dashboard-welcome-card p {
+    margin: 0;
+    color: #555;
+    font-size: 1.08rem;
+}
+
+.dashboard-stats-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+}
+
+.dashboard-stat-card {
+    flex: 1 1 180px;
+    background: linear-gradient(135deg, #e3eafc 0%, #fff 100%);
+    border-radius: 12px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 18px;
+    font-size: 1.6rem;
+    color: #007bff;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.dashboard-stat-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+    transform: translateY(-3px) scale(1.03);
+    background: linear-gradient(135deg, #d0e2ff 0%, #fff 100%);
+}
+
+.dashboard-stat-card h2 {
+    margin: 0;
+    font-size: 2rem;
+    color: #222;
+}
+
+.dashboard-stat-card span {
+    font-size: 1.01rem;
+    color: #555;
+}
+
+.dashboard-section {
+    margin-top: 36px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    padding: 24px 18px 18px 18px;
+}
+
+.dashboard-section h2 {
+    font-size: 1.2rem;
+    color: #007bff;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.post-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.post-card {
+    background: #f8fafc;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    width: 210px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+    transform: translateY(-3px) scale(1.03);
+}
+
+.post-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-bottom: 1px solid #e3eafc;
+}
+
+.post-content {
+    padding: 14px 12px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.post-content h3 {
+    margin: 0;
+    font-size: 1.08rem;
+    color: #222;
+    font-weight: 600;
+}
+
+.post-content a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.post-content a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.empty-msg {
+    color: #888;
+    font-size: 1.05rem;
+    margin: 18px 0 0 0;
+}
+
 @media (max-width: 900px) {
-    .dashboard-sidebar {
-        width: 70px;
-        min-width: 70px;
-        padding: 0;
+    .dashboard-stats-row {
+        flex-direction: column;
+        gap: 16px;
     }
-    .dashboard-main-content {
-        padding: 24px 6px;
+    .post-grid {
+        gap: 12px;
+    }
+    .post-card {
+        width: 100%;
+        min-width: 0;
     }
 }
 
 @media (max-width: 600px) {
+    .dashboard-welcome-card {
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px 8px;
+    }
+    .dashboard-main-content {
+        padding: 18px 4px;
+    }
+    .dashboard-section {
+        padding: 12px 4px;
+    }
     .dashboard-container {
         flex-direction: column;
     }

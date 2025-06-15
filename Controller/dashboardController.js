@@ -1,15 +1,38 @@
 //some dependencies....
 const Profile = require("../Models/Profile");
+const Comment = require("../Models/Comment");
 const User = require("../Models/User");
 const errorFormatter = require('../Utils/validationErrFormatter');
 const {validationResult} = require('express-validator');
 //controller of dashboard
 
 exports.dashboardGetController = async  (req,res,next)=>{
-    let profile = await Profile.findOne({user:req.user._id});
+    
     try{
+        let profile = await Profile.findOne({user:req.user._id})
+            .populate({
+                path:"posts",
+                select:'title thumbnail'
+            })
+            .populate({
+                path:"bookmarks",
+                select:'title thumbnail'
+            })
+
+        let commentsCount = 0;
+        if(profile && profile.posts && profile.posts.length > 0){
+            const postId = profile.posts.map(post => post._id);
+            commentsCount = await Comment.countDocuments({post:{$in:postId}});
+        }
+
         if(profile){
-            return res.render("Pages/dashboard/dashboard",{currentPage:"Dashboard"});
+            return res.render("Pages/dashboard/dashboard",{
+                title:"Dashboard",
+                currentPage:"Dashboard",
+                posts:profile.posts,
+                bookmarks:profile.bookmarks,
+                commentsCount
+            });
         }
         res.redirect("/dashboard/create-profile");
     }catch(e){
@@ -158,6 +181,9 @@ exports.editProfilePostController = async(req,res,next)=>{
 }
 
 
+
+
+
 exports.getBookmarksController = async (req,res,next)=>{
 
     try{
@@ -177,6 +203,32 @@ exports.getBookmarksController = async (req,res,next)=>{
             profile:profile,
             currentPage:'Bookmarks',
         })
+    }catch(e){
+        next(e);
+    }
+}
+
+exports.getCommentsController = async (req,res,next)=>{
+    try{
+        let profile = await Profile.findOne({user:req.user._id});
+        let comments = await Comment.find({post:{$in:profile.posts}})
+            .populate({
+                path:'post',select:'title'
+            })
+            .populate({
+                path:'user', select:'username profilePics'
+            })
+            .populate({
+                path:'replies.user',select:'username profilePics'
+            })
+
+            let commentsCount = comments.count();
+
+            res.render('Pages/dashboard/comments',{
+                comments,
+                currentPage:'Comments',
+                commentsCount
+            }); 
     }catch(e){
         next(e);
     }

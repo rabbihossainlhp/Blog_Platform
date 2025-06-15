@@ -7,34 +7,36 @@
     <link rel="stylesheet" href="/Style/posts.css">
     <link rel="stylesheet" href="/Style/sidebar.css">
     <link rel="stylesheet" href="/Style/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <%- include('../../../Partials/header.ejs') %>
-    
     <div class="dashboard-container">
         <aside class="dashboard-sidebar">
             <%- include('../../../Partials/sidebar.ejs') %>
         </aside>
         <main class="dashboard-main-content">
             <div class="post-container">
-                <h1>All Posts</h1>
+                <h1><i class="fa-solid fa-file-lines"></i> All Posts</h1>
                 <div class="post-grid">
                     <% if (posts && posts.length > 0) { %>
                         <% posts.forEach(post => { %>
                             <div class="post-card">
-                                <img src="/Public/<%= post.thumbnail || 'Public/Uploads/default-image.png' %>" alt="Post Thumbnail">
+                                <img src="/Public/<%= post.thumbnail || 'Uploads/default-image.png' %>" alt="Post Thumbnail">
                                 <div class="post-content">
                                     <h2><%= post.title %></h2>
                                     <p><%= post.body.substring(0, 100) %>...</p>
                                     <div class="post-tags">
                                         <% if (post.tags && post.tags.length > 0) { %>
                                             <% post.tags.forEach(tag => { %>
-                                                <span class="post-tag"><%= tag %></span>
+                                                <span class="post-tag"><i class="fa-solid fa-hashtag"></i> <%= tag %></span>
                                             <% }) %>
                                         <% } %>
                                     </div>
-                                    <a href="/post/edit/<%= post._id %>" class="post-btn post-edit-btn">Edit</a>
-                                    <a href="/post/delete/<%= post._id %>" class="post-btn post-delete-btn">Delete</a>
+                                    <div class="post-actions">
+                                        <a href="/post/edit/<%= post._id %>" class="post-btn post-edit-btn"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                        <a href="/post/delete/<%= post._id %>" class="post-btn post-delete-btn"><i class="fa-solid fa-trash"></i> Delete</a>
+                                    </div>
                                 </div>
                             </div>
                         <% }) %>
@@ -45,9 +47,5 @@
             </div>
         </main>
     </div>
-
-
-    
-
 </body>
 </html>

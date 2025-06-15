@@ -1,0 +1,76 @@
+        .comment-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 22px;
+            padding: 22px 28px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+        .comment-user-pic {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e3eafc;
+            background: #f7fafd;
+        }
+        .comment-content-block {
+            flex: 1;
+        }
+        .comment-header {
+            font-size: 1.08rem;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .comment-body {
+            font-size: 1.13rem;
+            margin-bottom: 8px;
+            color: #222;
+        }
+        .comment-user {
+            font-size: 0.99rem;
+            color: #888;
+            margin-bottom: 6px;
+        }
+        .comment-replies {
+            margin-top: 14px;
+            padding-left: 24px;
+            border-left: 2px solid #e3eafc;
+        }
+        .reply-card {
+            background: #f7fafd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            padding: 10px 14px;
+            font-size: 0.98rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .reply-user-pic {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid #e3eafc;
+            background: #fff;
+        }
+        .reply-content-block {
+            flex: 1;
+        }
+        .reply-user {
+            color: #007bff;
+            font-size: 0.97rem;
+            font-weight: 500;
+        }
+        @media (max-width: 600px) {
+            .comment-card {
+                flex-direction: column;
+                padding: 14px 8px;
+            }
+            .comment-user-pic {
+                margin-bottom: 8px;
+            }
+        }

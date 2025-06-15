@@ -3,58 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit-Post</title>
+    <title>Edit Post</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">   
     <link rel="stylesheet" href="/Style/login.css"> 
-    <link rel="stylesheet" href="/Style/createPost.css">
+    <link rel="stylesheet" href="/Style/sidebar.css">
+    <link rel="stylesheet" href="/Style/dashboard.css">
+    <link rel="stylesheet" href="/Style/editPost.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    
     <%- include('../../../Partials/header.ejs') %>
-    <!-- write more about create profile page -->
-    
-    <div class="container">
-        <div class="sub-container-2">
-            <div class="containerBox">
-                <h2>Edit Your  Post</h2>
-        
-                <form action="/post/edit/<%= post._id %>" id="createPostForm" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="title">Post Title</label>
-                        <input type="text" name="title" id="title" placeholder="Enter Title" value="<% post.title %>" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="tags">Tags</label>
-                        <input type="text" name="tags" id="tags" placeholder="add tags (e.g tag1, tag2, tag3)" value="<%= post.tags.length > 0 ? post.tags.join(", ") : " " %>" required>
-                    </div>
-        
-                    <div class="form-group" >
-                        <label for="image">Image</label>
-                        <input type="file" name="image" id="image" accept="image/*"  >
-                    </div>
-
-                    <div class="form-group">
-                        <label > Post's Image </label>
-                        <img src="/Public/<%= post.thumbnail %>" alt="post image">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea name="description" id="description" placeholder="Enter Description" required></textarea>
-                    </div>
-                    
-                    <div class="two_btn">
-                        <button type="submit" class="btn submit">Update Post</button>
-                        <a href="/post/delete/<%= post._id %>">Remove Post</a>
-                    </div>
-                    
-                </form>
+    <div class="dashboard-container">
+        <aside class="dashboard-sidebar">
+            <%- include('../../../Partials/sidebar.ejs') %>
+        </aside>
+        <main class="dashboard-main-content">
+            <div class="edit-post-container">
+                <div class="edit-post-card">
+                    <h2><i class="fa-solid fa-pen-nib"></i> Edit Your Post</h2>
+                    <form action="/post/edit/<%= post._id %>" id="editPostForm" method="POST" enctype="multipart/form-data">
+                        <div class="edit-form-group">
+                            <label for="title"><i class="fa-solid fa-heading"></i> Post Title</label>
+                            <input type="text" name="title" id="title" placeholder="Enter Title" value="<%= post.title %>" required>
+                        </div>
+                        <div class="edit-form-group">
+                            <label for="tags"><i class="fa-solid fa-tags"></i> Tags</label>
+                            <input type="text" name="tags" id="tags" placeholder="e.g. tag1, tag2, tag3" value="<%= post.tags.length > 0 ? post.tags.join(', ') : '' %>" required>
+                        </div>
+                        <div class="edit-form-group">
+                            <label for="image"><i class="fa-solid fa-image"></i> Image</label>
+                            <input type="file" name="image" id="image" accept="image/*">
+                        </div>
+                        <div class="edit-form-group">
+                            <label>Current Image</label>
+                            <img src="/Public/<%= post.thumbnail %>" alt="post image">
+                        </div>
+                        <div class="edit-form-group">
+                            <label for="description"><i class="fa-solid fa-align-left"></i> Description</label>
+                            <textarea name="description" id="description" placeholder="Enter Description" required><%= post.description %></textarea>
+                        </div>
+                        <div class="edit-btn-row">
+                            <button type="submit" class="edit-submit-btn"><i class="fa-solid fa-floppy-disk"></i> Update Post</button>
+                            <a href="/post/delete/<%= post._id %>" class="edit-delete-btn"><i class="fa-solid fa-trash"></i> Remove Post</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+        </main>
     </div>
-        
-    <!-- <%- include('../../../Partials/footer.ejs') %> -->
-
 </body>
-</html>     
+</html>

@@ -6,9 +6,9 @@
     <title>Create Post</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">   
     <link rel="stylesheet" href="/Style/login.css"> 
-    <link rel="stylesheet" href="/Style/createPost.css">
     <link rel="stylesheet" href="/Style/sidebar.css">
     <link rel="stylesheet" href="/Style/dashboard.css">
+    <link rel="stylesheet" href="/Style/createPost.css">
 </head>
 <body>
     <%- include('../../../Partials/header.ejs') %>
@@ -18,28 +18,28 @@
             <%- include('../../../Partials/sidebar.ejs') %>
         </aside>
         <main class="dashboard-main-content">
-            <div class="container">
-                <div class="containerBox">
-                    <h2>Create New Post</h2>
+            <div class="modern-create-container">
+                <div class="modern-create-card">
+                    <h2><i class="fa-solid fa-pen-nib"></i> Create New Post</h2>
                     <form action="/post/create" id="createPostForm" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="title">Post Title</label>
+                        <div class="modern-form-group">
+                            <label for="title"><i class="fa-solid fa-heading"></i> Post Title</label>
                             <input type="text" name="title" id="title" placeholder="Enter Title" required>
                         </div>
-                        <div class="form-group">
-                            <label for="tags">Tags</label>
-                            <input type="text" name="tags" id="tags" placeholder="add tags (e.g tag1, tag2, tag3)" required>
+                        <div class="modern-form-group">
+                            <label for="tags"><i class="fa-solid fa-tags"></i> Tags</label>
+                            <input type="text" name="tags" id="tags" placeholder="e.g. tag1, tag2, tag3" required>
                         </div>
-                        <div class="form-group">
-                            <label for="image">Image</label>
+                        <div class="modern-form-group">
+                            <label for="image"><i class="fa-solid fa-image"></i> Image</label>
                             <input type="file" name="image" id="image" accept="image/*">
                         </div>
-                        <div class="form-group">
-                            <label for="description">Description</label>
+                        <div class="modern-form-group">
+                            <label for="description"><i class="fa-solid fa-align-left"></i> Description</label>
                             <textarea name="description" id="description" placeholder="Enter Description" required></textarea>
                         </div>
-                        <div class="two_btn">
-                            <button type="submit" class="btn submit">Create Post</button>
+                        <div class="modern-btn-row">
+                            <button type="submit" class="modern-submit-btn"><i class="fa-solid fa-paper-plane"></i> Create Post</button>
                         </div>
                     </form>
                 </div>

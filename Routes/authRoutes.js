@@ -8,7 +8,9 @@ const {
     signupPostController,
     loginGetController,
     loginPostController,
-    logoutController
+    logoutController,
+    changePasswordGetController,
+    changePasswordPostController
 } = require("../Controller/authController");
 
 //import signupValidation/loginValidation...{extract }
@@ -16,7 +18,7 @@ const signupValidation = require("../Vallidator/auth/signupValidation");
 const loginValidation = require("../Vallidator/auth/loginValidation");
 
 //impoort the authMiddleware...
-const {unAuthenticated} = require("../Middlewares/authMiddleware");
+const {unAuthenticated, isAuthenticated} = require("../Middlewares/authMiddleware");
 
 //signup_route...
 router.get("/signup", unAuthenticated, signupGetController);
@@ -30,5 +32,9 @@ router.post("/login" ,loginValidation, loginPostController);
 router.get("/logout",logoutController);
 
 
+router.get('/change-password', isAuthenticated, changePasswordGetController);
+router.post('/change-password', isAuthenticated, changePasswordPostController);
+
+    
 //export the router...
 module.exports = router;

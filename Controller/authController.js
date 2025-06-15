@@ -107,3 +107,77 @@ exports.logoutController = (req,res,next)=>{
         res.render("Pages/auth/login",{currentPage:"Login",errors:{},value:{}});
         });
 }
+
+
+
+
+//change-password-route_controll
+exports.changePasswordGetController = (req,res,next)=>{
+    res.render('Pages/auth/changePassword',{
+        title:"Change Password",
+        currentPage:"Change Password",
+        errors:{},
+        value:{
+            oldPassword:"",
+            newPassword:"",
+            confirmNewPassword:""
+        }
+    });
+}
+
+
+
+exports.changePasswordPostController = async (req,res,next)=>{
+    let {oldPassword,newPassword,confirmNewPassword} = req.body;
+
+
+    if(newPassword !== confirmNewPassword){
+        return res.render('Pages/auth/changePassword',{
+            title:"Change Password",
+            currentPage:"Change Password",
+            errors:{confirmNewPassword:{msg:"New password and confirm password do not match"}},
+            value:{oldPassword,newPassword,confirmNewPassword},
+        });
+    }
+
+    try{
+        let errors = validationResult(req).formatWith(errorFormatter);
+        if(!errors.isEmpty()){
+            return res.render('Pages/auth/changePassword',{
+                title:"Change Password",
+                currentPage:"Change Password",
+                errors:errors.mapped(),
+                value:{oldPassword,newPassword,confirmNewPassword},
+            });
+        }
+
+        let match = await bcrypt.compare(oldPassword, req.user.password);
+        if(!match){
+            return res.render('Pages/auth/changePassword',{
+                title:"Change Password",
+                currentPage:"Change Password",
+                errors:{oldPassword:{msg:"Old password is incorrect"}},
+                value:{oldPassword,newPassword,confirmNewPassword},
+            });
+        }
+
+        let hashPass = await bcrypt.hash(newPassword, 15);
+        await user.findOneAndUpdate(
+            {_id:req.user._id},
+            {$set:{password:hashPass}},
+            {new:true}
+        )
+        return res.render('Pages/auth/changePassword',{
+            title:"Change Password",
+            currentPage:"Change Password",
+            errors:{},
+            value:{oldPassword:"",newPassword:"",confirmNewPassword:""},
+            success:"Password changed successfully"
+        })
+    }catch(e){
+        next(e);
+    }
+
+    
+
+}

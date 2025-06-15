@@ -1,48 +1,29 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <div class="mainSidebarContent">
-    
     <ul id="sidebar">
         <li class="item-group">
-            <a href="/dashboard">Dashboard</a>
+            <a href="/dashboard"><i class="fa-solid fa-gauge"></i> Dashboard</a>
         </li>
         <li class="item-group">
-            <a href="/post">My Post</a>
+            <a href="/post"><i class="fa-solid fa-file-lines"></i> My Post</a>
         </li>
         <li class="item-group">
-            <a href="/post/create">New Post</a>
+            <a href="/post/create"><i class="fa-solid fa-plus"></i> New Post</a>
         </li>
         <li class="item-group">
-            <a href="/dashboard/bookmarks">Bookmarks</a>
+            <a href="/dashboard/bookmarks"><i class="fa-solid fa-bookmark"></i> Bookmarks</a>
         </li>
         <li class="item-group">
-            <a href="/dashboard/commnets">Comments</a>
+            <a href="/dashboard/comments"><i class="fa-solid fa-comments"></i> Comments</a>
         </li>
         <li class="item-group">
-            <a href="/dashboard/edit-profile">Edit Profile</a>
+            <a href="/dashboard/edit-profile"><i class="fa-solid fa-user-pen"></i> Edit Profile</a>
         </li>
         <li class="item-group">
-            <a href="/dashboard/change-password">Change Password</a>
+            <a href="/auth/change-password"><i class="fa-solid fa-key"></i> Change Password</a>
         </li>
         <li class="item-group">
-            <a href="/auth/logout">Logout</a>
+            <a href="/auth/logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </li>
     </ul>  
 </div>
-<!-- 
-<script>
-    document.addEventListener('DOMContentLoaded',()=>{
-        let settingsIcon = document.querySelector('.settingsIcon');
-        let sidebar = document.querySelector('#sidebar');
-        let settingsIcon_Gear = document.querySelector('.settingsIcon i');
-
-        settingsIcon.onclick = ()=>{
-            sidebar.classList.toggle('toggled');
-            if(settingsIcon_Gear.classList.contains('fa-gear')){
-                settingsIcon_Gear.classList.remove('fa-gear');
-                settingsIcon_Gear.classList.add('fa-xmark');
-            }else{
-                settingsIcon_Gear.classList.remove('fa-xmark');
-                settingsIcon_Gear.classList.add('fa-gear');
-            }
-        }
-    })
-</script> -->

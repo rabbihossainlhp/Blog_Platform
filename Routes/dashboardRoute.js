@@ -7,13 +7,15 @@ const {
     createProfilePostController,
     editProfileGetController,
     editProfilePostController,
-    getBookmarksController
+    getBookmarksController,
+    getCommentsController,
 } = require("../Controller/dashboardController");
 
 const profileValidation = require('../Vallidator/dashboard/dashboardValidator');
 
 
 router.get("/bookmarks", isAuthenticated, getBookmarksController);
+router.get("/comments", isAuthenticated, getCommentsController);
 
 router.get("/create-profile", isAuthenticated, createProfileGetController);
 router.post("/create-profile", profileValidation, isAuthenticated,  createProfilePostController);
