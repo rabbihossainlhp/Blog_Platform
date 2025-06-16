@@ -91,10 +91,14 @@
         padding: 18px 6px 14px 6px;
         max-width: 98vw;
     }
-    .modern-form-group input [type="text"]{
+    .modern-form-group textarea{
         width: 90%;
     }
     .modern-form-group{
         padding: 0 5px;
     }
+    .modern-form-group input[type="text"],
+    .modern-form-group input[type="file"]{
+        width: 90%;
+    } 
 }

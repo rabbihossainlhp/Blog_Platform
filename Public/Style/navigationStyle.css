@@ -203,7 +203,7 @@ nav ul li a.active {
     }
     .nav-container {
         flex-direction: row;
-        padding: 0 4px;
+        padding: 0 4px 0 3%;
     }
     .hamburger-menu {
         display: block;
@@ -276,7 +276,8 @@ nav ul li a.active {
 
     .search-bar-div{
         padding-bottom: 2%;
-        min-width: 
+        min-width: 63%;
+        justify-content: space-between;
     }
 }
 
@@ -289,7 +290,13 @@ nav ul li a.active {
         border-radius: 0 0 8px 8px;
     }
     .nav-container {
-        padding: 0 2px;
+        /* padding: 0 2px; */
+    }
+    .nav-search-btn{
+        margin-right: 8%;
+    }
+    .nav-search-form{
+        padding: 4px 30%;
     }
 }
 
