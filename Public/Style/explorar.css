@@ -85,6 +85,9 @@
             width: 100%;
             background: #e3eafc;
         }
+        .explorarCardDiv a{
+            text-decoration: none;
+        }
         .explorarCardDiv h5 {
             color: #222;
             font-size: 1.18rem;

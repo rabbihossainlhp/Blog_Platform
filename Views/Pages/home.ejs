@@ -5,56 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exp-Blog | Home</title>
     <link rel="stylesheet" href="/Style/home.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <!-- Include Navigation -->
     <%- include('../Partials/navigation.ejs') %>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1>স্বাগতম Exp-Blog এ</h1>
-            <p>প্রযুক্তি, প্রোগ্রামিং এবং আরও অনেক কিছু থেকে অনুপ্রেরণা এবং ধারণা আবিষ্কার করুন।</p>
-            <a href="auth/signup" class="btn-primary">Get Started</a>
-        </div>
-    </header>
-
-    <!-- Main Section -->
     <main>
-        <!-- Featured Posts Section -->
-        <section class="featured-posts">
-            <h2>বৈশিষ্ট্যযুক্ত পোস্ট</h2>
-            <div class="posts-grid">
-                <div class="post-card">
-                    <h3>জাভাস্ক্রিপ্ট ক্লোজারস বোঝা</h3>
-                    <p>জাভাস্ক্রিপ্টে ক্লোজারসের জাদু শিখুন এবং কীভাবে এটি আপনার কোডকে আরও শক্তিশালী করতে পারে।</p>
-                    <a href="#" class="btn-secondary">আরও পড়ুন</a>
-                </div>
-                <div class="post-card">
-                    <h3>ব্যক্তিগত উন্নতির জন্য ১০টি টিপস</h3>
-                    <p>আপনার মানসিকতা, উৎপাদনশীলতা এবং সামগ্রিক মঙ্গল উন্নত করার জন্য কার্যকর টিপস আবিষ্কার করুন।</p>
-                    <a href="#" class="btn-secondary">আরও পড়ুন</a>
-                </div>
-                <div class="post-card">
-                    <h3>এআই এর ভবিষ্যত অন্বেষণ</h3>
-                    <p>কৃত্রিম বুদ্ধিমত্তা এবং মেশিন লার্নিংয়ের সর্বশেষ প্রবণতা এবং অগ্রগতি সম্পর্কে জানুন।</p>
-                    <a href="#" class="btn-secondary">আরও পড়ুন</a>
-                </div>
-            </div>
-        </section>
+      <!-- Hero Section -->
+      <section class="hero animated-fadeInHero">
+        <div class="hero-content animated-slideDown">
+          <h1>স্বাগতম Exp-Blog-এ</h1>
+          <p>জীবনের প্রতিটি দিক নিয়ে লিখুন, পড়ুন ও শিখুন—স্বাস্থ্য, প্রযুক্তি, শিক্ষা, ভ্রমণ, রান্না, ক্যারিয়ার, সম্পর্ক, ফ্যাশন, আত্মউন্নয়ন ও আরও অনেক কিছু!</p>
+          <a href="/explorar" class="btn-primary">সব পোস্ট ঘুরে দেখুন</a>
+        </div>
+      </section>
 
-        <!-- About Section -->
-        <section class="about">
-            <h2>Exp-Blog সম্পর্কে</h2>
-            <p>
-                Exp-Blog এমন একটি প্ল্যাটফর্ম যেখানে আমরা জ্ঞান, ধারণা এবং অভিজ্ঞতা শেয়ার করি। 
-                প্রযুক্তি এবং প্রোগ্রামিং থেকে ব্যক্তিগত উন্নয়ন এবং জীবনধারা পর্যন্ত, আমরা আমাদের পাঠকদের অনুপ্রাণিত এবং শিক্ষিত করার জন্য বিস্তৃত বিষয় কভার করি।
-            </p>
-            <a href="#" class="btn-primary">আরও জানুন</a>
-        </section>
+      <!-- Daily Life Essentials Section -->
+      <section class="featured-posts">
+        <h2><i class="fa-solid fa-heart"></i> দৈনন্দিন জীবনের প্রয়োজনীয় টিপস</h2>
+        <div class="posts-grid">
+          <div class="post-card animated-fadeInUp" style="animation-delay:0.1s;">
+            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Health">
+            <h3>স্বাস্থ্যকর জীবনযাপন</h3>
+            <p>সুস্থ থাকতে দৈনন্দিন কিছু সহজ অভ্যাস ও খাদ্যাভ্যাসের টিপস।</p>
+            <a href="/explorar/684ff3d4201a0b6d1c68761a" class="btn-secondary">আরও পড়ুন</a>
+          </div>
+          <div class="post-card animated-fadeInUp" style="animation-delay:0.2s;">
+            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Travel">
+            <h3>ভ্রমণ পরিকল্পনা</h3>
+            <p>দেশ-বিদেশে ঘুরতে যাওয়ার আগে জেনে নিন কিছু দরকারি টিপস।</p>
+            <a href="/explorar/684ff54ce397bafedbd86cd4" class="btn-secondary">আরও পড়ুন</a>
+          </div>
+          <div class="post-card animated-fadeInUp" style="animation-delay:0.3s;">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Cooking">
+            <h3>দ্রুত রান্নার রেসিপি</h3>
+            <p>ব্যস্ত জীবনে সহজে রান্না করার জন্য কিছু চটজলদি রেসিপি।</p>
+            <a href="/explorar/684ff5b8e397bafedbd86ce6" class="btn-secondary">আরও পড়ুন</a>
+          </div>
+          <div class="post-card animated-fadeInUp" style="animation-delay:0.4s;">
+            <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80" alt="Career">
+            <h3>ক্যারিয়ার গাইড</h3>
+            <p>চাকরি, ইন্টারভিউ ও ক্যারিয়ার ডেভেলপমেন্টের জন্য প্রয়োজনীয় পরামর্শ।</p>
+            <a href="/explorar/684ff613e397bafedbd86d00" class="btn-secondary">আরও পড়ুন</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Popular Categories Section -->
+      <section class="featured-posts" style="background:#e3eafc;">
+        <h2><i class="fa-solid fa-layer-group"></i> জনপ্রিয় বিভাগসমূহ</h2>
+        <p>comming_soon</p>
+        <div class="posts-grid" style="gap:1.2rem;">
+          <div class="post-card animated-fadeInUp" style="align-items:center;text-align:center;animation-delay:0.1s;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Technology" style="width:60px;height:60px;margin:1rem auto 0;">
+            <h3>প্রযুক্তি</h3>
+            <p>নতুন প্রযুক্তি, সফটওয়্যার, গ্যাজেট ও টিপস।</p>
+          </div>
+          <div class="post-card animated-fadeInUp" style="align-items:center;text-align:center;animation-delay:0.2s;">
+            <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Travel" style="width:60px;height:60px;margin:1rem auto 0;">
+            <h3>ভ্রমণ</h3>
+            <p>দেশ-বিদেশের ভ্রমণ কাহিনি ও টিপস।</p>
+          </div>
+          <div class="post-card animated-fadeInUp" style="align-items:center;text-align:center;animation-delay:0.3s;">
+            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920061.png" alt="Health" style="width:60px;height:60px;margin:1rem auto 0;">
+            <h3>স্বাস্থ্য</h3>
+            <p>স্বাস্থ্য, ফিটনেস ও জীবনধারা বিষয়ক লেখা।</p>
+          </div>
+          <div class="post-card animated-fadeInUp" style="align-items:center;text-align:center;animation-delay:0.4s;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="Education" style="width:60px;height:60px;margin:1rem auto 0;">
+            <h3>শিক্ষা</h3>
+            <p>শিক্ষা, ক্যারিয়ার ও দক্ষতা উন্নয়ন।</p>
+          </div>
+          <div class="post-card animated-fadeInUp" style="align-items:center;text-align:center;animation-delay:0.5s;">
+            <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" alt="Relationship" style="width:60px;height:60px;margin:1rem auto 0;">
+            <h3>সম্পর্ক</h3>
+            <p>পারিবারিক, বন্ধুত্ব ও দাম্পত্য সম্পর্কের টিপস।</p>
+          </div>
+          <div class="post-card animated-fadeInUp" style="align-items:center;text-align:center;animation-delay:0.6s;">
+            <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Self Development" style="width:60px;height:60px;margin:1rem auto 0;">
+            <h3>আত্মউন্নয়ন</h3>
+            <p>ব্যক্তিত্ব, আত্মবিশ্বাস ও মানসিক স্বাস্থ্য নিয়ে লেখা।</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blogging & Writing Section -->
+      <section class="featured-posts">
+        <h2><i class="fa-solid fa-pen-nib"></i> ব্লগিং ও লেখালেখি</h2>
+        <div class="posts-grid">
+          <div class="post-card animated-fadeInUp" style="animation-delay:0.1s;">
+            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Blogging">
+            <h3>ব্লগিং শুরু করার সহজ উপায়</h3>
+            <p>নতুন ব্লগারদের জন্য প্রয়োজনীয় কিছু টিপস ও দিকনির্দেশনা।</p>
+            <a href="/explorar/684ff775e397bafedbd86d6a" class="btn-secondary">আরও পড়ুন</a>
+          </div>
+          <div class="post-card animated-fadeInUp" style="animation-delay:0.2s;">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Writing">
+            <h3>লেখকদের জন্য ১০টি প্রোডাক্টিভিটি টিপস</h3>
+            <p>লেখালেখির গতি বাড়াতে ও সৃজনশীলতা ধরে রাখতে কার্যকর কিছু কৌশল।</p>
+            <a href="/explorar/684ff6ebe397bafedbd86d39" class="btn-secondary">আরও পড়ুন</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action Section -->
+      <section class="hero animated-fadeInHero" style="background: linear-gradient(90deg, #243155 60%, #007bffcc 100%), url('https://images.unsplash.com/photo-1465101178521-c1a9136a3c8b?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat; margin-top:2rem;">
+        <div class="hero-content animated-slideDown">
+          <h2>আপনিও লিখুন!</h2>
+          <p>আপনার গল্প, অভিজ্ঞতা বা জ্ঞান শেয়ার করতে এখনই একটি পোস্ট লিখুন।</p>
+          <a href="/post/create" class="btn-primary">নতুন পোস্ট লিখুন</a>
+        </div>
+      </section>
     </main>
 
-    <!-- Include Footer -->
-    <!-- <%- include('../Partials/footer.ejs') %> -->
-</body>
+    <%- include('../Partials/footer.ejs')%>
+    
+    </body>
 </html>
