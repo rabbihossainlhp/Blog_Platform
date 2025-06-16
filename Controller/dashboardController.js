@@ -222,7 +222,7 @@ exports.getCommentsController = async (req,res,next)=>{
                 path:'replies.user',select:'username profilePics'
             })
 
-            let commentsCount = comments.count();
+            let commentsCount = comments.length;
 
             res.render('Pages/dashboard/comments',{
                 comments,

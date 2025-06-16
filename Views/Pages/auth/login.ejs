@@ -8,32 +8,26 @@
     <link rel="stylesheet" href="/Style/login.css">
 </head>
 <body>
-    
     <%- include('../../Partials/header.ejs') %>
-    <!-- write more about login pgs -->
-    
-    <div class="login-container">
-        <h2>Just Login</h2>
+    <div class="auth-container">
+        <h2>Login to Your Account</h2>
         <form action="/auth/login" method="POST">
             <div class="pair-group">
-                <label for="email">Enter Email</label>
-                <input type="email" name="email" id="email" class="form-controll">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-controll" value="<%= value && value.email ? value.email : '' %>">
             </div>
-
             <div class="pair-group">
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" class="form-controll">
             </div>
-
             <div class="pair-group">
                 <label for="confirmpassword">Confirm Password</label>
                 <input type="password" name="confirmpassword" id="confirmpassword" class="form-controll">
             </div>
             <button type="submit" id="form-btn">Login</button>
         </form>
-    </div>  
-
-    <%- include('../../Partials/footer.ejs') %>
+    </div>
+    <!-- <%- include('../../Partials/footer.ejs') %> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
@@ -42,4 +36,6 @@
                 toastr.error('<%= errors[key] %>');
             <% } %>
         <% } %>
-    </script>       
+    </script>
+</body>
+</html>

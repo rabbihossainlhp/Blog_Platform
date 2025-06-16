@@ -1,153 +1,202 @@
-/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    background: linear-gradient(135deg, #e3eafc 0%, #f8fafc 100%);
     color: #333;
 }
 
 .singlePostContainer {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    margin-top: 10%;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: 45px auto 30px auto;
+    padding: 32px 24px 24px 24px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(0, 123, 255, 0.09);
 }
 
 .postHeader h1 {
-    font-size: 2rem;
+    font-size: 2.1rem;
     margin-bottom: 10px;
+    color: #222;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 .postMeta {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #666;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.postMeta .dot {
+    width: 6px;
+    height: 6px;
+    background: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.postMeta a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
 }
 
 .postThumbnail img {
     width: 100%;
-    height: 400px;
+    height: 340px;
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.07);
 }
 
 .postContent p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: #000;
+    font-size: 1.13rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    color: #222;
+    font-weight: 500;
 }
 
 .postFooter {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #666;
-    margin-top: 20px;
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+    justify-content: space-between;
 }
-
+.tags-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.tags-row i {
+    color: #007bff;
+    font-size: 1.1rem;
+}
 .postFooter .tag {
     display: inline-block;
     background-color: #007bff;
     color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
+    padding: 5px 12px;
+    border-radius: 16px;
     margin-right: 5px;
-    font-size: 0.8rem;
+    font-size: 0.93rem;
+    font-weight: 500;
+}
+.readtime-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #555;
+    font-size: 0.98rem;
+}
+.readtime-row i {
+    color: #007bff;
+    font-size: 1.1rem;
 }
 
 /* Like/Dislike Section */
 .like-dislike-bookmarks {
     display: flex;
-    align-items: start;
     flex-direction: column;
-    justify-content: space-between;
-    margin-top: 20px;
+    gap: 18px;
+    margin-top: 28px;
 }
 .authentic-option{
     width: 100%;
     display: flex;
+    gap: 18px;
+    align-items: center;
     position: relative;
+    justify-content: flex-start;
 }
 
 button#likebutton,
 button#dislikebutton {
-    background: none;
-    border: none;
+    background: #f8fafc;
+    border: 1.5px solid #e3eafc;
     font-size: 1rem;
     color: #007bff;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 5px;
-    transition: color 0.3s ease;
+    gap: 7px;
+    border-radius: 7px;
+    padding: 8px 18px;
+    transition: color 0.3s, border 0.2s, background 0.2s;
+    font-weight: 600;
 }
-
 button#likebutton:hover,
 button#dislikebutton:hover {
-    color: #0056b3;
+    color: #fff;
+    background: #007bff;
+    border-color: #007bff;
 }
-
 button#likebutton.liked,
 button#dislikebutton.disliked {
-    color: #28a745; /* Green for active state */
+    color: #28a745;
+    border-color: #28a745;
 }
-
 button#likebutton i,
 button#dislikebutton i {
     font-size: 1.2rem;
 }
-
 button#likebutton span,
 button#dislikebutton span {
-    font-size: 0.9rem;
+    font-size: 0.98rem;
 }
-
-button#like-btn[disabled],
-button#dislike-btn[disabled] {
+button[disabled] {
     color: #ccc;
     cursor: not-allowed;
+    background: #f1f1f1;
+    border: 1.5px solid #eee;
 }
 
 .bookmarkSection {
-    margin-top: 20px;
+    margin-left: auto;
     text-align: right;
-    position: absolute;
-    right: 0;
-    bottom: 5%;
+    position: relative;
 }
-
 .bookmarks-icon {
     font-size: 1.5rem;
     color: #007bff;
     cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.3s, transform 0.3s;
+    background: #f8fafc;
+    border-radius: 50%;
+    padding: 7px;
+    margin-left: 10px;
 }
-
 .bookmarks-icon:hover {
     color: #0056b3;
+    background: #e3eafc;
     transform: scale(1.1);
 }
-
 .bookmarks-icon .fa-solid {
-    color: #28a745; /* Green for bookmarked */
+    color: #28a745;
 }
 
 /* Comment Section */
-/* --- Enhanced Comment Section Styles --- */
-
 .comment {
     margin-top: 40px;
     background: #f5f7fa;
     padding: 24px 24px 12px 24px;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    width: 85%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
 }
-
 .comment label {
     font-size: 1.1rem;
     font-weight: 600;
@@ -156,7 +205,6 @@ button#dislike-btn[disabled] {
     display: block;
     letter-spacing: 0.5px;
 }
-
 .comment input[type="text"] {
     width: 100%;
     padding: 12px 16px;
@@ -167,23 +215,19 @@ button#dislike-btn[disabled] {
     background: #fff;
     transition: border 0.2s;
 }
-
 .comment input[type="text"]:focus {
     border: 1.5px solid #007bff;
     outline: none;
 }
-
 .comment-hold {
     margin-top: 28px;
 }
-
 .comment-hold p {
     font-size: 1.05rem;
     color: #888;
     text-align: center;
     margin: 24px 0;
 }
-
 .media {
     display: flex;
     align-items: flex-start;
@@ -196,11 +240,9 @@ button#dislike-btn[disabled] {
     position: relative;
     transition: box-shadow 0.2s;
 }
-
 .media:hover {
     box-shadow: 0 4px 16px rgba(0,0,0,0.07);
 }
-
 .media img {
     width: 54px;
     height: 54px;
@@ -210,13 +252,11 @@ button#dislike-btn[disabled] {
     border: 2px solid #e3eafc;
     background: #fff;
 }
-
 .media-body {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
-
 .media-body p {
     margin: 0 0 8px 0;
     font-size: 1.08rem;
@@ -224,8 +264,6 @@ button#dislike-btn[disabled] {
     font-weight: 500;
     word-break: break-word;
 }
-
-/* --- Enhanced Reply Section Styles --- */
 .replies {
     margin-top: 12px;
     padding-left: 24px;
@@ -233,7 +271,6 @@ button#dislike-btn[disabled] {
     background: #f9fbfd;
     border-radius: 0 0 0 8px;
 }
-
 .media-reply {
     display: flex;
     align-items: flex-start;
@@ -243,7 +280,6 @@ button#dislike-btn[disabled] {
     background: #f5f7fa;
     box-shadow: 0 1px 4px rgba(0,0,0,0.02);
 }
-
 .media-reply img {
     width: 38px;
     height: 38px;
@@ -253,7 +289,6 @@ button#dislike-btn[disabled] {
     border: 1.5px solid #e3eafc;
     background: #fff;
 }
-
 .reply-body p {
     margin: 0;
     font-size: 0.98rem;
@@ -263,7 +298,6 @@ button#dislike-btn[disabled] {
     border-radius: 8px;
     display: inline-block;
 }
-
 .reply-input input[type="text"] {
     width: 90%;
     padding: 8px 12px;
@@ -274,55 +308,35 @@ button#dislike-btn[disabled] {
     background: #fff;
     transition: border 0.2s;
 }
-
 .reply-input input[type="text"]:focus {
     border: 1.5px solid #007bff;
     outline: none;
-}   
-
-
-
-
-
-/* Media Queries */
-@media (max-width: 768px) {
+}
+.login-suggestion {
+    margin-top: 18px;
+    color: #888;
+    font-size: 1rem;
+}
+.login-suggestion a {
+    color: #007bff;
+    text-decoration: underline;
+    font-weight: 600;
+}
+@media (max-width: 900px) {
     .singlePostContainer {
-        padding: 15px;
+        padding: 15px 35px;
     }
-
     .postHeader h1 {
         font-size: 1.5rem;
     }
-
     .postThumbnail img {
-        height: 300px;
+        height: 200px;
     }
-
-    .like-dislike-bookmarks {
-        flex-direction: column;
-        gap: 15px;
+    .comment {
+        width: 98%;
+        padding: 12px 6px 8px 6px;
     }
-
-    button#likebutton,
-    button#dislikebutton {
-        font-size: 0.9rem;
-    }
-
-    .media-reply img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .media {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 14px 8px 14px 8px;
-    }
-    .media img {
-        margin-bottom: 10px;
-        margin-right: 0;
-    }
-    .replies {
-        padding-left: 10px;
+    .comment input[type="text"]{
+        width: 90%;
     }
 }

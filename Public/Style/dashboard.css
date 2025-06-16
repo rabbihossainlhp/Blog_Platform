@@ -184,6 +184,12 @@
     font-size: 1.05rem;
     margin: 18px 0 0 0;
 }
+.centered-auth-form {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 @media (max-width: 900px) {
     .dashboard-stats-row {
@@ -197,6 +203,10 @@
         width: 100%;
         min-width: 0;
     }
+    .dashboard-main-content{
+        margin-left: 14%;
+        margin-top: 5%;
+    }
 }
 
 @media (max-width: 600px) {
@@ -206,7 +216,7 @@
         padding: 18px 8px;
     }
     .dashboard-main-content {
-        padding: 18px 4px;
+        padding: 18px 18px;
     }
     .dashboard-section {
         padding: 12px 4px;

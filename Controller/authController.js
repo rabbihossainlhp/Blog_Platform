@@ -34,7 +34,7 @@ exports.signupPostController = async(req,res,next)=>{
 
         let createdUser = await User.save();
         console.log(createdUser);
-        res.render("Pages/auth/login",{currentPage:"Login"});
+        res.render("Pages/auth/login",{currentPage:"Login", value:{email,password}});
 
     }catch(er){
         console.log("Something went wrong to create user",er);
@@ -58,7 +58,7 @@ exports.loginGetController = (req,res,next)=>{
 
 
 exports.loginPostController = async (req,res,next)=>{
-    let {email,password} = req.body;
+    let {email,password,confirmpassword} = req.body;
 
     let errors = validationResult(req).formatWith(errorFormatter);
     if(!errors.isEmpty()){

@@ -5,103 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create new profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">   
-    <link rel="stylesheet" href="/Style/login.css"> 
     <link rel="stylesheet" href="/Style/createPage.css">
 </head>
 <body>
-    
     <%- include('../../../Partials/header.ejs') %>
-    <!-- write more about create profile page -->
-
-    <div class="container">
-        <div class="sub-container-1">        </div>
-
-        <div class="sub-container-2">
-            <div class="containerBox">
-                
-                <div class="profilePics">
-                    <img src="<%= user.profilePics %>" alt="profile_picture" id="profilePics">
-
-                    <form action="/Uploads/profilePics" id="profilePicsForm">
-                        <input type="file" name="profilePics" id="profilePicsinput" accept="image/*">
-                        <div class="btn">
-                            <input type="button" value="Add"  id="addBtn" >
-                            <input type="button" value="Remove" id="removeProfilePics" style="display: <%= user.profilePics.includes('image-copy.png') ? 'none' : 'block' %>;">
-                        </div>
-                    </form>
-                </div>
-                <div class="infoForm"> 
-                    <h2>Create your profile</h2>    
-                    <form action="/dashboard/create-profile" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" placeholder="enter your name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" disabled value="<%= user.email %>" placeholder="enter your email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="title">Enter a short title</label>
-                            <input type="text" name="title" id="title" placeholder="enter a short title" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="bio">Enter a short bio about you</label>
-                            <input type="text" name="bio" id="bio" placeholder="enter your short bio" required>
-                        </div>
-
-                        <div class="form-group link-group">
-                            <label for="link">Your social link</label>
-                            
-                            <div class="totalIndividual">
-                                <div class="individual-link">
-                                    <i class="fab fa-facebook"></i>
-                                    <input type="text" name="facebook" id="facebook" placeholder="Facebook link" >
-                                </div>
-    
-                                <div class="individual-link">
-                                    <i class="fab fa-twitter"></i>
-                                    <input type="text" name="twitter" id="twitter" placeholder="Twitter (X) link" >
-                                </div>
-    
-                                <div class="individual-link">
-                                    <i class="fab fa-github"></i>
-                                    <input type="text" name="github" id="github" placeholder="Github link" >
-                                </div>
-    
-                                <div class="individual-link">
-                                    <i class="fab fa-linkedin"></i>
-                                    <input type="text" name="linkedin" id="linkedin" placeholder="LinkedIn link" >
-                                </div>
-                                
-                                <div class="individual-link">
-                                    <i class="fab fa-instagram"></i>
-                                    <input type="text" name="instagram" id="instagram" placeholder="Instagram link" >
-                                </div>
-    
-                                <div class="individual-link">
-                                    <i class="fab fa-globe"></i>
-                                    <input type="text" name="website" id="globe" placeholder="Website link" >
-                                </div>  
-                            </div> 
-                            <div class="btn">
-                                <button type="submit" class="createProfileBtn">Create Profile</button> 
+    <div class="modern-profile-container">
+        <div class="modern-profile-card">
+            <div class="profile-pic-block">
+                <img src="<%= user.profilePics %>" alt="profile_picture" id="profilePics">
+                <form action="/Uploads/profilePics" id="profilePicsForm">
+                    <input type="file" name="profilePics" id="profilePicsinput" accept="image/*">
+                    <div class="btn">
+                        <input type="button" value="Add"  id="addBtn" >
+                        <input type="button" value="Remove" id="removeProfilePics" style="display: <%= user.profilePics.includes('image-copy.png') ? 'none' : 'block' %>;">
+                    </div>
+                </form>
+            </div>
+            <div class="modern-profile-form"> 
+                <h2>Create your profile</h2>    
+                <form action="/dashboard/create-profile" method="POST">
+                    <div class="modern-form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="modern-form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" disabled value="<%= user.email %>" placeholder="Enter your email" required>
+                    </div>
+                    <div class="modern-form-group">
+                        <label for="title">Short Title</label>
+                        <input type="text" name="title" id="title" placeholder="Enter a short title" required>
+                    </div>
+                    <div class="modern-form-group">
+                        <label for="bio">Short Bio</label>
+                        <input type="text" name="bio" id="bio" placeholder="Enter your short bio" required>
+                    </div>
+                    <div class="modern-form-group link-group">
+                        <label for="link">Your Social Links</label>
+                        <div class="totalIndividual">
+                            <div class="individual-link">
+                                <i class="fab fa-facebook"></i>
+                                <input type="text" name="facebook" id="facebook" placeholder="Facebook link" >
                             </div>
+                            <div class="individual-link">
+                                <i class="fab fa-twitter"></i>
+                                <input type="text" name="twitter" id="twitter" placeholder="Twitter (X) link" >
+                            </div>
+                            <div class="individual-link">
+                                <i class="fab fa-github"></i>
+                                <input type="text" name="github" id="github" placeholder="Github link" >
+                            </div>
+                            <div class="individual-link">
+                                <i class="fab fa-linkedin"></i>
+                                <input type="text" name="linkedin" id="linkedin" placeholder="LinkedIn link" >
+                            </div>
+                            <div class="individual-link">
+                                <i class="fab fa-instagram"></i>
+                                <input type="text" name="instagram" id="instagram" placeholder="Instagram link" >
+                            </div>
+                            <div class="individual-link">
+                                <i class="fab fa-globe"></i>
+                                <input type="text" name="website" id="globe" placeholder="Website link" >
+                            </div>  
                         </div> 
-                    </form>
-                </div>
+                        <button type="submit" class="createProfileBtn">Create Profile</button> 
+                    </div> 
+                </form>
             </div>
         </div>
     </div>
-
-    <!-- <%- include('../../../Partials/footer.ejs') %> -->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.js" integrity="sha512-vUJTqeDCu0MKkOhuI83/MEX5HSNPW+Lw46BA775bAWIp1Zwgz3qggia/t2EnSGB9GoS2Ln6npDmbJTdNhHy1Yw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.js"></script>    
     <script src="/Public/Scripts/createProfile.js"></script>
     <script>
         <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
@@ -111,4 +86,4 @@
         <% } %>
     </script>   
 </body>
-</html>
+</html> 

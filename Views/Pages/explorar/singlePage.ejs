@@ -1,58 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= post.title %></title>
     <link rel="stylesheet" href="/Style/singlePage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
 </head>
 <body>
     <%- include('../../Partials/header.ejs') %>
-
     <div class="singlePostContainer">
         <div class="postHeader">
             <p class="postMeta">
-                Posted by <strong><a href="/author/<%= post.author._id%>"><%= post.author.username %></a></strong> on <%= postDate %>
+                <i class="fa-solid fa-user"></i>
+                Posted by <strong><a href="/author/<%= post.author._id%>"><%= post.author.username %></a></strong>
+                <span class="dot"></span>
+                <i class="fa-regular fa-clock"></i>
+                <%= postDate %>
             </p>
             <h1><%= post.title %></h1>
         </div>
-
         <% if (post.thumbnail) { %>
             <div class="postThumbnail">
                 <img src="/Public/<%= post.thumbnail %>" alt="<%= post.title %>">
             </div>
         <% } %>
-
         <div class="postContent">
             <p><%= post.body %></p>
         </div>
-
         <div class="postFooter">
-            <p>Tags: 
+            <div class="tags-row">
+                <i class="fa-solid fa-tags"></i>
                 <% post.tags.forEach(tag => { %>
                     <span class="tag"><%= tag %></span>
                 <% }) %>
-            </p>
-            <p>Estimated Read Time: <%= post.readTime %> minutes</p>
+            </div>
+            <div class="readtime-row">
+                <i class="fa-regular fa-hourglass-half"></i>
+                <span>Estimated Read Time: <%= post.readTime %> minutes</span>
+            </div>
         </div>
-
         <div class="like-dislike-bookmarks">
             <% if (!user) { %>
                 <button id="like-btn" disabled>
-                    Like (<%= post.likes.length %>)
+                    <i class="fa-regular fa-thumbs-up"></i> Like (<%= post.likes.length %>)
                 </button>
                 <button id="dislike-btn" disabled>
-                    Dislike (<%= post.dislikes.length%>)
+                    <i class="fa-regular fa-thumbs-down"></i> Dislike (<%= post.dislikes.length%>)
                 </button>
-                <p class="login-suggestion">To Comment Please <a href="/auth/login">Login</a></p>
+                <p class="login-suggestion">To comment, please <a href="/auth/login">Login</a></p>
             <% } else {%>
                 <div class="authentic-option">
                     <button id="likebutton" data-post="<%= post._id%>">
-                        <i id="likeIcon" class="<%= post.likes.includes(user._id) ? 'fa-solid fa-thumbs-up':'fa-regular fa-thumbs-up' %>"> </i> <span> <%= post.likes.includes(user._id) ? 'Liked': 'Like' %> (<%= post.likes.length %>) </span>
+                        <i id="likeIcon" class="<%= post.likes.includes(user._id) ? 'fa-solid fa-thumbs-up':'fa-regular fa-thumbs-up' %>"></i>
+                        <span><%= post.likes.includes(user._id) ? 'Liked': 'Like' %> (<%= post.likes.length %>)</span>
                     </button>  
                     <button id="dislikebutton" data-post="<%= post._id%>">
-                        <i id="dislikeIcon" class="<%= post.likes.includes(user._id) ? 'fa-solid fa-thumbs-up':'fa-regular fa-thumbs-up' %>"></i> <span> <%= post.dislikes.includes(user._id) ? 'Disliked':'Dislike' %> (<%= post.dislikes.length%>) </span>
+                        <i id="dislikeIcon" class="<%= post.dislikes.includes(user._id) ? 'fa-solid fa-thumbs-down':'fa-regular fa-thumbs-down' %>"></i>
+                        <span><%= post.dislikes.includes(user._id) ? 'Disliked':'Dislike' %> (<%= post.dislikes.length%>)</span>
                     </button> 
-                        
                     <div class="bookmarkSection">
                         <span class="bookmarks-icon" data-post="<%= post._id %>">
                             <% if (bookmarks.includes(post._id)) { %>
@@ -63,10 +69,9 @@
                         </span>
                     </div>  
                 </div>
-    
                 <div class="comment">
-                    <label for="comment"> Leave a comment</label>
-                    <input type="text" id="comment" placeholder="add  a comment" data-post="<%= post._id%>">
+                    <label for="comment">Leave a comment</label>
+                    <input type="text" id="comment" placeholder="Add a comment" data-post="<%= post._id%>">
                 </div>
                 <div class="comment-hold">
                     <% if(post.comments.length === 0){%>
@@ -101,9 +106,7 @@
                 </div>
             <%} %>  
         </div>
-        
     </div>
-
     <script src="/Scripts/bookmarks.js"></script>
     <script src="/Scripts/likeDislike.js"></script>
     <script src="/Scripts/comment.js"></script>

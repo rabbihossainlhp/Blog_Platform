@@ -8,62 +8,72 @@
 </head>
 <body>
     <nav>
-        <div class="logo">
-            <h1>.Exp-Blog</h1>
-        </div>
+  <div class="nav-container">
+    <div class="logo">
+      <h1>.Exp-Blog</h1>
+    </div>
 
-        <div class="search-bar-div">
-            <form action="/search" class="nav-search-form" method="GET">
-                <input type="search" name="term" placeholder="Search..." class="nav-search-input">
-                <button type="submit" class="nav-search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-        </div>
+    <div class="search-bar-div">
+      <form action="/search" class="nav-search-form" method="GET">
+        <input type="search" name="term" placeholder="Search..." class="nav-search-input">
+        <button type="submit" class="nav-search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+    </div>
 
-        <div class="other-section">
-            
-            <div class="ul-with-btn">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-                <% if(isLoggedIn){ %>
-                    <div class="Login-option">
-                        <a href="/auth/logout">Logout</a>
-                    </div>
-                <% } else{ %>
-                    <div class="Login-option">
-                        <% if(currentPage === 'Login'){%>
-                            <a href="/auth/signup">Signup</a>
-                        <%}else if (currentPage === 'Signup'){%>
-                            <a href="/auth/login">Login</a>
-                        <%}else{%>
-                            <a href="/auth/login">Login</a>
-                        <%} %>
-                    </div>  
-                <% } %> 
-            </div>
-            
-            <div class="hamburger-menu">
-                <i class="fa-solid fa-bars"></i>    
-            </div>
-        </div>
-    </nav>  
+    <div class="hamburger-menu" id="hamburgerMenu">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <div class="other-section" id="otherSection">
+      <div class="ul-with-btn">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+        <% if(isLoggedIn){ %>
+          <div class="Login-option">
+            <a href="/auth/logout">Logout</a>
+          </div>
+        <% } else{ %>
+          <div class="Login-option">
+            <% if(currentPage === 'Login'){%>
+              <a href="/auth/signup">Signup</a>
+            <%}else if (currentPage === 'Signup'){%>
+              <a href="/auth/login">Login</a>
+            <%}else{%>
+              <a href="/auth/login">Login</a>
+            <%} %>
+          </div>  
+        <% } %> 
+      </div>
+    </div>
+  </div>
+</nav>
 
 <script>
-    const hamburger = document.querySelector('.hamburger-menu');
-    const nav_sidebar = document.querySelector('.ul-with-btn');
-    const hamburgerIcon = document.querySelector('.fa-bars');
+  const hamburger = document.getElementById('hamburgerMenu');
+  const otherSection = document.getElementById('otherSection');
+  const hamburgerIcon = hamburger.querySelector('i');
 
-    hamburger.onclick = ()=>{
-        nav_sidebar.classList.toggle('toggle-nav');
-        if(hamburgerIcon.classList.contains('fa-bars')){
-            hamburgerIcon.classList.remove('fa-bars');
-            hamburgerIcon.classList.add('fa-xmark');
-        }else{
-            hamburgerIcon.classList.remove('fa-xmark');
-            hamburgerIcon.classList.add('fa-bars');
-        }
+  function closeMenuOnResize() {
+    if(window.innerWidth > 770) {
+      otherSection.classList.remove('open');
+      hamburgerIcon.classList.remove('fa-xmark');
+      hamburgerIcon.classList.add('fa-bars');
     }
+  }
 
+  hamburger.onclick = () => {
+    otherSection.classList.toggle('open');
+    if (hamburgerIcon.classList.contains('fa-bars')) {
+      hamburgerIcon.classList.remove('fa-bars');
+      hamburgerIcon.classList.add('fa-xmark');
+    } else {
+      hamburgerIcon.classList.remove('fa-xmark');
+      hamburgerIcon.classList.add('fa-bars');
+    }
+  }
+
+  window.addEventListener('resize', closeMenuOnResize);
 </script>

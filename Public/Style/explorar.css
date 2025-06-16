@@ -1,252 +1,200 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-}
-
-.explorarContainer {
-    max-width: 1200px;
-    margin: 20px auto;
-    margin-top: 6%;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.row {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* Filter Links Section */
-.row section:first-child {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.row section:first-child a {
-    text-decoration: none;
-    color: white;
-    background-color: #4CAF50;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.row section:first-child a.active {
-    background-color: #007bff; /* Highlight color */
-    color: white;
-    border: 0.5px solid #0056b3;
-}
-
-.row section:first-child a:hover {
-    background-color: #45a049;
-}
-
-/* Content Section */
-.explorarCard {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.explorarCardDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 75%;
-    max-height: 350px;
-    min-height: 292px;
-    text-align: center;
-    position: relative;
-}
-
-.explorarCardDiv:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.explorarCardDiv img {
-    width: 100%;
-    height: 60%;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.explorarCardDiv a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.explorarCardDiv a:hover {
-    color: #007bff;
-}
-
-.explorarCardDiv h5 {
-    font-size: 1.2rem;
-    margin: 10px 0;
-    color: #333;
-}
-
-.explorarCardDiv p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.timeShowing {
-    font-size: 0.8rem;
-    color: #999;
-    margin-top: 10px;
-}
-
-.timeShowing a {
-    display:  inline-block;
-}
-
-/* Bookmarks Icon */
-.bookmarks-icon {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 1.2rem;
-    color: #999;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.bookmarks-icon:hover {
-    color: #007bff;
-    transform: scale(1.2);
-}
-
-.bookmarks-icon i {
-    font-size: 1.5rem;
-}
-
-/* Pagination Styles */
-.paginationContainer {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.pagination .page-item {
-    margin: 0 5px;
-}
-
-.pagination .page-item a {
-    display: inline-block;
-    padding: 8px 12px;
-    text-decoration: none;
-    color: #007bff;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.pagination .page-item a:hover {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.pagination .page-item.active a {
-    background-color: #007bff;
-    color: #fff;
-    border-color: #007bff;
-    cursor: default;
-}
-
-.pagination .page-item.disabled a {
-    color: #ccc;
-    background-color: #f9f9f9;
-    border-color: #ddd;
-    pointer-events: none;
-    cursor: not-allowed;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .explorarContainer {
-        padding: 15px;
-    }
-
-    .row section:first-child a {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-    }
-
-    .explorarCardDiv {
-        width: 100%;
-    }
-
-    .explorarCardDiv img {
-        height: 120px;
-    }
-
-    .explorarCardDiv h5 {
-        font-size: 1rem;
-    }
-
-    .explorarCardDiv p {
-        font-size: 0.8rem;
-    }
-
-    .timeShowing {
-        font-size: 0.7rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .row section:first-child a {
-        font-size: 0.8rem;
-        padding: 6px 10px;
-    }
-
-    .explorarCardDiv {
-        padding: 10px;
-    }
-
-    .explorarCardDiv img {
-        height: 100px;
-    }
-
-    .explorarCardDiv h5 {
-        font-size: 0.9rem;
-    }
-
-    .explorarCardDiv p {
-        font-size: 0.7rem;
-    }
-
-    .timeShowing {
-        font-size: 0.6rem;
-    }
-}
+        .explorarCardColumn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .explorar-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+        .explorar-header h2 {
+            color: #007bff;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .explorar-filters {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2%;
+        }
+        .explorar-filters a {
+            text-decoration: none;
+            color: #007bff;
+            background: #e3eafc;
+            padding: 9px 22px;
+            border-radius: 24px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 1.5px solid #e3eafc;
+            box-shadow: 0 1px 4px rgba(0,123,255,0.07);
+            transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+        }
+        .explorar-filters a.active,
+        .explorar-filters a:hover {
+            background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
+            color: #fff;
+            border: 1.5px solid #007bff;
+            transform: scale(1.05);
+        }
+        .no-posts-msg {
+            color: #888;
+            font-size: 1.15rem;
+            text-align: center;
+            margin: 40px 0 20px 0;
+            width: 100%;
+        }
+        .explorarCardDiv {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #e3eafc 100%);
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.07);
+            transition: box-shadow 0.25s, transform 0.25s;
+            padding: 24px 18px 18px 18px;
+            border-radius: 14px;
+            margin-bottom: 10px;
+            max-width: 520px;
+            min-width: 260px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+        }
+        .explorarCardDiv:hover {
+            box-shadow: 0 8px 24px rgba(0, 123, 255, 0.13);
+            transform: translateY(-6px) scale(1.025);
+        }
+        .explorarCardDiv img {
+            border-radius: 10px;
+            margin-bottom: 12px;
+            height: 180px;
+            object-fit: cover;
+            width: 100%;
+            background: #e3eafc;
+        }
+        .explorarCardDiv h5 {
+            color: #222;
+            font-size: 1.18rem;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+        }
+        .mobile-fit-card{
+            width: fit-content;
+        }
+        .explorarCardDiv p {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .timeShowing {
+            margin-top: 8px;
+            color: #888;
+            font-size: 0.93rem;
+        }
+        .timeShowing a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .bookmarks-icon {
+            position: absolute;
+            bottom: 18px;
+            right: 18px;
+            font-size: 1.3rem;
+            color: #bbb;
+            background: #fff;
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: 0 1px 4px rgba(0,123,255,0.07);
+            transition: color 0.2s, background 0.2s, transform 0.2s;
+        }
+        .bookmarks-icon:hover {
+            color: #007bff;
+            background: #e3eafc;
+            transform: scale(1.15);
+        }
+        /* Pagination Styles */
+        .paginationContainer {
+            margin-top: 20px;
+            text-align: center;
+            padding-bottom: 2%;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .pagination .page-item {
+            margin: 0 5px;
+        }
+        .pagination .page-item a {
+            display: inline-block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #007bff;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .pagination .page-item a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .pagination .page-item.active a {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+            cursor: default;
+        }
+        .pagination .page-item.disabled a {
+            color: #ccc;
+            background-color: #f9f9f9;
+            border-color: #ddd;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+        @media (max-width: 900px) {
+            .explorarCardDiv {
+                max-width: 98vw;
+                min-width: 0;
+                padding: 12px 6px 10px 6px;
+            }
+            .explorar-header h2 {
+                font-size: 1.3rem;
+            }
+            .explorar-filters{
+                margin-top: 6%;
+                gap: 5px;
+            }
+            .mobile-fit-card {
+                padding: 0 6px;
+            }
+        }
+        @media (max-width: 600px) {
+            .explorarCardDiv img {
+                height: 120px;
+            }
+            .explorarCardDiv {
+                padding: 10px 2px;
+            }
+            .explorar-header h2 {
+                font-size: 1.1rem;
+            }
+        }

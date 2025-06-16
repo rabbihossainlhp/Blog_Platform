@@ -8,7 +8,7 @@
 }
 .modern-create-card {
     background: #fff;
-    padding: 36px 32px 28px 32px;
+    padding: 36px 40px 28px 32px;
     border-radius: 18px;
     box-shadow: 0 6px 24px rgba(0, 123, 255, 0.09);
     max-width: 520px;
@@ -90,5 +90,11 @@
     .modern-create-card {
         padding: 18px 6px 14px 6px;
         max-width: 98vw;
+    }
+    .modern-form-group input [type="text"]{
+        width: 90%;
+    }
+    .modern-form-group{
+        padding: 0 5px;
     }
 }
