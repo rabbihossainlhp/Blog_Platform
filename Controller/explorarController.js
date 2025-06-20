@@ -113,7 +113,7 @@ exports.getSinglePostController = async (req,res,next)=>{
                 }
             ]
         })
-        .populate('author');
+        .populate('author','username');
         
 
         let bookmarks = [];

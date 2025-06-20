@@ -53,7 +53,12 @@ exports.createPostPosttController = async (req, res, next) => {
     try{
         let createdPost = await post.save();
         await Profile.findOneAndUpdate({user:req.user._id},{$push:{posts:createdPost._id}},{new:true})
-        return res.redirect(`/post/edit/${createdPost._id}`)
+        let posts = await Post.find({author:req.user._id});
+        res.render("Pages/dashboard/post/posts",{
+            user:req.user,
+            profile:req.profile,
+            posts
+        }) 
     }catch(e){
         next(e)
     }
@@ -119,11 +124,12 @@ exports.editPostPostController = async (req,res,next) =>{
             return res.redirect("/dashboard");
         }
         await Profile.findOneAndUpdate({user:req.user._id},{$addToSet:{posts:updatedPost._id}},{new:true})
-        
-        return res.render("Pages/dashboard/post/editPost",{
+        let posts = await Post.find({author:req.user._id});
+        return res.render("Pages/dashboard/post/posts",{
             user:req.user,
             profile:req.profile,
             post:updatedPost,
+            posts,
             errors:errors || []
         })
         
