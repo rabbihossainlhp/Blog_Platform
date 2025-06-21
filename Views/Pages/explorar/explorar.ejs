@@ -29,7 +29,7 @@
                 <% for(post of posts) { %>
                     <div class="explorarCardDiv">
                         <% if(post.thumbnail) { %>
-                            <img src="/Public/<%= post.thumbnail %>" alt="post image">
+                            <img src="<%= post.thumbnail %>" alt="post image">
                         <% } %>
                         <a href="/explorar/<%= post._id %>">
                             <h5><%= post.title %></h5>
