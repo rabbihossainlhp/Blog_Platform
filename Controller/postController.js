@@ -46,9 +46,8 @@ exports.createPostPosttController = async (req, res, next) => {
     })
 
     if(req.file){
-        post.thumbnail = `Uploads/${req.file.filename}`
+        post.thumbnail = req.file.path;
     }
-
 
     try{
         let createdPost = await post.save();
@@ -59,6 +58,7 @@ exports.createPostPosttController = async (req, res, next) => {
             profile:req.profile,
             posts
         }) 
+        
     }catch(e){
         next(e)
     }
@@ -114,7 +114,7 @@ exports.editPostPostController = async (req,res,next) =>{
                 title,
                 body:description,
                 tags,
-                thumbnail: req.file ? `Uploads/${req.file.filename}` : post.thumbnail,
+                thumbnail: req.file ? req.file.path : post.thumbnail,
                 readTime,
             }},
             {new:true}

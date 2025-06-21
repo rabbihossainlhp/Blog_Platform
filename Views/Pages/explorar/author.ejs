@@ -6,7 +6,7 @@
 <body>
     <div class="author-profile-container">
         <div class="author-profile-card">
-            <img class="author-avatar" src="/Public/<%= author && author.profilePics ? author.profilePics : 'default.png' %>" alt="Author Avatar">
+            <img class="author-avatar" src="<%= author && author.profilePics ? author.profilePics : 'default.png' %>" alt="Author Avatar">
             <h2><%= author ? author.username : 'Author Name' %></h2>
             <p class="author-bio"><%= profile && profile.bio ? profile.bio : 'No bio available.' %></p>
         </div>

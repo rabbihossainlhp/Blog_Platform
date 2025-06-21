@@ -8,7 +8,7 @@ exports.uploadProfilePics = async (req, res, next) => {
     if (req.file) {
         console.log(req.file,"REQ.FILE")
         let profile = await Profile.findOne({ user: req.user._id });
-        let profilePics = `Uploads/${req.file.filename}`;
+        let profilePics = req.file.path;
         let oldProfilePic = req.user.profilePics;
         // console.log("MODIFYED PIC", profilePics)
         try {

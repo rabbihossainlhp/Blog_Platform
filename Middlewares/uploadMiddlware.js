@@ -2,23 +2,25 @@
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const {storage} = require('../config/cloudinary');
+
 
 //_-__-___--_-_
-const uploadDir = path.join(__dirname,"../Public/Uploads");
-if(!fs.existsSync(uploadDir)){
-    fs.mkdirSync(uploadDir);
-}
+// const uploadDir = path.join(__dirname,"../Public/Uploads");
+// if(!fs.existsSync(uploadDir)){
+//     fs.mkdirSync(uploadDir);
+// }
 
 
-//storage engine...
-const storage = multer.diskStorage({
-    destination:(req,file,cb)=>{
-        cb(null,uploadDir);
-    },
-    filename:(req,file,cb)=>{
-        cb(null,file.fieldname + '-' + Date.now() + '-' + file.originalname);
-    }
-});
+// //storage engine...
+// const storage = multer.diskStorage({
+//     destination:(req,file,cb)=>{
+//         cb(null,uploadDir);
+//     },
+//     filename:(req,file,cb)=>{
+//         cb(null,file.fieldname + '-' + Date.now() + '-' + file.originalname);
+//     }
+// });
 
 
 //try to upload the file...

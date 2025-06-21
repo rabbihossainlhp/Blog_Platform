@@ -17,7 +17,7 @@
         <main class="dashboard-main-content attractive-dashboard">
             <div class="dashboard-welcome-card">
                 <div class="welcome-icon">
-                    <img src="/Public/<%= user.profilePics%>" alt="">
+                    <img src="<%= user.profilePics%>" alt="">
                 </div>
                 <div>
                     <h1>Welcome, <%= user.username %>!</h1>
@@ -54,7 +54,7 @@
                         <% posts.slice(0, 5).forEach(function(post) { %>
                             <div class="post-card">
                                 <% if (post.thumbnail) { %>
-                                    <img src="/Public/<%= post.thumbnail %>" alt="Post Thumbnail">
+                                    <img src="<%= post.thumbnail %>" alt="Post Thumbnail">
                                 <% } %>
                                 <div class="post-content">
                                     <h3>
@@ -75,7 +75,7 @@
                         <% bookmarks.slice(0, 4).forEach(function(post) { %>
                             <div class="post-card">
                                 <% if (post.thumbnail) { %>
-                                    <img src="/Public/<%= post.thumbnail %>" alt="Post Thumbnail">
+                                    <img src="<%= post.thumbnail %>" alt="Post Thumbnail">
                                 <% } %>
                                 <div class="post-content">
                                     <h3>
