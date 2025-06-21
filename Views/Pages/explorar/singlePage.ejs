@@ -79,7 +79,7 @@
                     <%} else {%>
                         <% for(let comment of post.comments.reverse()) {%>
                         <div class="media">
-                            <img src="/Public/<%= comment.user.profilePics%>" alt="">
+                            <img src="<%= comment.user.profilePics%>" alt="">
                             <div class="media-body">
                                 <p>
                                     <%= comment.body %>
@@ -88,7 +88,7 @@
                                     <% if(comment.replies.length>0) {%>
                                         <% for (let reply of comment.replies) {%>
                                             <div class="media-reply">
-                                                <img src="/Public/<%= reply.user.profilePics %>" alt="">
+                                                <img src="<%= reply.user.profilePics %>" alt="">
                                                 <div class="reply-body">
                                                     <p><%= reply.body %></p>
                                                 </div>
